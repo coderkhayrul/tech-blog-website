@@ -156,7 +156,7 @@
                             <img class="user-avatar md-avatar rounded-circle" alt="Image placeholder"
                                 src="{{ asset('backend') }}/assets/img/team/profile-picture-3.jpg">
                             <div class="media-body ml-2 text-dark align-items-center d-none d-lg-block">
-                                <span class="mb-0 font-small font-weight-bold">Bonnie Green</span>
+                                <span class="mb-0 font-small font-weight-bold">{{ Auth::user()->name }}</span>
                             </div>
                         </div>
                     </a>
@@ -170,7 +170,7 @@
                         <a class="dropdown-item font-weight-bold" href="#"><span
                                 class="fas fa-user-shield"></span>Support</a>
                         <div role="separator" class="dropdown-divider"></div>
-                        <a class="dropdown-item font-weight-bold" href="#"><span
+                        <a class="dropdown-item font-weight-bold" href="{{ route('admin.logout') }}"><span
                                 class="fas fa-sign-out-alt text-danger"></span>Logout</a>
                     </div>
                 </li>

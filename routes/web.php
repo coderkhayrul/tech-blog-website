@@ -91,7 +91,10 @@ Route::group(['middleware' => 'auth'],function () {
         Route::post('/social/update/{id}', [AdminController::class, 'settingSocialUpdate'])->name('setting.social.update');
 
         Route::get('/seo', [AdminController::class, 'settingSeo'])->name('admin.setting.seo');
+        Route::post('/seo/update/{id}', [AdminController::class, 'settingSeoUpdate'])->name('setting.seo.update');
+
         Route::get('/contact', [AdminController::class, 'settingContact'])->name('admin.setting.contact');
+        Route::post('/contact/update/{id}', [AdminController::class, 'settingContactUpdate'])->name('setting.contact.update');
 
     });
 

@@ -74,8 +74,8 @@ $route = Route::current()->getName();
                 <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
                     data-toggle="collapse" data-target="#submenu-app">
                     <span>
-                        <span class="sidebar-icon"><span class="fas fa-cog"></span></span>
-                        Settings
+                        <span class="sidebar-icon"><span class="fas fa-cogs"></span></span>
+                        Advanced Setting
                     </span>
                     <span class="link-arrow"><span class="fas fa-chevron-right"></span></span>
                 </span>
@@ -90,13 +90,13 @@ $route = Route::current()->getName();
                         <li class="nav-item {{ ($route == 'admin.setting.social')? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('admin.setting.social') }}">
                                 <span class="sidebar-icon"><span class="fas fa-share-alt-square"></span></span>
-                                <span>Social Link</span>
+                                <span>Social Setting</span>
                             </a>
                         </li>
                         <li class="nav-item {{ ($route == 'admin.setting.contact')? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('admin.setting.contact') }}">
                                 <span class="sidebar-icon"><span class="fas fa-info-circle"></span></span>
-                                <span>Contact Info</span>
+                                <span>Contact Setting</span>
                             </a>
                         </li>
                         <li class="nav-item {{ ($route == 'admin.setting.seo')? 'active' : '' }}">

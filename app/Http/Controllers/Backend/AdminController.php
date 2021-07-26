@@ -93,12 +93,59 @@ class AdminController extends Controller
         return redirect()->back()->with($notification);
     }
 
+
     public function settingContact(){
-        return view('admin.setting.contact');
+
+        $setting = Admin::find(1)->first();
+
+        return view('admin.setting.contact', compact('setting'));
+    }
+
+    public function settingContactUpdate(Request $request, $id){
+
+        $contact = Admin::findOrFail($id);
+        $contact->address_en = $request->address_en;
+        $contact->address_ban = $request->address_ban;
+        $contact->email = $request->email;
+        $contact->phone_en = $request->phone_en;
+        $contact->phone_ban = $request->phone_ban;
+
+        $contact->update();
+
+        $notification =  array(
+            'message' => 'Contact Settings Update Successfully',
+            'alert-type' => 'info',
+        );
+
+        return redirect()->back()->with($notification);
     }
 
     public function settingSeo(){
-        return view('admin.setting.seo');
+        $setting = Admin::find(1)->first();
+        return view('admin.setting.seo', compact('setting'));
+    }
+
+    public function settingSeoUpdate(Request $request, $id){
+
+        $seo = Admin::findOrFail($id);
+        $seo->meta_title_en = $request->meta_title_en;
+        $seo->meta_title_ban = $request->meta_title_ban;
+        $seo->meta_description_en = $request->meta_description_en;
+        $seo->meta_description_ban = $request->meta_description_ban;
+        $seo->meta_keyword_en = $request->meta_keyword_en;
+        $seo->meta_keyword_ban = $request->meta_keyword_ban;
+        $seo->meta_author_en = $request->meta_author_en;
+        $seo->meta_author_ban = $request->meta_author_ban;
+        $seo->theme_color = $request->theme_color;
+        $seo->update();
+
+        $notification =  array(
+            'message' => 'Seo Settings Update Successfully',
+            'alert-type' => 'info',
+        );
+
+        return redirect()->back()->with($notification);
+
     }
 
 

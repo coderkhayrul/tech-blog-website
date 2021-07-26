@@ -18,14 +18,15 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="">
+            <form action="{{ route('setting.seo.update',$setting->id) }}" method="post">
+                @csrf
                 <div class="row mb-4">
                     <div class="col-lg-6 col-sm-6">
                         <!-- Form -->
-                        <label for="name">Meta Title</label>
-                        <input type="text" name="meta_title" class="form-control  @error('meta_title') is-invalid @enderror"
-                            value="{{ old('meta_title') }}" placeholder="Meta Title">
-                        @error('meta_title')
+                        <label for="name">Meta Title English</label>
+                        <input type="text" name="meta_title_en" class="form-control  @error('meta_title_en') is-invalid @enderror"
+                            value="{{ $setting->meta_title_en }}" placeholder="Meta Title English">
+                        @error('meta_title_en')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -34,10 +35,34 @@
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <!-- Form -->
-                        <label for="name">Meta Description</label>
-                        <input type="text" name="meta_description" class="form-control  @error('meta_description') is-invalid @enderror"
-                            value="{{ old('meta_description') }}" placeholder="Meta Description">
-                        @error('meta_description')
+                        <label for="name">Meta Title Bangla</label>
+                        <input type="text" name="meta_title_ban" class="form-control  @error('meta_title_ban') is-invalid @enderror"
+                            value="{{ $setting->meta_title_ban }}" placeholder="মেটা টাইটেল বাংলা">
+                        @error('meta_title_ban')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                        <!-- End of Form -->
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <!-- Form -->
+                        <label for="name">Meta Description English</label>
+                        <textarea type="text" name="meta_description_en" class="form-control  @error('meta_description_en') is-invalid @enderror"
+                             placeholder="Meta Description English">{{ $setting->meta_description_en }}</textarea>
+                        @error('meta_description_en')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                        <!-- End of Form -->
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <!-- Form -->
+                        <label for="name">Meta Description Bangla</label>
+                        <textarea type="text" name="meta_description_ban" class="form-control  @error('meta_description_ban') is-invalid @enderror"
+                            placeholder="মেটা ডেসক্রিপশন বাংলা">{{ $setting->meta_description_ban }}</textarea>
+                        @error('meta_description_ban')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -47,10 +72,10 @@
 
                     <div class="col-lg-6 col-sm-6">
                         <!-- Form -->
-                        <label for="name">Meta Keywords</label>
-                        <input type="text" name="meta_keyword" class="form-control  @error('meta_keyword') is-invalid @enderror"
-                            value="{{ old('meta_keyword') }}" placeholder="Meta Keywords">
-                        @error('meta_keyword')
+                        <label for="name">Meta Keywords English</label>
+                        <input type="text" name="meta_keyword_en" class="form-control  @error('meta_keyword_en') is-invalid @enderror"
+                            value="{{ $setting->meta_keyword_en }}" placeholder="Meta Keywords English">
+                        @error('meta_keyword_en')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -59,10 +84,34 @@
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <!-- Form -->
-                        <label for="name">Meta Author</label>
-                        <input type="text" name="meta_author" class="form-control  @error('meta_author') is-invalid @enderror"
-                            value="{{ old('meta_author') }}" placeholder="Meta Author">
-                        @error('meta_author')
+                        <label for="name">Meta Keywords Bangla</label>
+                        <input type="text" name="meta_keyword_ban" class="form-control  @error('meta_keyword_ban') is-invalid @enderror"
+                            value="{{ $setting->meta_keyword_ban }}" placeholder="মেটা কিওয়ার্ডস বাংলা">
+                        @error('meta_keyword_ban')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                        <!-- End of Form -->
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <!-- Form -->
+                        <label for="name">Meta Author English</label>
+                        <input type="text" name="meta_author_en" class="form-control  @error('meta_author_en') is-invalid @enderror"
+                            value="{{ $setting->meta_author_en }}" placeholder="Meta Author English">
+                        @error('meta_author_en')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                        <!-- End of Form -->
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <!-- Form -->
+                        <label for="name">Meta Author Bangla</label>
+                        <input type="text" name="meta_author_ban" class="form-control  @error('meta_author_ban') is-invalid @enderror"
+                            value="{{ $setting->meta_author_ban }}" placeholder="মেটা লেখক ইংলিশ">
+                        @error('meta_author_ban')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -73,7 +122,7 @@
                         <!-- Form -->
                         <label for="name">Meta Theme Color</label>
                         <input type="text" name="theme_color" class="form-control  @error('theme_color') is-invalid @enderror"
-                            value="{{ old('theme_color') }}" placeholder="Color Code">
+                            value="{{ $setting->theme_color }}" placeholder="Color Code">
                         @error('theme_color')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -83,7 +132,7 @@
                     </div>
                     <!-- Form -->
                     <div class="col-lg-12 col-sm-6 mt-2">
-                        <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Save Seo Setting</button>
+                        <button class="btn btn-success" type="submit"><i class="fas fa-sync"></i> Update Setting</button>
                     </div>
                     <!-- End of Form -->
                 </div>

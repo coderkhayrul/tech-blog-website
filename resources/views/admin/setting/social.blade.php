@@ -73,7 +73,7 @@
                     </div>
                     <!-- Form -->
                     <div class="col-lg-12 col-sm-6 mt-2">
-                        <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Save Setting</button>
+                        <button class="btn btn-success" type="submit"><i class="fas fa-sync"></i> Update Settings</button>
                     </div>
                     <!-- End of Form -->
                 </div>

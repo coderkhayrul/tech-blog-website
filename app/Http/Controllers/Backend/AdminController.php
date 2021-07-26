@@ -29,11 +29,35 @@ class AdminController extends Controller
 
     public function settingUpdate(Request $request, $id){
 
+        $old_fav_icon = $request->old_fav_icon;
+        $old_title_image = $request->old_title_image;
+
+        // FAV ICON Image
+        $fav_icon = $request->file('fav_icon');
+        $make_name = hexdec(uniqid()).'.'.$fav_icon->getClientOriginalExtension();
+        if ($old_fav_icon) {
+            unlink($old_fav_icon);
+        }
+        Image::make($fav_icon)->resize(16, 16)->save('upload/setting/image/'.$make_name);
+        $upload_fav_icon = 'upload/setting/image/'.$make_name;
+
+        // TITLE Image
+        $title_image = $request->file('title_image');
+        $make_name_title = hexdec(uniqid()).'.'.$title_image->getClientOriginalExtension();
+        if ($old_title_image) {
+            unlink($old_title_image);
+        }
+        Image::make($title_image)->resize(193, 45)->save('upload/setting/image/'.$make_name_title);
+        $upload_title_image = 'upload/setting/image/'.$make_name_title;
+
+
         $setting = Admin::findOrFail($id);
         $setting->website_title_en = $request->website_title_en;
         $setting->website_title_ban = $request->website_title_ban;
         $setting->copyright_text_en = $request->copyright_text_en;
         $setting->copyright_text_ban = $request->copyright_text_ban;
+        $setting->fav_icon = $upload_fav_icon;
+        $setting->title_image = $upload_title_image;
 
         $setting->update();
 

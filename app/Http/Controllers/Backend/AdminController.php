@@ -70,7 +70,27 @@ class AdminController extends Controller
     }
 
     public function settingSocial(){
-        return view('admin.setting.social');
+
+        $setting = Admin::find(1)->first();
+
+        return view('admin.setting.social', compact('setting'));
+    }
+
+    public function settingSocialUpdate(Request $request, $id){
+
+        $social = Admin::findOrFail($id);
+        $social->facebook_url = $request->facebook_url;
+        $social->youtube_url = $request->youtube_url;
+        $social->twitter_url = $request->twitter_url;
+        $social->pinterest_url = $request->pinterest_url;
+        $social->update();
+
+        $notification =  array(
+            'message' => 'Social Settings Update Successfully',
+            'alert-type' => 'info',
+        );
+
+        return redirect()->back()->with($notification);
     }
 
     public function settingContact(){
@@ -80,4 +100,6 @@ class AdminController extends Controller
     public function settingSeo(){
         return view('admin.setting.seo');
     }
+
+
 }

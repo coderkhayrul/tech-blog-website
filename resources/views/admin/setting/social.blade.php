@@ -18,13 +18,15 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="">
+            <form action="{{ route('setting.social.update',$setting->id) }}" method="post">
+                @csrf
+                <input type="hidden" name="id" value="{{$setting->id}}"/>
                 <div class="row mb-4">
                     <div class="col-lg-6 col-sm-6">
                         <!-- Form -->
                         <label for="name">Facebook Url <i class="fas fa-link"></i></label>
                         <input type="text" name="facebook_url" class="form-control  @error('facebook_url') is-invalid @enderror"
-                            value="{{ old('facebook_url') }}" placeholder="https://www.facebook.com">
+                            value="{{ $setting->facebook_url }}" placeholder="https://www.facebook.com">
                         @error('facebook_url')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -36,7 +38,7 @@
                         <!-- Form -->
                         <label for="name">Youtube Url <i class="fas fa-link"></i></label>
                         <input type="text" name="youtube_url" class="form-control  @error('youtube_url') is-invalid @enderror"
-                            value="{{ old('youtube_url') }}" placeholder="https://www.pinterest.com">
+                            value="{{ $setting->youtube_url }}" placeholder="https://www.youtube.com">
                         @error('youtube_url')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -49,7 +51,7 @@
                         <!-- Form -->
                         <label for="name">Twitter Url <i class="fas fa-link"></i></label>
                         <input type="text" name="twitter_url" class="form-control  @error('twitter_url') is-invalid @enderror"
-                            value="{{ old('twitter_url') }}" placeholder="https://www.twitter.com">
+                            value="{{ $setting->twitter_url }}" placeholder="https://www.twitter.com">
                         @error('twitter_url')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -61,8 +63,8 @@
                         <!-- Form -->
                         <label for="name">Pinterest Url <i class="fas fa-link"></i></label>
                         <input type="text" name="pinterest_url" class="form-control  @error('pinterest_url') is-invalid @enderror"
-                            value="{{ old('pinterest_url') }}" placeholder="https://www.pinterest.com">
-                        @error('twitter_url')
+                            value="{{ $setting->pinterest_url }}" placeholder="https://www.pinterest.com">
+                        @error('pinterest_url')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -71,7 +73,7 @@
                     </div>
                     <!-- Form -->
                     <div class="col-lg-12 col-sm-6 mt-2">
-                        <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Save Url</button>
+                        <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Save Setting</button>
                     </div>
                     <!-- End of Form -->
                 </div>

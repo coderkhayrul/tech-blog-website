@@ -184,10 +184,8 @@
     {{-- sweetalert2 cdn --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        <!-- CK EDITOR -->
-	<script src="{{ asset('backend') }}/assets/custrom_editor/ckeditor/ckeditor.js"></script>
-	<script src="{{ asset('backend') }}/assets/custrom_editor/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js"></script>
-	<script src="{{ asset('backend') }}/assets/custrom_editor/editor.js"></script>
+    @yield('custrom_script')
+
 
 </body>
 

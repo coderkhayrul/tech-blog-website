@@ -16,4 +16,8 @@ class AdminController extends Controller
         Auth::logout();
         return redirect()->route('login');
     }
+
+    public function setting(){
+        return view('admin.setting.index');
+    }
 }

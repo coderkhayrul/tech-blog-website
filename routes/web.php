@@ -81,4 +81,10 @@ Route::group(['middleware' => 'auth'],function () {
 
     });
 
+    // ADMIN SETTING ROUTES
+    Route::prefix('setting')->group(function () {
+
+        Route::get('/index', [AdminController::class, 'setting'])->name('setting.index');
+    });
+
 });

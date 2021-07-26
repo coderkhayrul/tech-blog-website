@@ -71,8 +71,8 @@ $route = Route::current()->getName();
             </li>
             <!-- Product End -->
             <!-- Setting Start -->
-            <li class="nav-item ">
-                <a href="../../pages/settings.html" class="nav-link">
+            <li class="nav-item {{ ($prefix == '/setting')? 'active' : '' }}">
+                <a href="{{ route('setting.index') }}" class="nav-link">
                     <span class="sidebar-icon"><span class="fas fa-cog"></span></span>
                     <span>Settings</span>
                 </a>
@@ -89,11 +89,12 @@ $route = Route::current()->getName();
                 </span>
                 <div class="multi-level collapse " role="list" id="submenu-app" aria-expanded="false">
                     <ul class="flex-column nav">
-                        <li class="nav-item "><a class="nav-link"
-                                href="../../pages/tables/bootstrap-tables.html"><span>Bootstrap Tables</span></a></li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="../../pages/tables/bootstrap-tables.html"><span>Bootstrap Tables</span></a></li>
                     </ul>
                 </div>
             </li>
+
             <li role="separator" class="dropdown-divider mt-4 mb-3 border-black"></li>
             <li class="nav-item">
                 <a href="../../index.html" class="nav-link d-flex align-items-center">

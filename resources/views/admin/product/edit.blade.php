@@ -246,4 +246,10 @@
         }
 
     </script>
+    @section('custrom_script')
+    <!-- CK EDITOR -->
+    <script src="{{ asset('backend') }}/assets/custrom_editor/ckeditor/ckeditor.js"></script>
+    <script src="{{ asset('backend') }}/assets/custrom_editor/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js"></script>
+    <script src="{{ asset('backend') }}/assets/custrom_editor/editor.js"></script>
+    @endsection
     @endsection

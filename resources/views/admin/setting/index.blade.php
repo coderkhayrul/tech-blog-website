@@ -7,7 +7,7 @@
         <div class="card-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h2 class="h5">Setting </h2>
+                    <h2 class="h5">WEBSITE SETTING <i class="fas fa-wrench"></i></h2>
                 </div>
                 <div class="col text-right">
                     <a href="{{ url('/admin') }}" class="btn btn-sm btn-primary"><i
@@ -16,14 +16,17 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="">
+            <form action="{{ route('admin.setting.update',$setting->id) }}" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="old_fav_icon" value="{{ $setting->fav_icon}}">
+                <input type="hidden" name="old_title_image" value="{{ $setting->title_image}}">
+                @csrf
                 <div class="row mb-4">
                     <div class="col-lg-6 col-sm-6">
                         <!-- Form -->
-                        <label for="name">Website Titel <i class="fas fa-signature"></i></label>
-                        <input type="text" name="website_title" class="form-control  @error('website_title') is-invalid @enderror"
-                            value="{{ old('website_title') }}" placeholder="Web App Title">
-                        @error('website_title')
+                        <label for="name">Website Titel English <i class="fas fa-signature"></i></label>
+                        <input type="text" name="website_title_en" class="form-control  @error('website_title_en') is-invalid @enderror"
+                            value="{{ $setting->website_title_en }}" placeholder="Enter Your Website Name">
+                        @error('website_title_en')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -32,10 +35,34 @@
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <!-- Form -->
-                        <label for="name">Copyright <i class="fas fa-copyright"></i> </label>
-                        <input type="text" name="copyright_text" class="form-control  @error('copyright_text') is-invalid @enderror"
-                            value="{{ old('copyright_text') }}" placeholder="Copyright Text">
-                        @error('copyright_text')
+                        <label for="name">Website Titel Bangle<i class="fas fa-signature"></i></label>
+                        <input type="text" name="website_title_ban" class="form-control  @error('website_title_ban') is-invalid @enderror"
+                            value="{{ $setting->website_title_ban }}" placeholder="আপনার ওয়েবসাইটের নাম লিখুন">
+                        @error('website_title_ban')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                        <!-- End of Form -->
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <!-- Form -->
+                        <label for="name">Copyright English<i class="fas fa-copyright"></i> </label>
+                        <input type="text" name="copyright_text_en" class="form-control  @error('copyright_text_en') is-invalid @enderror"
+                            value="{{ $setting->copyright_text_en }}" placeholder="Enter Your Copyright Name">
+                        @error('copyright_text_en')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                        <!-- End of Form -->
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <!-- Form -->
+                        <label for="name">Copyright Bangla<i class="fas fa-copyright"></i> </label>
+                        <input type="text" name="copyright_text_ban" class="form-control  @error('copyright_text_ban') is-invalid @enderror"
+                            value="{{ $setting->copyright_text_ban }}" placeholder="আপনার কপিরাইট নাম লিখুন">
+                        @error('copyright_text_ban')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -45,261 +72,44 @@
                     <div class="col-lg-6 col-sm-6 mt-2">
                         <!-- Form -->
                         <div class="mb-3">
-                            <label for="formFile" class="form-label">Thambnail Image <i class="fas fa-image"></i></label>
-                            <input name="thambnail_image" onChange="mainThamUrl(this)"
-                                class="form-control @error('thambnail_image') is-invalid @enderror" type="file"
+                            <label for="formFile" class="form-label">Website Favicon <i class="fas fa-image"></i></label>
+                            <input name="fav_icon" onChange="mainThamUrl(this)"
+                                class="form-control @error('fav_icon') is-invalid @enderror" type="file"
                                 id="formFile">
                         </div>
-                        @error('thambnail_image')
+                        @error('fav_icon')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
-                        <img src="" id="mainThmb" alt="">
+                        <img src="{{ asset($setting->fav_icon) }}" id="mainThmb" alt="">
                         <!-- End of Form -->
                     </div>
                     <div class="col-lg-6 col-sm-6 mt-2">
                         <!-- Form -->
                         <div class="mb-3">
-                            <label for="formFile" class="form-label">Banner Image <i class="fas fa-image"></i></label>
-                            <input name="banner_image" onChange="mainBannerUrl(this)"
-                                class="form-control @error('banner_image') is-invalid @enderror" type="file"
+                            <label for="formFile" class="form-label">Title Logo<i class="fas fa-image"></i></label>
+                            <input name="title_image" onChange="mainBannerUrl(this)"
+                                class="form-control @error('title_image') is-invalid @enderror" type="file"
                                 id="formFile">
                         </div>
-                        @error('banner_image')
+                        @error('title_image')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
-                        <img src="" id="mainBanner" alt="">
+                        <img src="{{ asset($setting->title_image) }}" id="mainBanner" alt="">
                         <!-- End of Form -->
                     </div>
                     <!-- Form -->
                     <div class="col-lg-12 col-sm-6 mt-2">
-                        <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Save Setting</button>
+                        <button class="btn btn-success" type="submit"><i class="fas fa-sync"></i> Update Setting</button>
                     </div>
                     <!-- End of Form -->
                 </div>
             </form>
         </div>
     </div>
-<br><br>
-    <div class="card border-light shadow-sm">
-        <div class="card-header">
-            <div class="row align-items-center">
-                <div class="col">
-                    <h2 class="h5">Social Link </h2>
-                </div>
-                <div class="col text-right">
-                </div>
-            </div>
-        </div>
-        <div class="card-body">
-            <form action="">
-                <div class="row mb-4">
-                    <div class="col-lg-6 col-sm-6">
-                        <!-- Form -->
-                        <label for="name">Facebook Url <i class="fas fa-link"></i></label>
-                        <input type="text" name="facebook_url" class="form-control  @error('facebook_url') is-invalid @enderror"
-                            value="{{ old('facebook_url') }}" placeholder="https://www.facebook.com">
-                        @error('facebook_url')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                        <!-- End of Form -->
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                        <!-- Form -->
-                        <label for="name">Youtube Url <i class="fas fa-link"></i></label>
-                        <input type="text" name="youtube_url" class="form-control  @error('youtube_url') is-invalid @enderror"
-                            value="{{ old('youtube_url') }}" placeholder="https://www.pinterest.com">
-                        @error('youtube_url')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                        <!-- End of Form -->
-                    </div>
-
-                    <div class="col-lg-6 col-sm-6">
-                        <!-- Form -->
-                        <label for="name">Twitter Url <i class="fas fa-link"></i></label>
-                        <input type="text" name="twitter_url" class="form-control  @error('twitter_url') is-invalid @enderror"
-                            value="{{ old('twitter_url') }}" placeholder="https://www.twitter.com">
-                        @error('twitter_url')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                        <!-- End of Form -->
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                        <!-- Form -->
-                        <label for="name">Pinterest Url <i class="fas fa-link"></i></label>
-                        <input type="text" name="pinterest_url" class="form-control  @error('pinterest_url') is-invalid @enderror"
-                            value="{{ old('pinterest_url') }}" placeholder="https://www.pinterest.com">
-                        @error('twitter_url')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                        <!-- End of Form -->
-                    </div>
-                    <!-- Form -->
-                    <div class="col-lg-12 col-sm-6 mt-2">
-                        <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Save Url</button>
-                    </div>
-                    <!-- End of Form -->
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div class="card border-light shadow-sm">
-        <div class="card-header">
-            <div class="row align-items-center">
-                <div class="col">
-                    <h2 class="h5">Contact Information </h2>
-                </div>
-                <div class="col text-right">
-                </div>
-            </div>
-        </div>
-        <div class="card-body">
-            <form action="">
-                <div class="row mb-4">
-                    <div class="col-lg-6 col-sm-6">
-                        <!-- Form -->
-                        <label for="name">Address <i class="fas fa-home"></i></label>
-                        <input type="text" name="address" class="form-control  @error('address') is-invalid @enderror"
-                            value="{{ old('address') }}" placeholder="House No 08, Ro ad No 08 Araihazar, Dhaka, Bangladesh">
-                        @error('address')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                        <!-- End of Form -->
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                        <!-- Form -->
-                        <label for="name">Email <i class="fas fa-at"></i></label>
-                        <input type="text" name="email" class="form-control  @error('email') is-invalid @enderror"
-                            value="{{ old('email') }}" placeholder="Username@gmail.com">
-                        @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                        <!-- End of Form -->
-                    </div>
-
-                    <div class="col-lg-6 col-sm-6">
-                        <!-- Form -->
-                        <label for="name">Phone <i class="fas fa-mobile-alt"></i></label>
-                        <input type="text" name="phone" class="form-control  @error('phone') is-invalid @enderror"
-                            value="{{ old('phone') }}" placeholder="+8801835061968">
-                        @error('phone')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                        <!-- End of Form -->
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                        <!-- Form -->
-                        <label for="name">Pinterest Url <i class="fas fa-link"></i></label>
-                        <input type="text" name="pinterest_url" class="form-control  @error('pinterest_url') is-invalid @enderror"
-                            value="{{ old('pinterest_url') }}" placeholder="https://www.pinterest.com">
-                        @error('twitter_url')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                        <!-- End of Form -->
-                    </div>
-                    <!-- Form -->
-                    <div class="col-lg-12 col-sm-6 mt-2">
-                        <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Save Contact</button>
-                    </div>
-                    <!-- End of Form -->
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div class="card border-light shadow-sm">
-        <div class="card-header">
-            <div class="row align-items-center">
-                <div class="col">
-                    <h2 class="h5">SEO SETTING <i class="fas fa-leaf"></i> </h2>
-                </div>
-                <div class="col text-right">
-                </div>
-            </div>
-        </div>
-        <div class="card-body">
-            <form action="">
-                <div class="row mb-4">
-                    <div class="col-lg-6 col-sm-6">
-                        <!-- Form -->
-                        <label for="name">Meta Title</label>
-                        <input type="text" name="meta_title" class="form-control  @error('meta_title') is-invalid @enderror"
-                            value="{{ old('meta_title') }}" placeholder="House No 08, Ro ad No 08 Araihazar, Dhaka, Bangladesh">
-                        @error('meta_title')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                        <!-- End of Form -->
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                        <!-- Form -->
-                        <label for="name">Meta Description</label>
-                        <input type="text" name="meta_description" class="form-control  @error('meta_description') is-invalid @enderror"
-                            value="{{ old('meta_description') }}" placeholder="Meta Description">
-                        @error('meta_description')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                        <!-- End of Form -->
-                    </div>
-
-                    <div class="col-lg-6 col-sm-6">
-                        <!-- Form -->
-                        <label for="name">Meta Keywords</label>
-                        <input type="text" name="meta_keyword" class="form-control  @error('meta_keyword') is-invalid @enderror"
-                            value="{{ old('meta_keyword') }}" placeholder="Meta Keywords">
-                        @error('meta_keyword')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                        <!-- End of Form -->
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                        <!-- Form -->
-                        <label for="name">Meta Theme Color</label>
-                        <input type="text" name="them_color" class="form-control  @error('pinterest_url') is-invalid @enderror"
-                            value="{{ old('pinterest_url') }}" placeholder="Color Code">
-                        @error('twitter_url')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                        <!-- End of Form -->
-                    </div>
-                    <!-- Form -->
-                    <div class="col-lg-12 col-sm-6 mt-2">
-                        <button class="btn btn-success" type="submit"><i class="fas fa-save"></i> Save Seo Setting</button>
-                    </div>
-                    <!-- End of Form -->
-                </div>
-            </form>
-        </div>
-    </div>
-
 </div>
 
 <!-- Live Thumbnail Image Show -->

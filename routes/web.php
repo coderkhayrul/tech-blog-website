@@ -85,6 +85,10 @@ Route::group(['middleware' => 'auth'],function () {
     Route::prefix('setting')->group(function () {
 
         Route::get('/index', [AdminController::class, 'setting'])->name('setting.index');
+        Route::post('/update/{id}', [AdminController::class, 'settingUpdate'])->name('admin.setting.update');
+        Route::get('/social', [AdminController::class, 'settingSocial'])->name('admin.setting.social');
+        Route::get('/seo', [AdminController::class, 'settingSeo'])->name('admin.setting.seo');
+        Route::get('/contact', [AdminController::class, 'settingContact'])->name('admin.setting.contact');
     });
 
 });

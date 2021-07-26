@@ -27,8 +27,8 @@ $route = Route::current()->getName();
                         class="card-img-top rounded-circle border-white" alt="Bonnie Green">
                 </div>
                 <div class="d-block">
-                    <h2 class="h6">Hi, Jane</h2>
-                    <a href="../../pages/examples/sign-in.html" class="btn btn-secondary text-dark btn-xs"><span
+                    <h2 class="h6">{{ Auth::user()->name }}</h2>
+                    <a href="{{ route('admin.logout') }}" class="btn btn-secondary text-dark btn-xs"><span
                             class="mr-2"><span class="fas fa-sign-out-alt"></span></span>Sign Out</a>
                 </div>
             </div>
@@ -70,27 +70,41 @@ $route = Route::current()->getName();
                 </a>
             </li>
             <!-- Product End -->
-            <!-- Setting Start -->
             <li class="nav-item {{ ($prefix == '/setting')? 'active' : '' }}">
-                <a href="{{ route('setting.index') }}" class="nav-link">
-                    <span class="sidebar-icon"><span class="fas fa-cog"></span></span>
-                    <span>Settings</span>
-                </a>
-            </li>
-            <!-- Setting End -->
-            <li class="nav-item">
                 <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
                     data-toggle="collapse" data-target="#submenu-app">
                     <span>
-                        <span class="sidebar-icon"><span class="fas fa-table"></span></span>
-                        Tables
+                        <span class="sidebar-icon"><span class="fas fa-cog"></span></span>
+                        Settings
                     </span>
                     <span class="link-arrow"><span class="fas fa-chevron-right"></span></span>
                 </span>
                 <div class="multi-level collapse " role="list" id="submenu-app" aria-expanded="false">
                     <ul class="flex-column nav">
-                        <li class="nav-item ">
-                            <a class="nav-link" href="../../pages/tables/bootstrap-tables.html"><span>Bootstrap Tables</span></a></li>
+                        <li class="nav-item {{ ($route == 'setting.index')? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('setting.index') }}">
+                                <span class="sidebar-icon"><span class="fas fa-cog"></span></span>
+                                <span>Setting</span>
+                            </a>
+                        </li>
+                        <li class="nav-item {{ ($route == 'admin.setting.social')? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.setting.social') }}">
+                                <span class="sidebar-icon"><span class="fas fa-share-alt-square"></span></span>
+                                <span>Social Link</span>
+                            </a>
+                        </li>
+                        <li class="nav-item {{ ($route == 'admin.setting.contact')? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.setting.contact') }}">
+                                <span class="sidebar-icon"><span class="fas fa-info-circle"></span></span>
+                                <span>Contact Info</span>
+                            </a>
+                        </li>
+                        <li class="nav-item {{ ($route == 'admin.setting.seo')? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('admin.setting.seo') }}">
+                                <span class="sidebar-icon"><span class="fas fa-leaf"></span></span>
+                                <span>Seo Tools</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>

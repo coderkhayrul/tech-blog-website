@@ -6,33 +6,37 @@
 
                     <!-- Main Menu Start -->
                     <div class="main-menu float-left d-none d-md-block">
+                        @php
+                            $categories = App\Models\Category::OrderBy('id', 'ASC')->get();
+                        @endphp
                         <nav>
                             <ul>
 
-
-                                <li><a href="category-lifestyle.html">Home</a></li>
-                                <li><a href="category-lifestyle.html">News</a></li>
-                                <li><a href="category-sports.html">Sports</a></li>
-                                <li><a href="category-fashion.html">Fashion</a></li>
-                                <li><a href="category-politic.html">politic</a></li>
-                                <li class="has-dropdown"><a href="#">pages</a>
+                                <li><a href="category-lifestyle.html">@if (session()->get('language') == 'bangla')হোম @else Home @endif</a></li>
+                                <li class="has-dropdown"><a href="#">@if (session()->get('language') == 'bangla')ক্যাটাগরি @else Category @endif</a>
 
                                     <!-- Submenu Start -->
                                     <ul class="sub-menu">
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="blog-details.html">blog details</a></li>
-                                        <li><a href="contact-us.html">contact</a></li>
-                                        <li><a href="post-details.html">post details</a></li>
+                                        @foreach ($categories as $category)
+                                        <li><a href="blog.html">@if (session()->get('language') == 'bangla'){{ $category->name_ban }} @else {{ $category->name_en }} @endif</a></li>
+                                        @endforeach
+
                                     </ul><!-- Submenu End -->
 
                                 </li>
+                                <li><a href="category-lifestyle.html">@if (session()->get('language') == 'bangla')টেক নিউস @else Tech News @endif</a></li>
 
                             </ul>
                         </nav>
                     </div><!-- Main Menu Start -->
-
-                    <div class="mobile-logo d-none d-block d-md-none"><a href="index.html"><img
-                                src="{{ asset('frontend') }}/img/logo-white.png" alt="Logo"></a></div>
+                    @php
+                        $admin_settings = App\Models\Admin::find(1);
+                    @endphp
+                    <div class="mobile-logo d-none d-block d-md-none">
+                        <a href="index.html">
+                            <img src="{{ asset($admin_settings->title_image) }}" alt="Logo">
+                        </a>
+                    </div>
 
                     <!-- Header Search -->
                     <div class="header-search float-right">
@@ -54,35 +58,19 @@
                         <nav>
                             <ul>
 
-                                <li><a href="category-lifestyle.html">Home</a></li>
-                                <li><a href="category-lifestyle.html">News</a></li>
-                                <li><a href="category-sports.html">Sports</a></li>
-                                <li><a href="category-lifestyle.html">Lifestyle</a>
+                                <li><a href="category-lifestyle.html">@if (session()->get('language') == 'bangla')হোম @else Home @endif</a></li>
+                                <li><a href="#">@if (session()->get('language') == 'bangla')ক্যাটাগরি @else Category @endif</a>
 
                                     <!-- Submenu Start -->
                                     <ul class="sub-menu">
-                                        <li><a href="category-fashion.html">Beauty</a></li>
-                                        <li><a href="category-lifestyle.html">travel</a></li>
-                                        <li><a href="category-sports.html">Interior Design</a></li>
-                                        <li><a href="category-lifestyle.html">Photography</a></li>
-                                        <li><a href="category-fashion.html">fashion</a></li>
-                                        <li><a href="category-sports.html">music</a></li>
+                                        @foreach ($categories as $category)
+                                        <li><a href="blog.html">@if (session()->get('language') == 'bangla'){{ $category->name_ban }} @else {{ $category->name_en }} @endif</a></li>
+                                        @endforeach
                                     </ul><!-- Submenu End -->
 
                                 </li>
-                                <li><a href="category-fashion.html">Fashion</a></li>
-                                <li><a href="category-politic.html">politic</a></li>
-                                <li><a href="#">pages</a>
+                                <li><a href="category-lifestyle.html">@if (session()->get('language') == 'bangla')টেক নিউস @else Tech News @endif</a></li>
 
-                                    <!-- Submenu Start -->
-                                    <ul class="sub-menu">
-                                        <li><a href="blog.html">blog</a></li>
-                                        <li><a href="blog-details.html">blog details</a></li>
-                                        <li><a href="contact-us.html">contact</a></li>
-                                        <li><a href="post-details.html">post details</a></li>
-                                    </ul><!-- Submenu End -->
-
-                                </li>
 
                             </ul>
                         </nav>

@@ -22,7 +22,7 @@ Home - Tech Tutorial
                     <div class="head feature-head">
 
                         <!-- Title -->
-                        <h4 class="title">Featured News</h4>
+                        <h4 class="title">@if (session()->get('language') == 'bangla')ফিচার্ড পোস্ট @else Featured post @endif</h4>
 
 
                     </div><!-- Post Block Head End -->
@@ -206,7 +206,7 @@ Home - Tech Tutorial
                             <div class="head feature-head">
 
                                 <!-- Title -->
-                                <h4 class="title">JOIN US ON</h4>
+                                <h4 class="title">@if (session()->get('language') == 'bangla')আমাদের সাথে যোগ দান @else JOIN US ON @endif </h4>
 
                             </div><!-- Sidebar Block Head End -->
 
@@ -260,7 +260,7 @@ Home - Tech Tutorial
                             <div class="head life-style-head">
 
                                 <!-- Title -->
-                                <h4 class="title">Make It Mordern</h4>
+                                <h4 class="title">@if (session()->get('language') == 'bangla')পিসি & মোবাইল @else PC & MOBILE @endif</h4>
 
                             </div><!-- Sidebar Block Head End -->
 
@@ -343,111 +343,45 @@ Home - Tech Tutorial
 
                                     <!-- Tab List -->
                                     <div class="sidebar-tab-list education-sidebar-tab-list nav">
-                                        <a class="active" data-toggle="tab" href="#latest-news">Latest News</a>
-                                        <a data-toggle="tab" href="#popular-news">Popular News</a>
+                                        <a class="active" data-toggle="tab" href="#latest-news">@if (session()->get('language') == 'bangla') সর্বশেষ পোস্ট @else LATEST POST @endif</a>
+                                        <a data-toggle="tab" href="#popular-news">@if (session()->get('language') == 'bangla') জনপ্রিয় পোস্ট @else POPULAR POST @endif</a>
                                     </div>
 
                                 </div><!-- Sidebar Block Head End -->
 
                                 <!-- Sidebar Block Body Start -->
                                 <div class="body">
-
+                                    @php
+                                        $posts = App\Models\Product::latest()->orderBy('id', 'DESC')->limit(5)->get();
+                                    @endphp
                                     <div class="tab-content">
                                         <div class="tab-pane fade show active" id="latest-news">
-
+                                            @foreach ($posts as $post)
                                             <!-- Small Post Start -->
                                             <div class="post post-small post-list education-post post-separator-border">
                                                 <div class="post-wrap">
 
                                                     <!-- Image -->
-                                                    <a class="image" href="post-details.html"><img src="{{ asset('frontend') }}/img/post/post-33.jpg" alt="post"></a>
+                                                    <a class="image" href="post-details.html"><img src="{{ asset($post->thambnail_image) }}" alt="post"></a>
 
                                                     <!-- Content -->
                                                     <div class="content">
 
                                                         <!-- Title -->
-                                                        <h5 class="title"><a href="post-details.html">Hynpodia helps female travelers find health..</a></h5>
+                                                        <h5 class="title"><a href="post-details.html">@if (session()->get('language') == 'bangla') {{ Str::limit($post->name_ban, 50, $end='...') }} @else {{ Str::limit($post->name_en, 50, $end='...') }} @endif</a></h5>
 
                                                         <!-- Meta -->
                                                         <div class="meta fix">
-                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i>10 March 2017</span>
+                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i>{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</span>
                                                         </div>
 
                                                     </div>
 
                                                 </div>
                                             </div><!-- Small Post End -->
-
-                                            <!-- Small Post Start -->
-                                            <div class="post post-small post-list education-post post-separator-border">
-                                                <div class="post-wrap">
-
-                                                    <!-- Image -->
-                                                    <a class="image" href="post-details.html"><img src="{{ asset('frontend') }}/img/post/post-34.jpg" alt="post"></a>
-
-                                                    <!-- Content -->
-                                                    <div class="content">
-
-                                                        <!-- Title -->
-                                                        <h5 class="title"><a href="post-details.html">How do you solve the IOS page problem.</a></h5>
-
-                                                        <!-- Meta -->
-                                                        <div class="meta fix">
-                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i>10 March 2017</span>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div><!-- Small Post End -->
-
-                                            <!-- Small Post Start -->
-                                            <div class="post post-small post-list education-post post-separator-border">
-                                                <div class="post-wrap">
-
-                                                    <!-- Image -->
-                                                    <a class="image" href="post-details.html"><img src="{{ asset('frontend') }}/img/post/post-35.jpg" alt="post"></a>
-
-                                                    <!-- Content -->
-                                                    <div class="content">
-
-                                                        <!-- Title -->
-                                                        <h5 class="title"><a href="post-details.html">Home is not a place . . . . . . it’s a feeling.</a></h5>
-
-                                                        <!-- Meta -->
-                                                        <div class="meta fix">
-                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i>10 March 2017</span>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div><!-- Small Post End -->
-
-                                            <!-- Small Post Start -->
-                                            <div class="post post-small post-list education-post post-separator-border">
-                                                <div class="post-wrap">
-
-                                                    <!-- Image -->
-                                                    <a class="image" href="post-details.html"><img src="{{ asset('frontend') }}/img/post/post-36.jpg" alt="post"></a>
-
-                                                    <!-- Content -->
-                                                    <div class="content">
-
-                                                        <!-- Title -->
-                                                        <h5 class="title"><a href="post-details.html">How do you solve the local political page problem.</a></h5>
-
-                                                        <!-- Meta -->
-                                                        <div class="meta fix">
-                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i>10 March 2017</span>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div><!-- Small Post End -->
-
+                                            @endforeach
                                         </div>
+
                                         <div class="tab-pane fade" id="popular-news">
 
                                             <!-- Small Post Start -->

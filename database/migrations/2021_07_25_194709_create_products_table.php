@@ -29,6 +29,7 @@ class CreateProductsTable extends Migration
             $table->text('short_description_ban');
             $table->longText('long_description_en');
             $table->longText('long_description_ban');
+            $table->string('view_count');
             $table->integer('status');
 
             $table->timestamps();

@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Fronted\LanguageController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Models\SubCategory;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +27,10 @@ use Illuminate\Support\Facades\Route;
 // |========================================================================================|
 
 Route::get('/',[FrontendController::class, 'index'])->name('home.page');
+
+// Multi Language Route List
+Route::get('/language/english/',[LanguageController::class, 'English'])->name('english.language');
+Route::get('/language/bangla/',[LanguageController::class, 'Bangla'])->name('bangla.language');
 
 
 // |========================================================================================|

@@ -7,20 +7,33 @@
 
                 <!-- Header Links -->
                 <ul class="header-links">
-                    <li class="disabled block d-none d-md-block"><a href="#"><i class="fa fa-clock-o"></i> Sunday, March 25, 2017</a></li>
+                    <li class="disabled block d-none d-md-block"><a href="#"><i class="fa fa-clock-o"></i>@if (session()->get('language') == 'bangla')২৫ মার্চ, ২০২১ রবিবার @else Sunday, March 25, 2021 @endif</a></li>
                     <li>
-                        <a href="#"><i class="fa fa-info-circle"></i>About Us</a>
+                        <a href="#"><i class="fa fa-info-circle"></i> @if (session()->get('language') == 'bangla')আমাদের সম্পর্কে @else About Us @endif</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-comments"></i>Contact Us</a>
+                        <a href="#"><i class="fa fa-comments"></i>@if (session()->get('language') == 'bangla')যোগাযোগ করুন @else Contact Us @endif</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-exclamation-triangle"></i>DMCA</a>
+                        <a href="#"><i class="fa fa-exclamation-triangle"></i>@if (session()->get('language') == 'bangla')ডিএমসিএ @else DMCA @endif</a>
                     </li>
                     <li>
-                        <a href="blog.html"><i class="fa fa-rss-square"></i>Blog</a>
+                        <a href="#"><i class="fa fa-rss-square"></i>@if (session()->get('language') == 'bangla')ব্লগ @else Blog @endif</a>
                     </li>
+                    @if (session()->get('language') == 'bangla')
+                    <li>
+                        <a href="{{ route('english.language') }}"><i class="fa fa-language"></i></i>English</a>
+                    </li>
+                    @else
+                    <li>
+                        <a href="{{ route('bangla.language') }}"><i class="fa fa-language"></i>বাংলা</a>
+                    </li>
+                    @endif
+
+
+
                 </ul>
+
 
             </div><!-- Header Top Links End -->
 
@@ -30,11 +43,9 @@
                 <!-- Header Social -->
                 <div class="header-social">
                     <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                    <a href="#"><i class="fa fa-pinterest-p"></i></a>
                     <a href="#"><i class="fa fa-youtube-play"></i></a>
-                    <a href="#"><i class="fa fa-vimeo"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-pinterest-p"></i></a>
                 </div>
 
             </div><!-- Header Top Social End -->
@@ -47,10 +58,12 @@
 <div class="header-section section">
     <div class="container">
         <div class="row align-items-center">
-
+            @php
+                $admin_settings = App\Models\Admin::find(1);
+            @endphp
             <!-- Header Logo -->
             <div class="header-logo col-md-4 d-none d-md-block">
-                <a href="index.html" class="logo"><img src="{{ asset('frontend') }}/img/logo.png" alt="Logo"></a>
+                <a href="index.html" class="logo"><img src="{{ asset($admin_settings->title_image) }}" alt="Logo"></a>
             </div>
 
             <!-- Header Banner -->

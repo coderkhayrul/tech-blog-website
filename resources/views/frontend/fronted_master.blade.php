@@ -2,13 +2,21 @@
 <html class="no-js" lang="en">
 
 <head>
+    @php
+        $admin_settings = App\Models\Admin::find(1);
+    @endphp
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>@yield('title')</title>
     <meta name="description" content="">
+    <meta name="title" content="">
+    <meta name="author" content="">
+    <meta name="domain" content="">
+    <meta name="keyword" content="">
+    <meta name="theme color" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend') }}/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset($admin_settings->fav_icon) }}">
 
     <!-- CSS
 	============================================ -->

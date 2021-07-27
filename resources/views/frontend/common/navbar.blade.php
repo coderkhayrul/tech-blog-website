@@ -12,7 +12,7 @@
                         <nav>
                             <ul>
 
-                                <li><a href="category-lifestyle.html">@if (session()->get('language') == 'bangla')হোম @else Home @endif</a></li>
+                                <li><a href="{{ url('/') }}">@if (session()->get('language') == 'bangla')হোম @else Home @endif</a></li>
                                 <li class="has-dropdown"><a href="#">@if (session()->get('language') == 'bangla')ক্যাটাগরি @else Category @endif</a>
 
                                     <!-- Submenu Start -->
@@ -24,7 +24,7 @@
                                     </ul><!-- Submenu End -->
 
                                 </li>
-                                <li><a href="category-lifestyle.html">@if (session()->get('language') == 'bangla')টেক নিউস @else Tech News @endif</a></li>
+                                <li><a href="#">@if (session()->get('language') == 'bangla')টেক নিউস @else Tech News @endif</a></li>
 
                             </ul>
                         </nav>

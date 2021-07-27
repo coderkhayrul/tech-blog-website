@@ -168,8 +168,7 @@ Home - Tech Tutorial
                                         <div class="post-wrap">
 
                                             <!-- Image -->
-                                            <a class="image" href="post-details.html"><img
-                                                    src="{{ asset('frontend') }}/img/post/post-25.jpg" alt="post"></a>
+                                            <a class="image" href="post-details.html"><img src="{{ asset('frontend') }}/img/post/post-25.jpg" alt="post"></a>
 
                                             <!-- Content -->
                                             <div class="content">

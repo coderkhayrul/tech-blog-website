@@ -3,7 +3,7 @@
 
 <head>
     @php
-        $admin_settings = App\Models\Admin::find(1);
+    $admin_settings = App\Models\Admin::find(1);
     @endphp
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -36,49 +36,49 @@
 
 <body>
 
-<!-- Main Wrapper -->
-<div id="main-wrapper">
+    <!-- Main Wrapper -->
+    <div id="main-wrapper">
 
-    <!-- Header Top Start -->
-    @include('frontend.common.topbar')
-    <!-- Header Top End -->
+        <!-- Header Top Start -->
+        @include('frontend.common.topbar')
+        <!-- Header Top End -->
 
-    <!-- Menu Section Start -->
-    @include('frontend.common.navbar')
-    <!-- Menu Section End -->
+        <!-- Menu Section Start -->
+        @include('frontend.common.navbar')
+        <!-- Menu Section End -->
 
-    <!-- Hero Section Start -->
-    @yield('content')
+        <!-- Hero Section Start -->
+        @yield('content')
 
-    <!-- Brand Section Start -->
-    @include('frontend.common.brand')
-    <!-- Brand Section End -->
+        <!-- Brand Section Start -->
+        @include('frontend.common.brand')
+        <!-- Brand Section End -->
 
-    <!-- Footer Section Start -->
-    @include('frontend.common.footer')
-    <!-- Footer Section End -->
+        <!-- Footer Section Start -->
+        @include('frontend.common.footer')
+        <!-- Footer Section End -->
 
-</div>
+    </div>
 
 
-<!-- JS
+    <!-- JS
 ============================================ -->
 
-<!-- jQuery JS -->
-<script src="{{ asset('frontend') }}/js/vendor/jquery-1.12.0.min.js"></script>
-<!-- Popper JS -->
-<script src="{{ asset('frontend') }}/js/popper.min.js"></script>
-<!-- Bootstrap JS -->
-<script src="{{ asset('frontend') }}/js/bootstrap.min.js"></script>
-<!-- Plugins JS -->
-<script src="{{ asset('frontend') }}/js/plugins.js"></script>
-<!-- rypp JS -->
-<script src="{{ asset('frontend') }}/js/rypp.js"></script>
-<script src="{{ asset('frontend') }}/js/ytp-playlist.js"></script>
-<!-- Ajax Mail JS -->
-<script src="{{ asset('frontend') }}/js/ajax-mail.js"></script>
-<!-- Main JS -->
-<script src="{{ asset('frontend') }}/js/main.js"></script>
+    <!-- jQuery JS -->
+    <script src="{{ asset('frontend') }}/js/vendor/jquery-1.12.0.min.js"></script>
+    <!-- Popper JS -->
+    <script src="{{ asset('frontend') }}/js/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="{{ asset('frontend') }}/js/bootstrap.min.js"></script>
+    <!-- Plugins JS -->
+    <script src="{{ asset('frontend') }}/js/plugins.js"></script>
+    <!-- rypp JS -->
+    <script src="{{ asset('frontend') }}/js/rypp.js"></script>
+    <script src="{{ asset('frontend') }}/js/ytp-playlist.js"></script>
+    <!-- Ajax Mail JS -->
+    <script src="{{ asset('frontend') }}/js/ajax-mail.js"></script>
+    <!-- Main JS -->
+    <script src="{{ asset('frontend') }}/js/main.js"></script>
 
 </body>
 

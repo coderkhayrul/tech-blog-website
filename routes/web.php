@@ -26,11 +26,13 @@ use Illuminate\Support\Facades\Route;
 // *--------------------------------- FRONTEND ROUTE LIST ----------------------------------*
 // |========================================================================================|
 
-Route::get('/',[FrontendController::class, 'index'])->name('home.page');
+Route::get('/', [FrontendController::class, 'index'])->name('home.page');
+
+Route::get('post/{slug}', [FrontendController::class, 'postShow'])->name('post.show');
 
 // Multi Language Route List
-Route::get('/language/english/',[LanguageController::class, 'English'])->name('english.language');
-Route::get('/language/bangla/',[LanguageController::class, 'Bangla'])->name('bangla.language');
+Route::get('/language/english/', [LanguageController::class, 'English'])->name('english.language');
+Route::get('/language/bangla/', [LanguageController::class, 'Bangla'])->name('bangla.language');
 
 
 // |========================================================================================|
@@ -43,8 +45,8 @@ Route::get('/language/bangla/',[LanguageController::class, 'Bangla'])->name('ban
 
 
 Auth::routes();
-Route::group(['middleware' => 'auth'],function () {
-    Route::get('/admin/logout',[AdminController::class, 'adminLogout'])->name('admin.logout');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/admin/logout', [AdminController::class, 'adminLogout'])->name('admin.logout');
 
     Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     // ADMIN CATEGORY ROUTES
@@ -83,7 +85,6 @@ Route::group(['middleware' => 'auth'],function () {
         Route::post('/image/update/{id}', [ProductController::class, 'productImageUpdate'])->name('product.image.update');
 
         Route::get('/subcategory/ajax/{category_id}', [ProductController::class, 'GetSubCategory']);
-
     });
 
     // ADMIN SETTING ROUTES
@@ -100,7 +101,5 @@ Route::group(['middleware' => 'auth'],function () {
 
         Route::get('/contact', [AdminController::class, 'settingContact'])->name('admin.setting.contact');
         Route::post('/contact/update/{id}', [AdminController::class, 'settingContactUpdate'])->name('setting.contact.update');
-
     });
-
 });

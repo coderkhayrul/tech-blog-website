@@ -33,7 +33,7 @@
                         $admin_settings = App\Models\Admin::find(1);
                     @endphp
                     <div class="mobile-logo d-none d-block d-md-none">
-                        <a href="index.html">
+                        <a href="{{ url('/') }}">
                             <img src="{{ asset($admin_settings->title_image) }}" alt="Logo">
                         </a>
                     </div>

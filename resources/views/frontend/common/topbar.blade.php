@@ -1,3 +1,8 @@
+
+@php
+$admin_settings = App\Models\Admin::find(1);
+@endphp
+
 <div class="header-top section">
     <div class="container">
         <div class="row">
@@ -30,8 +35,6 @@
                     </li>
                     @endif
 
-
-
                 </ul>
 
 
@@ -42,14 +45,13 @@
 
                 <!-- Header Social -->
                 <div class="header-social">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-youtube-play"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                    <a target="_blank" href="{{ $admin_settings->facebook_url }}"><i class="fa fa-facebook"></i></a>
+                    <a target="_blank" href="{{ $admin_settings->youtube_url }}"><i class="fa fa-youtube-play"></i></a>
+                    <a target="_blank" href="{{ $admin_settings->twitter_url }}"><i class="fa fa-twitter"></i></a>
+                    <a target="_blank" href="{{ $admin_settings->pinterest_url }}"><i class="fa fa-pinterest-p"></i></a>
                 </div>
 
             </div><!-- Header Top Social End -->
-
         </div>
     </div>
 </div>
@@ -58,12 +60,10 @@
 <div class="header-section section">
     <div class="container">
         <div class="row align-items-center">
-            @php
-                $admin_settings = App\Models\Admin::find(1);
-            @endphp
+
             <!-- Header Logo -->
             <div class="header-logo col-md-4 d-none d-md-block">
-                <a href="index.html" class="logo"><img src="{{ asset($admin_settings->title_image) }}" alt="Logo"></a>
+                <a href="{{ url('/') }}" class="logo"><img src="{{ asset($admin_settings->title_image) }}" alt="Logo"></a>
             </div>
 
             <!-- Header Banner -->

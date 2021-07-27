@@ -20,10 +20,8 @@ Home - Tech Tutorial
 
                     <!-- Post Block Head Start -->
                     <div class="head feature-head">
-
                         <!-- Title -->
-                        <h4 class="title">@if (session()->get('language') == 'bangla')ফিচার্ড পোস্ট @else Featured post @endif</h4>
-
+                        <h4 class="title"> @if(session()->get('language') == 'bangla') ফিচার্ড পোস্ট @else Featured post @endif </h4>
 
                     </div><!-- Post Block Head End -->
 
@@ -40,144 +38,37 @@ Home - Tech Tutorial
 
                                     <!-- Post Wrapper Start -->
                                     <div class="col-md-12 col-12 mb-20">
+                                        @foreach ($posts as $post)
                                         <!-- Post  Start -->
                                         <div class="post feature-post post-separator-border">
                                             <div class="post-wrap">
                                                 <div class="row d-flex jusified-content">
                                                     <div class="col-lg-6 col-12">
                                                         <div>
-                                                            <a href="#" >
-                                                                <img class="img-thumbnail" src="{{ asset('frontend') }}/img/post/post-11.jpg" alt="post">
+                                                            <a href="@if(session()->get('language') == 'bangla') {{ route('post.show',$post->slug_en) }} @else {{ route('post.show',$post->slug_en) }} @endif ">
+                                                                <img class="img-thumbnail"
+                                                                    src="{{ asset($post->thambnail_image) }}"
+                                                                    alt="post">
                                                             </a>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-md-12 col-12">
-                                                        <span class="cat-links"><a href="" class="text-danger">IT &amp; Software</a></span>
-                                                        <strong class="font-weight-bold" ><a href="">Tech Recruiting Foundations: 5 Waterfall, Agile, and DevOps for Recruiters</a></strong>
+                                                        <span class="cat-links"><a href="" class="text-danger">@if(session()->get('language') == 'bangla') {{ $post->category->name_ban }} @else {{ $post->category->name_en }} @endif</a></span><br>
+                                                        <strong class="font-weight-bold"><a href="@if(session()->get('language') == 'bangla') {{ route('post.show',$post->slug_en) }} @else {{ route('post.show',$post->slug_en) }} @endif ">@if(session()->get('language') == 'bangla') {{ $post->name_ban }} @else {{ $post->name_en }} @endif</a></strong>
                                                         <div class="meta fix mt-2">
-                                                            <p>Description Tech is one of those rare places where demand. With that in mind, With that in mind how can recruiters and … </p>
+                                                            <p>
+                                                                @if(session()->get('language') == 'bangla')
+                                                                {{ Str::limit($post->short_description_ban, 150, $end='...') }} @else
+                                                                {{ Str::limit($post->short_description_en, 150, $end='...') }}
+                                                                @endif
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Post End -->
-
-                                        <!-- Post  Start -->
-                                        <div class="post feature-post post-separator-border">
-                                            <div class="post-wrap">
-                                                <div class="row d-flex jusified-content">
-                                                    <div class="col-lg-6 col-12">
-                                                        <div>
-                                                            <a href="#">
-                                                                <img class="img-thumbnail" src="{{ asset('frontend') }}/img/post/post-11.jpg" alt="post">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-12 col-12">
-                                                        <span class="cat-links"><a href="" class="text-danger">IT &amp; Software</a></span>
-                                                        <strong class="title" ><a href="">Tech Recruiting Foundations: 5 Waterfall, Agile, and DevOps for Recruiters</a></strong>
-                                                        <div class="meta fix mt-2">
-                                                            <p>Description Tech is one of those rare places where demand. With that in mind, With that in mind how can recruiters and … </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Post End -->
-
-                                        <!-- Post  Start -->
-                                        <div class="post feature-post post-separator-border">
-                                            <div class="post-wrap">
-                                                <div class="row d-flex jusified-content">
-                                                    <div class="col-lg-6 col-12">
-                                                        <div>
-                                                            <a href="#">
-                                                                <img class="img-thumbnail" src="{{ asset('frontend') }}/img/post/post-11.jpg" alt="post">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-12 col-12">
-                                                        <span class="cat-links"><a href="" class="text-danger">IT &amp; Software</a></span>
-                                                        <strong class="title" ><a href="">Tech Recruiting Foundations: 5 Waterfall, Agile, and DevOps for Recruiters</a></strong>
-                                                        <div class="meta fix mt-2">
-                                                            <p>Description Tech is one of those rare places where demand. With that in mind, With that in mind how can recruiters and … </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Post End -->
-
-                                        <!-- Post  Start -->
-                                        <div class="post feature-post post-separator-border">
-                                            <div class="post-wrap">
-                                                <div class="row d-flex jusified-content">
-                                                    <div class="col-lg-6 col-12">
-                                                        <div>
-                                                            <a href="#">
-                                                                <img class="img-thumbnail" src="{{ asset('frontend') }}/img/post/post-11.jpg" alt="post">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-12 col-12">
-                                                        <span class="cat-links"><a href="" class="text-danger">IT &amp; Software</a></span>
-                                                        <strong class="title" ><a href="">Tech Recruiting Foundations: 5 Waterfall, Agile, and DevOps for Recruiters</a></strong>
-                                                        <div class="meta fix mt-2">
-                                                            <p>Description Tech is one of those rare places where demand. With that in mind, With that in mind how can recruiters and … </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Post End -->
-
-                                        <!-- Post  Start -->
-                                        <div class="post feature-post post-separator-border">
-                                            <div class="post-wrap">
-                                                <div class="row d-flex jusified-content">
-                                                    <div class="col-lg-6 col-12">
-                                                        <div>
-                                                            <a href="#">
-                                                                <img class="img-thumbnail" src="{{ asset('frontend') }}/img/post/post-11.jpg" alt="post">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-12 col-12">
-                                                        <span class="cat-links"><a href="" class="text-danger">IT &amp; Software</a></span>
-                                                        <strong class="title" ><a href="">Tech Recruiting Foundations: 5 Waterfall, Agile, and DevOps for Recruiters</a></strong>
-                                                        <div class="meta fix mt-2">
-                                                            <p>Description Tech is one of those rare places where demand. With that in mind, With that in mind how can recruiters and … </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Post End -->
-
-                                        <!-- Post  Start -->
-                                        <div class="post feature-post post-separator-border">
-                                            <div class="post-wrap">
-                                                <div class="row d-inline-flex justify-content">
-                                                    <div class="col-lg-6 col-12">
-                                                        <div>
-                                                            <a href="#">
-                                                                <img class="img-thumbnail" src="{{ asset('frontend') }}/img/post/post-11.jpg" alt="post">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-12 col-12">
-                                                        <span class="cat-links"><a href="" class="text-danger">IT &amp; Software</a></span>
-                                                        <strong class="title" ><a href="">Tech Recruiting Foundations: 5 Waterfall, Agile, and DevOps for Recruiters</a></strong>
-                                                        <div class="meta fix mt-2">
-                                                            <p>Description Tech is one of those rare places where demand. With that in mind, With that in mind how can recruiters and … </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Post End -->
-
+                                        @endforeach
                                     </div><!-- Post Wrapper End -->
 
                                 </div>
@@ -206,7 +97,8 @@ Home - Tech Tutorial
                             <div class="head feature-head">
 
                                 <!-- Title -->
-                                <h4 class="title">@if (session()->get('language') == 'bangla')আমাদের সাথে যোগ দান @else JOIN US ON @endif </h4>
+                                <h4 class="title">@if (session()->get('language') == 'bangla')আমাদের সাথে যোগ দান @else
+                                    JOIN US ON @endif </h4>
 
                             </div><!-- Sidebar Block Head End -->
 
@@ -260,59 +152,64 @@ Home - Tech Tutorial
                             <div class="head life-style-head">
 
                                 <!-- Title -->
-                                <h4 class="title">@if (session()->get('language') == 'bangla')পিসি & মোবাইল @else PC & MOBILE @endif</h4>
+                                <h4 class="title">@if (session()->get('language') == 'bangla')পিসি & মোবাইল @else PC &
+                                    MOBILE @endif</h4>
 
                             </div><!-- Sidebar Block Head End -->
 
                             <!-- Sidebar Block Body Start -->
                             <div class="body">
 
-                                    <!-- Sidebar Post Slider Start -->
-                                    <div class="sidebar-post-carousel post-block-carousel life-style-post-carousel">
+                                <!-- Sidebar Post Slider Start -->
+                                <div class="sidebar-post-carousel post-block-carousel life-style-post-carousel">
 
-                                        <!-- Post Start -->
-                                        <div class="post life-style-post">
-                                            <div class="post-wrap">
+                                    <!-- Post Start -->
+                                    <div class="post life-style-post">
+                                        <div class="post-wrap">
 
-                                                <!-- Image -->
-                                                <a class="image" href="post-details.html"><img src="{{ asset('frontend') }}/img/post/post-25.jpg" alt="post"></a>
+                                            <!-- Image -->
+                                            <a class="image" href="post-details.html"><img
+                                                    src="{{ asset('frontend') }}/img/post/post-25.jpg" alt="post"></a>
 
-                                                <!-- Content -->
-                                                <div class="content">
+                                            <!-- Content -->
+                                            <div class="content">
 
-                                                    <!-- Title -->
-                                                    <h4 class="title"><a href="post-details.html">How group of rebel are talking on Banasree epidemic.</a></h4>
+                                                <!-- Title -->
+                                                <h4 class="title"><a href="post-details.html">How group of rebel are
+                                                        talking on Banasree epidemic.</a></h4>
 
-                                                    <!-- Read More Button -->
-                                                    <a href="#" class="read-more">continue reading</a>
-
-                                                </div>
-
-                                            </div>
-                                        </div><!-- Post End -->
-
-                                        <!-- Post Start -->
-                                        <div class="post life-style-post">
-                                            <div class="post-wrap">
-
-                                                <!-- Image -->
-                                                <a class="image" href="post-details.html"><img src="{{ asset('frontend') }}/img/post/post-25.jpg" alt="post"></a>
-
-                                                <!-- Content -->
-                                                <div class="content">
-
-                                                    <!-- Title -->
-                                                    <h4 class="title"><a href="post-details.html">How group of rebel are talking on Banasree epidemic.</a></h4>
-
-                                                    <!-- Read More Button -->
-                                                    <a href="#" class="read-more">continue reading</a>
-
-                                                </div>
+                                                <!-- Read More Button -->
+                                                <a href="#" class="read-more">continue reading</a>
 
                                             </div>
-                                        </div><!-- Post End -->
 
-                                    </div><!-- Sidebar Post Slider End -->
+                                        </div>
+                                    </div><!-- Post End -->
+
+                                    <!-- Post Start -->
+                                    <div class="post life-style-post">
+                                        <div class="post-wrap">
+
+                                            <!-- Image -->
+                                            <a class="image" href="post-details.html"><img
+                                                    src="{{ asset('frontend') }}/img/post/post-25.jpg" alt="post"></a>
+
+                                            <!-- Content -->
+                                            <div class="content">
+
+                                                <!-- Title -->
+                                                <h4 class="title"><a href="post-details.html">How group of rebel are
+                                                        talking on Banasree epidemic.</a></h4>
+
+                                                <!-- Read More Button -->
+                                                <a href="#" class="read-more">continue reading</a>
+
+                                            </div>
+
+                                        </div>
+                                    </div><!-- Post End -->
+
+                                </div><!-- Sidebar Post Slider End -->
 
                             </div><!-- Sidebar Block Body End -->
 
@@ -324,7 +221,8 @@ Home - Tech Tutorial
                     <div class="single-sidebar col-lg-12 col-md-6 col-12">
 
                         <!-- Sidebar Banner -->
-                        <a href="#" class="sidebar-banner"><img src="{{ asset('frontend') }}/img/banner/sidebar-banner-2.jpg" alt="Sidebar Banner"></a>
+                        <a href="#" class="sidebar-banner"><img
+                                src="{{ asset('frontend') }}/img/banner/sidebar-banner-2.jpg" alt="Sidebar Banner"></a>
 
                     </div>
                     <!-- 370 * 272 Ads End -->
@@ -343,8 +241,10 @@ Home - Tech Tutorial
 
                                     <!-- Tab List -->
                                     <div class="sidebar-tab-list education-sidebar-tab-list nav">
-                                        <a class="active" data-toggle="tab" href="#latest-news">@if (session()->get('language') == 'bangla') সর্বশেষ পোস্ট @else LATEST POST @endif</a>
-                                        <a data-toggle="tab" href="#popular-news">@if (session()->get('language') == 'bangla') জনপ্রিয় পোস্ট @else POPULAR POST @endif</a>
+                                        <a class="active" data-toggle="tab" href="#latest-news">@if(session()->get('language') == 'bangla') সর্বশেষ পোস্ট @else LATEST POST
+                                            @endif</a>
+                                        <a data-toggle="tab" href="#popular-news">@if (session()->get('language') ==
+                                            'bangla') জনপ্রিয় পোস্ট @else POPULAR POST @endif</a>
                                     </div>
 
                                 </div><!-- Sidebar Block Head End -->
@@ -352,7 +252,7 @@ Home - Tech Tutorial
                                 <!-- Sidebar Block Body Start -->
                                 <div class="body">
                                     @php
-                                        $posts = App\Models\Product::latest()->orderBy('id', 'DESC')->limit(5)->get();
+                                    $posts = App\Models\Product::latest()->orderBy('id', 'DESC')->limit(5)->get();
                                     @endphp
                                     <div class="tab-content">
                                         <div class="tab-pane fade show active" id="latest-news">
@@ -362,17 +262,25 @@ Home - Tech Tutorial
                                                 <div class="post-wrap">
 
                                                     <!-- Image -->
-                                                    <a class="image" href="post-details.html"><img src="{{ asset($post->thambnail_image) }}" alt="post"></a>
+                                                    <a class="image" href="@if(session()->get('language') == 'bangla') {{ route('post.show',$post->slug_en) }} @else {{ route('post.show',$post->slug_en) }} @endif "><img
+                                                            src="{{ asset($post->thambnail_image) }}" alt="post"></a>
 
                                                     <!-- Content -->
                                                     <div class="content">
 
                                                         <!-- Title -->
-                                                        <h5 class="title"><a href="post-details.html">@if (session()->get('language') == 'bangla') {{ Str::limit($post->name_ban, 50, $end='...') }} @else {{ Str::limit($post->name_en, 50, $end='...') }} @endif</a></h5>
+                                                        <h5 class="title">
+                                                            <a href="@if(session()->get('language') == 'bangla') {{ route('post.show',$post->slug_en) }} @else {{ route('post.show',$post->slug_en) }} @endif ">
+                                                                @if(session()->get('language') == 'bangla')
+                                                                {{ Str::limit($post->name_ban, 50, $end='...') }} @else
+                                                                {{ Str::limit($post->name_en, 50, $end='...') }}
+                                                                @endif
+                                                            </a></h5>
 
                                                         <!-- Meta -->
                                                         <div class="meta fix">
-                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i>{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</span>
+                                                            <span class="meta-item date"><i
+                                                                    class="fa fa-clock-o"></i>{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</span>
                                                         </div>
 
                                                     </div>
@@ -389,17 +297,21 @@ Home - Tech Tutorial
                                                 <div class="post-wrap">
 
                                                     <!-- Image -->
-                                                    <a class="image" href="post-details.html"><img src="{{ asset('frontend') }}/img/post/post-35.jpg" alt="post"></a>
+                                                    <a class="image" href="post-details.html"><img
+                                                            src="{{ asset('frontend') }}/img/post/post-35.jpg"
+                                                            alt="post"></a>
 
                                                     <!-- Content -->
                                                     <div class="content">
 
                                                         <!-- Title -->
-                                                        <h5 class="title"><a href="post-details.html">Home is not a place . . . . . . it’s a feeling.</a></h5>
+                                                        <h5 class="title"><a href="post-details.html">Home is not a
+                                                                place . . . . . . it’s a feeling.</a></h5>
 
                                                         <!-- Meta -->
                                                         <div class="meta fix">
-                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i>10 March 2017</span>
+                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i>10
+                                                                March 2017</span>
                                                         </div>
 
                                                     </div>
@@ -412,17 +324,21 @@ Home - Tech Tutorial
                                                 <div class="post-wrap">
 
                                                     <!-- Image -->
-                                                    <a class="image" href="post-details.html"><img src="{{ asset('frontend') }}/img/post/post-36.jpg" alt="post"></a>
+                                                    <a class="image" href="post-details.html"><img
+                                                            src="{{ asset('frontend') }}/img/post/post-36.jpg"
+                                                            alt="post"></a>
 
                                                     <!-- Content -->
                                                     <div class="content">
 
                                                         <!-- Title -->
-                                                        <h5 class="title"><a href="post-details.html">How do you solve the local political page problem.</a></h5>
+                                                        <h5 class="title"><a href="post-details.html">How do you solve
+                                                                the local political page problem.</a></h5>
 
                                                         <!-- Meta -->
                                                         <div class="meta fix">
-                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i>10 March 2017</span>
+                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i>10
+                                                                March 2017</span>
                                                         </div>
 
                                                     </div>
@@ -435,17 +351,21 @@ Home - Tech Tutorial
                                                 <div class="post-wrap">
 
                                                     <!-- Image -->
-                                                    <a class="image" href="post-details.html"><img src="{{ asset('frontend') }}/img/post/post-33.jpg" alt="post"></a>
+                                                    <a class="image" href="post-details.html"><img
+                                                            src="{{ asset('frontend') }}/img/post/post-33.jpg"
+                                                            alt="post"></a>
 
                                                     <!-- Content -->
                                                     <div class="content">
 
                                                         <!-- Title -->
-                                                        <h5 class="title"><a href="post-details.html">Hynpodia helps female travelers find health..</a></h5>
+                                                        <h5 class="title"><a href="post-details.html">Hynpodia helps
+                                                                female travelers find health..</a></h5>
 
                                                         <!-- Meta -->
                                                         <div class="meta fix">
-                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i>10 March 2017</span>
+                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i>10
+                                                                March 2017</span>
                                                         </div>
 
                                                     </div>
@@ -458,17 +378,21 @@ Home - Tech Tutorial
                                                 <div class="post-wrap">
 
                                                     <!-- Image -->
-                                                    <a class="image" href="post-details.html"><img src="{{ asset('frontend') }}/img/post/post-34.jpg" alt="post"></a>
+                                                    <a class="image" href="post-details.html"><img
+                                                            src="{{ asset('frontend') }}/img/post/post-34.jpg"
+                                                            alt="post"></a>
 
                                                     <!-- Content -->
                                                     <div class="content">
 
                                                         <!-- Title -->
-                                                        <h5 class="title"><a href="post-details.html">How do you solve the IOS page problem.</a></h5>
+                                                        <h5 class="title"><a href="post-details.html">How do you solve
+                                                                the IOS page problem.</a></h5>
 
                                                         <!-- Meta -->
                                                         <div class="meta fix">
-                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i>10 March 2017</span>
+                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i>10
+                                                                March 2017</span>
                                                         </div>
 
                                                     </div>
@@ -497,7 +421,8 @@ Home - Tech Tutorial
         <!-- Banner Row Start -->
         <div class="row mb-50">
             <div class="col-12">
-                <a href="#" class="post-middle-banner"><img src="{{ asset('frontend') }}/img/banner/post-middle-1.jpg" alt="Banner"></a>
+                <a href="#" class="post-middle-banner"><img src="{{ asset('frontend') }}/img/banner/post-middle-1.jpg"
+                        alt="Banner"></a>
             </div>
         </div>
         <!-- Banner Row End -->

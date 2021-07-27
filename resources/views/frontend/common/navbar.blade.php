@@ -8,24 +8,22 @@
                     <div class="main-menu float-left d-none d-md-block">
                         @php
                             $categories = App\Models\Category::OrderBy('id', 'ASC')->get();
+                            // dd($categories);
                         @endphp
                         <nav>
                             <ul>
 
                                 <li><a href="{{ url('/') }}">@if (session()->get('language') == 'bangla')হোম @else Home @endif</a></li>
                                 <li class="has-dropdown"><a href="#">@if (session()->get('language') == 'bangla')ক্যাটাগরি @else Category @endif</a>
-
                                     <!-- Submenu Start -->
                                     <ul class="sub-menu">
                                         @foreach ($categories as $category)
-                                        <li><a href="blog.html">@if (session()->get('language') == 'bangla'){{ $category->name_ban }} @else {{ $category->name_en }} @endif</a></li>
+                                        <li><a href="{{ url('category/post/'.$category->id.'/'.$category->slug_en) }}">@if (session()->get('language') == 'bangla'){{ $category->name_ban }} @else {{ $category->name_en }} @endif</a></li>
                                         @endforeach
-
                                     </ul><!-- Submenu End -->
-
                                 </li>
-                                <li><a href="#">@if (session()->get('language') == 'bangla')টেক নিউস @else Tech News @endif</a></li>
 
+                                <li><a href="">@if (session()->get('language') == 'bangla')টেক নিউস @else Tech News @endif</a></li>
                             </ul>
                         </nav>
                     </div><!-- Main Menu Start -->

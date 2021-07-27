@@ -30,6 +30,13 @@ Route::get('/', [FrontendController::class, 'index'])->name('home.page');
 
 Route::get('post/{slug}', [FrontendController::class, 'postShow'])->name('post.show');
 
+Route::get('category/post/{id}/{slug}', [FrontendController::class, 'categoryPostAll']);
+
+//  SINGLE POST NEXT AND PREVIOUS BUTTON FUNCTION
+Route::get('post/{id}/{slug}', [FrontendController::class, 'previousProduct']);
+Route::get('post/{id}/{slug}', [FrontendController::class, 'nextProduct']);
+
+
 // Multi Language Route List
 Route::get('/language/english/', [LanguageController::class, 'English'])->name('english.language');
 Route::get('/language/bangla/', [LanguageController::class, 'Bangla'])->name('bangla.language');

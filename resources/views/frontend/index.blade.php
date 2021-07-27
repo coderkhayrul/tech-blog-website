@@ -53,7 +53,7 @@ Home - Tech Tutorial
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-md-12 col-12">
-                                                        <span class="cat-links"><a href="" class="text-danger">@if(session()->get('language') == 'bangla') {{ $post->category->name_ban }} @else {{ $post->category->name_en }} @endif</a></span><br>
+                                                        <span class="cat-links"><a href="#" class="text-danger">@if(session()->get('language') == 'bangla') {{ $post->category->name_ban }} @else {{ $post->category->name_en }} @endif</a></span><br>
                                                         <strong class="font-weight-bold"><a href="@if(session()->get('language') == 'bangla') {{ route('post.show',$post->slug_en) }} @else {{ route('post.show',$post->slug_en) }} @endif ">@if(session()->get('language') == 'bangla') {{ $post->name_ban }} @else {{ $post->name_en }} @endif</a></strong>
                                                         <div class="meta fix mt-2">
                                                             <p>
@@ -152,8 +152,7 @@ Home - Tech Tutorial
                             <div class="head life-style-head">
 
                                 <!-- Title -->
-                                <h4 class="title">@if (session()->get('language') == 'bangla')পিসি & মোবাইল @else PC &
-                                    MOBILE @endif</h4>
+                                <h4 class="title">@if (session()->get('language') == 'bangla')পিসি & মোবাইল @else PC & MOBILE @endif</h4>
 
                             </div><!-- Sidebar Block Head End -->
 
@@ -164,18 +163,18 @@ Home - Tech Tutorial
                                 <div class="sidebar-post-carousel post-block-carousel life-style-post-carousel">
 
                                     <!-- Post Start -->
+                                    @foreach ($skip_products as $product)
                                     <div class="post life-style-post">
                                         <div class="post-wrap">
 
                                             <!-- Image -->
-                                            <a class="image" href="post-details.html"><img src="{{ asset('frontend') }}/img/post/post-25.jpg" alt="post"></a>
+                                            <a class="image" href="post-details.html"><img src="{{ asset($product->thambnail_image) }}" alt="post"></a>
 
                                             <!-- Content -->
                                             <div class="content">
 
                                                 <!-- Title -->
-                                                <h4 class="title"><a href="post-details.html">How group of rebel are
-                                                        talking on Banasree epidemic.</a></h4>
+                                                <h4 class="title"><a href="post-details.html">@if (session()->get('language') == 'bangla') {{ $product->name_ban }} @else {{ $product->name_en }} @endif</a></h4>
 
                                                 <!-- Read More Button -->
                                                 <a href="#" class="read-more">continue reading</a>
@@ -184,30 +183,7 @@ Home - Tech Tutorial
 
                                         </div>
                                     </div><!-- Post End -->
-
-                                    <!-- Post Start -->
-                                    <div class="post life-style-post">
-                                        <div class="post-wrap">
-
-                                            <!-- Image -->
-                                            <a class="image" href="post-details.html"><img
-                                                    src="{{ asset('frontend') }}/img/post/post-25.jpg" alt="post"></a>
-
-                                            <!-- Content -->
-                                            <div class="content">
-
-                                                <!-- Title -->
-                                                <h4 class="title"><a href="post-details.html">How group of rebel are
-                                                        talking on Banasree epidemic.</a></h4>
-
-                                                <!-- Read More Button -->
-                                                <a href="#" class="read-more">continue reading</a>
-
-                                            </div>
-
-                                        </div>
-                                    </div><!-- Post End -->
-
+                                    @endforeach
                                 </div><!-- Sidebar Post Slider End -->
 
                             </div><!-- Sidebar Block Body End -->

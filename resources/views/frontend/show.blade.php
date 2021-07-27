@@ -20,8 +20,8 @@ Home - Tech Tutorial
 
                         <!-- Meta -->
                         <div class="meta fix">
-                            <a href="#" class="meta-item category sports">@if(session()->get('language') == 'bangla') {{ $post->category->name_ban }} @else {{ $post->category->name_en }} @endif</a>
-                            <a href="#" class="meta-item author"><img src="{{ asset('frontend') }}/img/post/post-author-1.jpg" alt="post author">Sathi Bhuiyan</a>
+                            <a href="{{ url('category/post/'.$post->category->id.'/'.$post->category->slug_en) }}" class="meta-item category sports">@if(session()->get('language') == 'bangla') {{ $post->category->name_ban }} @else {{ $post->category->name_en }} @endif</a>
+                            <a href="#" class="meta-item author"><img src="{{ asset('frontend') }}/img/post/post-author-1.jpg" alt="post author">Tech Tutorial</a>
                             <span class="meta-item date"><i class="fa fa-clock-o"></i>{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</span>
                         </div>
 
@@ -56,11 +56,9 @@ Home - Tech Tutorial
 
                                             <!-- Content -->
                                             <div class="content">
-
                                                 <!-- Description -->
-                                                <p class="dropcap">
-                                                    @if(session()->get('language') == 'bangla') {!! $post->long_description_ban !!} @else {!! $post->long_description_en !!} @endif
-                                                </p>
+                                                @if(session()->get('language') == 'bangla'){!! $post->long_description_ban !!} @else {!! $post->long_description_en !!} @endif
+
                                             </div>
 
                                             <div class="tags-social float-left">
@@ -93,28 +91,29 @@ Home - Tech Tutorial
 
                     <!-- Previous & Next Post Start -->
                     <div class="post-nav mb-50">
-                        <a href="#" class="prev-post"><span>previous post</span>he 10 Best Beauty Looks: Week of September 11, 2017.</a>
-                        <a href="#" class="next-post"><span>next post</span>The top 7 collections of New York fashion week.</a>
+                        @if ($previous == NULL)
+                        <a class="previous-post">
+                            <span>previous post</span>
+                            No More Previous Post
+                        </a>
+                        @else
+                        <a href="{{ URL::to( 'post/'. $previous->slug_en ) }}" class="prev-post disabled"><span>previous post</span>
+                            @if(session()->get('language') == 'bangla') {{ $previous->name_ban }} @else {{ $previous->name_en }} @endif
+                        </a>
+                        @endif
+
+
+                        @if ($next == NULL)
+                        <a class="next-post">
+                            <span>next post</span>
+                             No More Next Post
+                        </a>
+                        @else
+                        <a href="{{ URL::to( 'post/'. $next->slug_en ) }}" class="next-post"><span>next post</span>
+                            @if(session()->get('language') == 'bangla') {{ $next->name_ban }} @else {{ $next->name_en }} @endif
+                        </a>
+                        @endif
                     </div><!-- Previous & Next Post End -->
-
-                    <!-- Post Author Start -->
-                    <div class="post-author fix mb-50">
-
-                        <div class="image float-left"><img src="{{ asset('frontend') }}/img/post/post-author-1.jpg" alt="post-author"></div>
-
-                        <div class="content fix">
-                            <h5><a href="#">Alex bin do</a></h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris efficitur is fringillas. Sed cursus mi, ut auctor tellus  Curabitur susvenenatis.</p>
-                            <div class="social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-google-plus"></i></a>
-                                <a href="#"><i class="fa fa-dribbble"></i></a>
-                                <a href="#"><i class="fa fa-pinterest"></i></a>
-                            </div>
-                        </div>
-
-                    </div><!-- Post Author End -->
 
                     <!-- Post Block Wrapper Start -->
                     <div class="post-block-wrapper mb-50">
@@ -131,7 +130,7 @@ Home - Tech Tutorial
                         <div class="body">
 
                             <div class="two-column-post-carousel column-post-carousel post-block-carousel row">
-
+                                @foreach ($allposts as $post)
                                 <div class="col-md-6 col-12">
 
                                     <!-- Overlay Post Start -->
@@ -139,16 +138,16 @@ Home - Tech Tutorial
                                         <div class="post-wrap">
 
                                             <!-- Image -->
-                                            <div class="image"><img src="{{ asset('frontend') }}/img/post/post-48.jpg" alt="post"></div>
+                                            <div class="image"><img src="{{ asset($post->thambnail_image) }}" alt="post"></div>
 
                                             <!-- Category -->
-                                            <a href="#" class="category gadgets">gadgets</a>
+                                            <a href="#" class="category politic">@if(session()->get('language') == 'bangla') {{$post->category->name_ban }} @else {{ $post->category->name_en }}Featured post @endif</a>
 
                                             <!-- Content -->
                                             <div class="content">
 
                                                 <!-- Title -->
-                                                <h4 class="title"><a href="post-details.html">Apple, time to IOS With macos.</a></h4>
+                                                <h4 class="title"><a href="post-details.html">@if(session()->get('language') == 'bangla') {{ Str::limit($post->name_ban, 40, $end='.') }} @else {{ Str::limit($post->name_en, 40, $end='.') }}@endif</a></h4>
 
                                                 <!-- Meta -->
                                                 <div class="meta fix">
@@ -161,66 +160,7 @@ Home - Tech Tutorial
                                     </div><!-- Overlay Post End -->
 
                                 </div>
-
-                                <div class="col-md-6 col-12">
-
-                                    <!-- Overlay Post Start -->
-                                    <div class="post post-overlay hero-post">
-                                        <div class="post-wrap">
-
-                                            <!-- Image -->
-                                            <div class="image"><img src="{{ asset('frontend') }}/img/post/post-49.jpg" alt="post"></div>
-
-                                            <!-- Category -->
-                                            <a href="#" class="category education">music</a>
-
-                                            <!-- Content -->
-                                            <div class="content">
-
-                                                <!-- Title -->
-                                                <h4 class="title"><a href="post-details.html">Upcoming Event 10 Dec at Bonobisree Area.</a></h4>
-
-                                                <!-- Meta -->
-                                                <div class="meta fix">
-                                                    <span class="meta-item date"><i class="fa fa-clock-o"></i>10 March 2017</span>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div><!-- Overlay Post End -->
-
-                                </div>
-
-                                <div class="col-md-6 col-12">
-
-                                    <!-- Overlay Post Start -->
-                                    <div class="post post-overlay hero-post">
-                                        <div class="post-wrap">
-
-                                            <!-- Image -->
-                                            <div class="image"><img src="{{ asset('frontend') }}/img/post/post-135.jpg" alt="post"></div>
-
-                                            <!-- Category -->
-                                            <a href="#" class="category fashion">fashion</a>
-
-                                            <!-- Content -->
-                                            <div class="content">
-
-                                                <!-- Title -->
-                                                <h4 class="title"><a href="post-details.html">Fashion is about some thing that comes from with in you.</a></h4>
-
-                                                <!-- Meta -->
-                                                <div class="meta fix">
-                                                    <span class="meta-item date"><i class="fa fa-clock-o"></i>10 March 2017</span>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div><!-- Overlay Post End -->
-
-                                </div>
+                                @endforeach
 
                             </div>
 
@@ -228,53 +168,7 @@ Home - Tech Tutorial
 
                     </div><!-- Post Block Wrapper End -->
 
-                    <!-- Post Block Wrapper Start -->
-                    <div class="post-block-wrapper">
 
-                        <!-- Post Block Head Start -->
-                        <div class="head">
-
-                            <!-- Title -->
-                            <h4 class="title">Leave a Comment</h4>
-
-                        </div><!-- Post Block Head End -->
-
-                        <!-- Post Block Body Start -->
-                        <div class="body">
-
-                            <div class="post-comment-form">
-                                <form action="#" class="row">
-
-                                    <div class="col-md-6 col-12 mb-20">
-                                        <label for="name">Name <sup>*</sup></label>
-                                        <input type="text" id="name">
-                                    </div>
-
-                                    <div class="col-md-6 col-12 mb-20">
-                                        <label for="email">Email <sup>*</sup></label>
-                                        <input type="text" id="email">
-                                    </div>
-
-                                    <div class="col-12 mb-20">
-                                        <label for="website">Website <sup>*</sup></label>
-                                        <input type="text" id="website">
-                                    </div>
-
-                                    <div class="col-12 mb-20">
-                                        <label for="message">Message <sup>*</sup></label>
-                                        <textarea id="message"></textarea>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <input type="submit" value="Submit Comment">
-                                    </div>
-
-                                </form>
-                            </div>
-
-                        </div><!-- Post Block Body End -->
-
-                    </div><!-- Post Block Wrapper End -->
 
                 </div>
 
@@ -292,7 +186,7 @@ Home - Tech Tutorial
                                 <div class="head feature-head">
 
                                     <!-- Title -->
-                                    <h4 class="title">Follow Us</h4>
+                                    <h4 class="title">@if(session()->get('language') == 'bangla') আমাদের সাথে যোগ দান @else JOIN US ON @endif</h4>
 
                                 </div><!-- Sidebar Block Head End -->
 

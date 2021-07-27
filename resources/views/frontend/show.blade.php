@@ -21,7 +21,10 @@ Home - Tech Tutorial
                         <!-- Meta -->
                         <div class="meta fix">
                             <a href="{{ url('category/post/'.$post->category->id.'/'.$post->category->slug_en) }}" class="meta-item category sports">@if(session()->get('language') == 'bangla') {{ $post->category->name_ban }} @else {{ $post->category->name_en }} @endif</a>
-                            <a href="#" class="meta-item author"><img src="{{ asset('frontend') }}/img/post/post-author-1.jpg" alt="post author">Tech Tutorial</a>
+                            <a href="#" class="meta-item author">
+                                <img src="{{ asset('upload/author/author_main.png') }}" alt="post author">
+                                Khayrul Islam Shanto
+                            </a>
                             <span class="meta-item date"><i class="fa fa-clock-o"></i>{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</span>
                         </div>
 
@@ -65,16 +68,12 @@ Home - Tech Tutorial
 
                                                 <div class="tags float-left">
                                                     <i class="fa fa-tags"></i>
-                                                    <a href="#">@if(session()->get('language') == 'bangla') {!! $post->category->name_ban !!} @else {!! $post->category->name_en !!} @endif,</a>
-                                                    <a href="#">@if(session()->get('language') == 'bangla') {!! $post->subcategory->name_ban !!} @else {!! $post->subcategory->name_en !!} @endif</a>
-
+                                                    <a href="#">@if(session()->get('language') == 'bangla') {!! $post->category->name_ban !!} @else {!! $post->category->name_en !!} @endif
+                                                    </a>
                                                 </div>
-
-                                                <div class="post-social float-right">
-                                                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                                                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                                    <a href="#" class="dribbble"><i class="fa fa-dribbble"></i></a>
-                                                    <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                                                <div class="float-right">
+                                                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                                    <div class="addthis_inline_share_toolbox_3n5p"></div>
                                                 </div>
 
                                             </div>

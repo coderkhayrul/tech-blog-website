@@ -17,10 +17,24 @@
         <div class="card-body">
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-6 col-sm-6">
-                    <form action="{{ route('category.store') }}" method="post">
+                    <form action="{{ route('category.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <!-- Form -->
                         <div class="mb-4">
+                            <label for="formFile" class="form-label">Category Image</label>
+                            <input name="image" onChange="mainThamUrl(this)"
+                                class="form-control @error('image') is-invalid @enderror" type="file"
+                                id="formFile">
+                                @error('image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                        </div>
+                            <img src="" id="mainThmb" alt="">
+                        <!-- End of Form -->
+                        <!-- Form -->
+                        <div class="mb-4 mt-2">
                             <label for="name">Name English</label>
                             <input type="text" name="name_en" class="form-control  @error('name_en') is-invalid @enderror"
                             value="{{ old('name_en') }}" id="name_en" aria-describedby="nameHelp" placeholder="Enter the category name">
@@ -54,4 +68,18 @@
         </div>
     </div>
 </div>
+
+<!-- Live Thumbnail Image Show -->
+<script type="text/javascript">
+    function mainThamUrl(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#mainThmb').attr('src', e.target.result).width(150).height(80);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+</script>
 @endsection

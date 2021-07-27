@@ -3,7 +3,6 @@
 @section('title')
 Home - Tech Tutorial
 @endsection
-
 @section('content')
     <!-- Page Banner Section Start -->
     <div class="page-banner-section section mt-30 mb-30">
@@ -12,11 +11,11 @@ Home - Tech Tutorial
 
                 <!-- Page Banner Start -->
                 <div class="col-lg-8 col-12">
-                    <div class="page-banner" style="background-image: url({{ asset('frontend') }}/img/bg/page-banner-sports.jpg)">
-                        <h2>Category: <span class="category-sports">sports</span></h2>
+                    <div class="page-banner" style="background-image: url(@if($category->image == NULL) {{ asset('frontend') }}/img/bg/page-banner-sports.jpg  @else {{ asset($category->image) }} @endif )">
+                        <h2>@if(session()->get('language') == 'bangla') ক্যাটাগরি @else Category @endif: <span class="category-sports">@if(session()->get('language') == 'bangla') {{ $category->name_ban }} @else {{ $category->name_en }}  @endif</span></h2>
                         <ol class="page-breadcrumb">
-                            <li><a href="#">Home</a></li>
-                            <li class="active">lifestyle</li>
+                            <li><a href="{{ url('/') }}">@if(session()->get('language') == 'bangla') হোম @else Home @endif</a></li>
+                            <li class="active">@if(session()->get('language') == 'bangla') {{ $category->name_ban }} @else {{ $category->name_en }} @endif</li>
                         </ol>
                         <p>Vestibulum vulputate sit amet orci sed egestas. Integer lobortis metus in cursus moll condimentum arcu in diam pharetra, nec vehicula urna vehicula. Nullam iaculis odio orci, ut tristique nibh ultrices vitae. Praesent sit amet mauris iaculis, </p>
                     </div>

@@ -45,14 +45,14 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $image = $request->file('thambnail_image');
-        $name_generated = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-        Image::make($image)->resize(371, 221)->save('upload/products/'.$name_generated);
-        $save_url_thambnail = 'upload/products/'.$name_generated;
+        $name_generated = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(371, 221)->save('upload/products/' . $name_generated);
+        $save_url_thambnail = 'upload/products/' . $name_generated;
 
         $imagebanner = $request->file('banner_image');
-        $name_generated = hexdec(uniqid()).'.'.$imagebanner->getClientOriginalExtension();
-        Image::make($imagebanner)->resize(770, 294)->save('upload/products/'.$name_generated);
-        $save_url_banner = 'upload/products/'.$name_generated;
+        $name_generated = hexdec(uniqid()) . '.' . $imagebanner->getClientOriginalExtension();
+        Image::make($imagebanner)->resize(770, 294)->save('upload/products/' . $name_generated);
+        $save_url_banner = 'upload/products/' . $name_generated;
 
         $product = new Product();
         $product->category_id = $request->category_id;
@@ -77,7 +77,6 @@ class ProductController extends Controller
             'alert-type' => 'success',
         );
         return redirect()->back()->with($notification);
-
     }
 
     /**
@@ -138,7 +137,6 @@ class ProductController extends Controller
             'alert-type' => 'info',
         );
         return redirect()->back()->with($notification);
-
     }
 
     /**
@@ -162,35 +160,37 @@ class ProductController extends Controller
     }
 
 
-    public function GetSubCategory($category_id) {
-        $subcategory = SubCategory::where('category_id', $category_id )->orderBy('name_en', 'ASC')->get();
+    public function GetSubCategory($category_id)
+    {
+        $subcategory = SubCategory::where('category_id', $category_id)->orderBy('name_en', 'ASC')->get();
         return json_encode($subcategory);
     }
 
 
 
-    public function productImageUpdate(Request $request, $id){
+    public function productImageUpdate(Request $request, $id)
+    {
 
         $old_thambnail_image = $request->old_thambnail_image;
         $old_banner_image = $request->old_banner_image;
 
         // Thambnail Image
         $thambnail_image = $request->file('thambnail_image');
-        $make_name = hexdec(uniqid()).'.'.$thambnail_image->getClientOriginalExtension();
+        $make_name = hexdec(uniqid()) . '.' . $thambnail_image->getClientOriginalExtension();
         if ($old_thambnail_image) {
             unlink($old_thambnail_image);
         }
-        Image::make($thambnail_image)->resize(371, 221)->save('upload/products/'.$make_name);
-        $upload_thambnail_image = 'upload/products/'.$make_name;
+        Image::make($thambnail_image)->resize(371, 221)->save('upload/products/' . $make_name);
+        $upload_thambnail_image = 'upload/products/' . $make_name;
 
         // Banner Image
         $banner_image = $request->file('banner_image');
-        $make_name_banner = hexdec(uniqid()).'.'.$banner_image->getClientOriginalExtension();
+        $make_name_banner = hexdec(uniqid()) . '.' . $banner_image->getClientOriginalExtension();
         if ($old_banner_image) {
             unlink($old_banner_image);
         }
-        Image::make($banner_image)->resize(770, 394)->save('upload/products/'.$make_name_banner);
-        $upload_banner_image = 'upload/products/'.$make_name_banner;
+        Image::make($banner_image)->resize(770, 394)->save('upload/products/' . $make_name_banner);
+        $upload_banner_image = 'upload/products/' . $make_name_banner;
 
         Product::findOrFail($id)->update([
             'thambnail_image' => $upload_thambnail_image,
@@ -204,6 +204,5 @@ class ProductController extends Controller
         );
 
         return redirect()->back()->with($notification);
-
     }
 }

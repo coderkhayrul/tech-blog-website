@@ -21,6 +21,7 @@
                     <tr>
                         <th>Name English</th>
                         <th>Name Bangla</th>
+                        <th>Image</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -30,6 +31,7 @@
                     <tr>
                         <td>{{ $category->name_en }}</td>
                         <td>{{ $category->name_ban }}</td>
+                        <td><img width="150px" height="75px" src="{{ asset($category->image) }}" alt=""></td>
                         <td>
                             @if ($category->status == 1)
                             <a href="">

@@ -33,7 +33,9 @@
                     <tr class="text-center">
                         <td width="10%"><img style=" width:60px; height: 50px;" src="{{ asset($product->thambnail_image) }}" alt=""></td>
                         <td width="10%">{{ $product->category->name_en }}</td>
-                        <td width="10%">{{ $product->subcategory->name_en }}</td>
+                        <td width="10%">
+                            {{-- @if($porduct->subcategory->name_en != NULL) {{ $product->subcategory->name_en }} @endif --}}
+                        </td>
                         <td width="25%">{{ $product->name_en }}</td>
                         <td width="25%">{{ $product->name_ban }}</td>
                         <td width="5%">

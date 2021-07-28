@@ -16,6 +16,7 @@ class FrontendController extends Controller
     {
 
         $posts = Product::where('status', 1)->latest()->orderBy('id', 'DESC')->limit(10)->get();
+        $popularpost = Product::where('status', 1)->OrderBy('view_count', 'DESC')->limit(5)->get();
 
         // Category Wise Product Show (PC & MOBILE)
         $skip_category = Category::skip(6)->first();
@@ -24,7 +25,7 @@ class FrontendController extends Controller
             ->orderBy('id', 'DESC')->limit(4)->get();
 
 
-        return view('frontend.index', compact('posts', 'skip_products'));
+        return view('frontend.index', compact('posts', 'skip_products', 'popularpost'));
     }
 
     // SINGLE POST SHOW
@@ -33,7 +34,7 @@ class FrontendController extends Controller
 
         $post = Product::where('status', 1)->where('slug_en', $slug)->first();
 
-        $post->increment('reads', 1);
+        $post->increment('view_count', 1);
         $post->update();
 
 

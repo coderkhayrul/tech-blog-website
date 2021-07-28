@@ -266,114 +266,32 @@ Home - Tech Tutorial
                                         </div>
 
                                         <div class="tab-pane fade" id="popular-news">
-
+                                            @foreach ($popularpost as $post)
                                             <!-- Small Post Start -->
                                             <div class="post post-small post-list education-post post-separator-border">
                                                 <div class="post-wrap">
 
                                                     <!-- Image -->
                                                     <a class="image" href="post-details.html"><img
-                                                            src="{{ asset('frontend') }}/img/post/post-35.jpg"
+                                                            src="{{ asset($post->thambnail_image) }}"
                                                             alt="post"></a>
 
                                                     <!-- Content -->
                                                     <div class="content">
 
                                                         <!-- Title -->
-                                                        <h5 class="title"><a href="post-details.html">Home is not a
-                                                                place . . . . . . it’s a feeling.</a></h5>
+                                                        <h5 class="title"><a href="post-details.html">@if(session()->get('language') == 'bangla') {{ $post->name_ban }} @else {{ $post->name_en }} @endif</a></h5>
 
                                                         <!-- Meta -->
                                                         <div class="meta fix">
-                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i>10
-                                                                March 2017</span>
+                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i> {{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</span>
                                                         </div>
 
                                                     </div>
 
                                                 </div>
                                             </div><!-- Small Post End -->
-
-                                            <!-- Small Post Start -->
-                                            <div class="post post-small post-list education-post post-separator-border">
-                                                <div class="post-wrap">
-
-                                                    <!-- Image -->
-                                                    <a class="image" href="post-details.html"><img
-                                                            src="{{ asset('frontend') }}/img/post/post-36.jpg"
-                                                            alt="post"></a>
-
-                                                    <!-- Content -->
-                                                    <div class="content">
-
-                                                        <!-- Title -->
-                                                        <h5 class="title"><a href="post-details.html">How do you solve
-                                                                the local political page problem.</a></h5>
-
-                                                        <!-- Meta -->
-                                                        <div class="meta fix">
-                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i>10
-                                                                March 2017</span>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div><!-- Small Post End -->
-
-                                            <!-- Small Post Start -->
-                                            <div class="post post-small post-list education-post post-separator-border">
-                                                <div class="post-wrap">
-
-                                                    <!-- Image -->
-                                                    <a class="image" href="post-details.html"><img
-                                                            src="{{ asset('frontend') }}/img/post/post-33.jpg"
-                                                            alt="post"></a>
-
-                                                    <!-- Content -->
-                                                    <div class="content">
-
-                                                        <!-- Title -->
-                                                        <h5 class="title"><a href="post-details.html">Hynpodia helps
-                                                                female travelers find health..</a></h5>
-
-                                                        <!-- Meta -->
-                                                        <div class="meta fix">
-                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i>10
-                                                                March 2017</span>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div><!-- Small Post End -->
-
-                                            <!-- Small Post Start -->
-                                            <div class="post post-small post-list education-post post-separator-border">
-                                                <div class="post-wrap">
-
-                                                    <!-- Image -->
-                                                    <a class="image" href="post-details.html"><img
-                                                            src="{{ asset('frontend') }}/img/post/post-34.jpg"
-                                                            alt="post"></a>
-
-                                                    <!-- Content -->
-                                                    <div class="content">
-
-                                                        <!-- Title -->
-                                                        <h5 class="title"><a href="post-details.html">How do you solve
-                                                                the IOS page problem.</a></h5>
-
-                                                        <!-- Meta -->
-                                                        <div class="meta fix">
-                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i>10
-                                                                March 2017</span>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div><!-- Small Post End -->
+                                            @endforeach
 
                                         </div>
                                     </div>

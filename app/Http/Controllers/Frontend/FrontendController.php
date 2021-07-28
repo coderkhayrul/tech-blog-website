@@ -15,7 +15,8 @@ class FrontendController extends Controller
     public function index()
     {
 
-        $posts = Product::where('status', 1)->latest()->orderBy('id', 'DESC')->limit(10)->get();
+        $posts = Product::where('status', 1)->orderBy('id', 'DESC')->paginate(10);
+
         $popularpost = Product::where('status', 1)->OrderBy('view_count', 'DESC')->limit(5)->get();
 
         // Category Wise Product Show (PC & MOBILE)
@@ -66,7 +67,7 @@ class FrontendController extends Controller
     // CATEGORY WISE POST SHOW
     public function categoryPostAll($id, $slug)
     {
-        $productByCategory = Product::where('status', '1')->where('category_id', $id)->paginate(2);
+        $productByCategory = Product::where('status', '1')->where('category_id', $id)->paginate(10);
 
         $category = Category::where('status', 1)->where('id', $id)->orderBy('id', 'DESC')->first();
 

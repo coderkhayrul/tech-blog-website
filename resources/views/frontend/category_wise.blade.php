@@ -13,7 +13,7 @@ Home - Tech Tutorial
                 <!-- Page Banner Start -->
                 <div class="col-lg-8 col-12">
                     <div class="page-banner" style="background-image: url(@if($category->image == NULL) {{ asset('frontend') }}/img/bg/page-banner-sports.jpg  @else {{ asset($category->image) }} @endif )">
-                        <h2>@if(session()->get('language') == 'bangla') ক্যাটাগরি @else Category @endif: <span class="category-sports">@if(session()->get('language') == 'bangla') {{ $category->name_ban }} @else {{ $category->name_en }}  @endif</span></h2>
+                        <h2>@if(session()->get('language') == 'bangla') ক্যাটাগরি @else Category @endif: <span class="category-education">@if(session()->get('language') == 'bangla') {{ $category->name_ban }} @else {{ $category->name_en }}  @endif</span></h2>
                         <ol class="page-breadcrumb">
                             <li><a href="{{ url('/') }}">@if(session()->get('language') == 'bangla') হোম @else Home @endif</a></li>
                             <li class="active">@if(session()->get('language') == 'bangla') {{ $category->name_ban }} @else {{ $category->name_en }} @endif</li>
@@ -46,9 +46,10 @@ Home - Tech Tutorial
                         <!-- Post Block Body Start -->
                         <div class="body">
                             <div class="row mb-4">
-                                @foreach ($productByCategory as $post)
+
+                                @forelse ($productByCategory as $post)
                                 <!-- Post Start -->
-                                <div class="post sports-post post-separator-border col-md-6 col-12">
+                                <div class="post education-post post-separator-border col-md-6 col-12">
                                     <div class="post-wrap">
 
                                         <!-- Image -->
@@ -77,7 +78,9 @@ Home - Tech Tutorial
                                     </div>
                                 </div>
                                 <!-- Post End -->
-                                @endforeach
+                                @empty
+                                <h1 class="text-primary"> No Post Found </h1>
+                                @endforelse
                             </div>
                             <!-- Custrom Pagination Start -->
                             {{ $productByCategory->links() }}

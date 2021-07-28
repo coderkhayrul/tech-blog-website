@@ -19,7 +19,7 @@ Home - Tech Tutorial
                 <div class="post-block-wrapper">
 
                     <!-- Post Block Head Start -->
-                    <div class="head feature-head">
+                    <div class="head education-head">
                         <!-- Title -->
                         <h4 class="title"> @if(session()->get('language') == 'bangla') ফিচার্ড পোস্ট @else Featured post @endif </h4>
 
@@ -32,7 +32,7 @@ Home - Tech Tutorial
                         <div class="tab-content">
 
                             <!-- Tab Pane Start-->
-                            <div class="tab-pane fade show active">
+                            <div class="tab-pane fade show active mb-4">
 
                                 <div class="row">
 
@@ -40,7 +40,7 @@ Home - Tech Tutorial
                                     <div class="col-md-12 col-12 mb-20">
                                         @foreach ($posts as $post)
                                         <!-- Post  Start -->
-                                        <div class="post feature-post post-separator-border">
+                                        <div class="post education-post post-separator-border">
                                             <div class="post-wrap">
                                                 <div class="row d-flex jusified-content">
                                                     <div class="col-lg-6 col-12">
@@ -54,7 +54,9 @@ Home - Tech Tutorial
                                                     </div>
                                                     <div class="col-lg-6 col-md-12 col-12">
                                                         <span class="cat-links"><a href="{{ url('category/post/'.$post->category->id.'/'.$post->category->slug_en) }}" class="text-danger">@if(session()->get('language') == 'bangla') {{ $post->category->name_ban }} @else {{ $post->category->name_en }} @endif</a></span><br>
-                                                        <strong class="font-weight-bold"><a href="@if(session()->get('language') == 'bangla') {{ route('post.show',$post->slug_en) }} @else {{ route('post.show',$post->slug_en) }} @endif ">@if(session()->get('language') == 'bangla') {{ $post->name_ban }} @else {{ $post->name_en }} @endif</a></strong>
+                                                        <strong class="font-weight-bold">
+                                                            <a href="@if(session()->get('language') == 'bangla') {{ route('post.show',$post->slug_en) }} @else {{ route('post.show',$post->slug_en) }} @endif ">@if(session()->get('language') == 'bangla') {{ $post->name_ban }} @else {{ $post->name_en }} @endif</a>
+                                                        </strong>
                                                         <div class="meta fix mt-2">
                                                             <p>
                                                                 @if(session()->get('language') == 'bangla')
@@ -70,8 +72,10 @@ Home - Tech Tutorial
                                         <!-- Post End -->
                                         @endforeach
                                     </div><!-- Post Wrapper End -->
-
                                 </div>
+                                <!-- Custrom Pagination Start -->
+                                {{ $posts->links() }}
+                                <!-- Custrom Pagination End -->
 
                             </div><!-- Tab Pane End-->
 

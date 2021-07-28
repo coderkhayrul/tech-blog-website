@@ -4,7 +4,6 @@
 <head>
     @php
     $admin_settings = App\Models\Admin::find(1);
-    // dd($admin_settings);
     @endphp
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">

@@ -9,10 +9,14 @@ $admin_settings = App\Models\Admin::find(1);
 
             <!-- Header Top Links Start -->
             <div class="header-top-links col-md-9 col-6">
-
+                @php
+                    $date = \Carbon\Carbon::now();
+                @endphp
                 <!-- Header Links -->
                 <ul class="header-links">
-                    <li class="disabled block d-none d-md-block"><a href="#"><i class="fa fa-clock-o"></i>@if (session()->get('language') == 'bangla')২৫ মার্চ, ২০২১ রবিবার @else Sunday, March 25, 2021 @endif</a></li>
+                    <li class="disabled block d-none d-md-block">
+                        <a href="#"><i class="fa fa-clock-o"></i>@if (session()->get('language') == 'bangla') {{ bangla_date(time(),"en") }} @else {{ \Carbon\Carbon::parse($date)->format('d F Y')}} @endif</a>
+                    </li>
                     <li>
                         <a href="#"><i class="fa fa-info-circle"></i> @if (session()->get('language') == 'bangla')আমাদের সম্পর্কে @else About Us @endif</a>
                     </li>

@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session;
 
 class FrontendController extends Controller
 {
     // ALL POST SHOW  HOME PAGE
     public function index()
     {
+
         $posts = Product::where('status', 1)->latest()->orderBy('id', 'DESC')->limit(10)->get();
 
         // Category Wise Product Show (PC & MOBILE)
@@ -27,7 +30,12 @@ class FrontendController extends Controller
     // SINGLE POST SHOW
     public function postShow($slug)
     {
+
         $post = Product::where('status', 1)->where('slug_en', $slug)->first();
+
+        $post->increment('reads', 1);
+        $post->update();
+
 
         $allposts = Product::where('status', 1)->latest()->orderBy('id', 'DESC')->limit(4)->get();
 
@@ -37,20 +45,20 @@ class FrontendController extends Controller
         return view('frontend.show', compact('post', 'allposts', 'previous', 'next'));
     }
 
-
+    // POST PREVIOUS AND NEXT START
     public function previousProduct($id, $slug)
     {
         $previous = Product::where('status', 1)->where('id', '<', $id)->first();
 
         return view('frontend.show', compact('previous'));
     }
-
     public function nextProduct($id, $slug)
     {
         $next = Product::where('status', 1)->where('id', '>', $id)->first();
 
         return view('frontend.show', compact('next'));
     }
+    // POST PREVIOUS AND NEXT END
 
 
 

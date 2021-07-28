@@ -8,10 +8,11 @@
         <div class="card-header">
             <div class="row align-items-center">
                 <div class="col">
-                <h2 class="h5">Products</h2>
+                    <h2 class="h5">Products</h2>
                 </div>
                 <div class="col text-right">
-                    <a href="{{ route('product.create') }}" class="btn btn-sm btn-success"><i class="fas fa-plus"></i> New Product</a>
+                    <a href="{{ route('product.create') }}" class="btn btn-sm btn-success"><i class="fas fa-plus"></i>
+                        New Product</a>
                 </div>
             </div>
         </div>
@@ -30,7 +31,8 @@
                 <tbody>
                     @foreach ($products as $product)
                     <tr class="text-center">
-                        <td width="10%"><img style=" width:60px; height: 50px;" src="{{ asset($product->thambnail_image) }}" alt=""></td>
+                        <td width="10%"><img style=" width:60px; height: 50px;"
+                                src="{{ asset($product->thambnail_image) }}" alt=""></td>
                         <td width="10%">{{ $product->category->name_en }}</td>
                         <td width="25%">{{ $product->name_en }}</td>
                         <td width="25%">{{ $product->name_ban }}</td>
@@ -46,9 +48,12 @@
                             @endif
                         </td>
                         <td width="15%">
-                            <a href="{{ route('product.view',$product->id) }}" class="btn btn-success btn-sm"><i class="fas fa-eye"></i></a>
-                            <a href="{{ route('product.edit',$product->id) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
-                            <a id="delete" href="{{ route('product.destroy',$product->id) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                            <a href="{{ route('product.view',$product->id) }}" class="btn btn-success btn-sm"><i
+                                    class="fas fa-eye"></i></a>
+                            <a href="{{ route('product.edit',$product->id) }}" class="btn btn-info btn-sm"><i
+                                    class="fas fa-edit"></i></a>
+                            <a id="delete" href="{{ route('product.destroy',$product->id) }}"
+                                class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                     @endforeach

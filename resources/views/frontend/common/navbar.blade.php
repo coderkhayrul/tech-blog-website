@@ -23,7 +23,7 @@
                                     </ul><!-- Submenu End -->
                                 </li>
 
-                                <li><a href="">@if (session()->get('language') == 'bangla')টেক নিউস @else Tech News @endif</a></li>
+                                <li><a href="{{ url('category/post/'.$category->id.'/'.$category->slug_en) }}">@if (session()->get('language') == 'bangla')টেক নিউস @else Tech News @endif</a></li>
                             </ul>
                         </nav>
                     </div><!-- Main Menu Start -->
@@ -45,11 +45,15 @@
                         <!-- Header Search Form -->
                         <div class="header-search-form">
                             <form action="#">
-                                <input type="text" placeholder="Search Here">
+                                <input type="text" placeholder=" @if(session()->get('language') == 'bangla') এখানে অনুসন্ধান করুন @else Search Here @endif ">
                             </form>
                         </div>
 
                     </div>
+
+
+
+
 
                     <!-- Mobile Menu Wrap -->
                     <div class="mobile-menu-wrap d-none">
@@ -62,7 +66,7 @@
                                     <!-- Submenu Start -->
                                     <ul class="sub-menu">
                                         @foreach ($categories as $category)
-                                        <li><a href="blog.html">@if (session()->get('language') == 'bangla'){{ $category->name_ban }} @else {{ $category->name_en }} @endif</a></li>
+                                        <li><a href="{{ url('category/post/'.$category->id.'/'.$category->slug_en) }}">@if (session()->get('language') == 'bangla'){{ $category->name_ban }} @else {{ $category->name_en }} @endif</a></li>
                                         @endforeach
                                     </ul><!-- Submenu End -->
 
@@ -73,6 +77,7 @@
                             </ul>
                         </nav>
                     </div>
+
 
                     <!-- Mobile Menu -->
                     <div class="mobile-menu"></div>

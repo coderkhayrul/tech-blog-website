@@ -87,222 +87,20 @@ Home - Tech Tutorial
             <div class="col-lg-4 col-12 mb-50">
                 <div class="row">
 
-                    <!-- Follow Us -->
-                    <div class="single-sidebar col-lg-12 col-md-6 col-12">
+                    <!-- Follow Us On Start -->
+                    @include('frontend.size_widget.social_join')
+                    <!-- Follow Us On End -->
 
-                        <!-- Sidebar Block Wrapper -->
-                        <div class="sidebar-block-wrapper">
-
-                            <!-- Sidebar Block Head Start -->
-                            <div class="head feature-head">
-
-                                <!-- Title -->
-                                <h4 class="title">@if (session()->get('language') == 'bangla')আমাদের সাথে যোগ দান @else
-                                    JOIN US ON @endif </h4>
-
-                            </div><!-- Sidebar Block Head End -->
-
-                            <!-- Sidebar Block Body Start -->
-                            <div class="body">
-
-                                <div class="sidebar-social-follow">
-                                    <div>
-                                        <a href="#" class="facebook">
-                                            <i class="fa fa-facebook"></i>
-                                            <h3>40,583</h3>
-                                            <span>Fans</span>
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <a href="#" class="google-plus">
-                                            <i class="fa fa-google-plus"></i>
-                                            <h3>36,857</h3>
-                                            <span>Followers</span>
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <a href="#" class="twitter">
-                                            <i class="fa fa-twitter"></i>
-                                            <h3>50,883</h3>
-                                            <span>Followers</span>
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <a href="#" class="dribbble">
-                                            <i class="fa fa-dribbble"></i>
-                                            <h3>4,743</h3>
-                                            <span>Followers</span>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div><!-- Sidebar Block Body End -->
-
-                        </div>
-
-                    </div>
-
-                    <!-- Make It Mordern -->
-                    <div class="single-sidebar col-lg-12 col-md-6 col-12">
-
-                        <!-- Sidebar Block Wrapper -->
-                        <div class="sidebar-block-wrapper">
-
-                            <!-- Sidebar Block Head Start -->
-                            <div class="head life-style-head">
-
-                                <!-- Title -->
-                                <h4 class="title">@if (session()->get('language') == 'bangla')পিসি & মোবাইল @else PC & MOBILE @endif</h4>
-
-                            </div><!-- Sidebar Block Head End -->
-
-                            <!-- Sidebar Block Body Start -->
-                            <div class="body">
-
-                                <!-- Sidebar Post Slider Start -->
-                                <div class="sidebar-post-carousel post-block-carousel life-style-post-carousel">
-
-                                    <!-- Post Start -->
-                                    @foreach ($skip_products as $product)
-                                    <div class="post life-style-post">
-                                        <div class="post-wrap">
-
-                                            <!-- Image -->
-                                            <a class="image" href="post-details.html"><img src="{{ asset($product->thambnail_image) }}" alt="post"></a>
-
-                                            <!-- Content -->
-                                            <div class="content">
-
-                                                <!-- Title -->
-                                                <h4 class="title"><a href="post-details.html">@if (session()->get('language') == 'bangla') {{ $product->name_ban }} @else {{ $product->name_en }} @endif</a></h4>
-
-                                                <!-- Read More Button -->
-                                                <a href="#" class="read-more">continue reading</a>
-
-                                            </div>
-
-                                        </div>
-                                    </div><!-- Post End -->
-                                    @endforeach
-                                </div><!-- Sidebar Post Slider End -->
-
-                            </div><!-- Sidebar Block Body End -->
-
-                        </div>
-
-                    </div>
+                    <!-- Make It Mordern Start -->
+                    @include('frontend.size_widget.slide_post')
+                    <!-- Make It Mordern End -->
 
                     <!-- 370 * 272 Ads Start -->
-                    <div class="single-sidebar col-lg-12 col-md-6 col-12">
-
-                        <!-- Sidebar Banner -->
-                        <a href="#" class="sidebar-banner"><img
-                                src="{{ asset('frontend') }}/img/banner/sidebar-banner-2.jpg" alt="Sidebar Banner"></a>
-
-                    </div>
+                    @include('frontend.size_widget.mini_ads')
                     <!-- 370 * 272 Ads End -->
 
                     <!-- Latest And Popular Post -->
-                    <div class="single-sidebar col-lg-12 col-md-6 col-12">
-
-                        <!-- Single Sidebar -->
-                        <div class="single-sidebar">
-
-                            <!-- Sidebar Block Wrapper -->
-                            <div class="sidebar-block-wrapper">
-
-                                <!-- Sidebar Block Head Start -->
-                                <div class="head education-head">
-
-                                    <!-- Tab List -->
-                                    <div class="sidebar-tab-list education-sidebar-tab-list nav">
-                                        <a class="active" data-toggle="tab" href="#latest-news">@if(session()->get('language') == 'bangla') সর্বশেষ পোস্ট @else LATEST POST
-                                            @endif</a>
-                                        <a data-toggle="tab" href="#popular-news">@if (session()->get('language') ==
-                                            'bangla') জনপ্রিয় পোস্ট @else POPULAR POST @endif</a>
-                                    </div>
-
-                                </div><!-- Sidebar Block Head End -->
-
-                                <!-- Sidebar Block Body Start -->
-                                <div class="body">
-                                    @php
-                                    $posts = App\Models\Product::latest()->orderBy('id', 'DESC')->limit(5)->get();
-                                    @endphp
-                                    <div class="tab-content">
-                                        <div class="tab-pane fade show active" id="latest-news">
-                                            @foreach ($posts as $post)
-                                            <!-- Small Post Start -->
-                                            <div class="post post-small post-list education-post post-separator-border">
-                                                <div class="post-wrap">
-
-                                                    <!-- Image -->
-                                                    <a class="image" href="@if(session()->get('language') == 'bangla') {{ route('post.show',$post->slug_en) }} @else {{ route('post.show',$post->slug_en) }} @endif "><img
-                                                            src="{{ asset($post->thambnail_image) }}" alt="post"></a>
-
-                                                    <!-- Content -->
-                                                    <div class="content">
-
-                                                        <!-- Title -->
-                                                        <h5 class="title">
-                                                            <a href="@if(session()->get('language') == 'bangla') {{ route('post.show',$post->slug_en) }} @else {{ route('post.show',$post->slug_en) }} @endif ">
-                                                                @if(session()->get('language') == 'bangla')
-                                                                {{ Str::limit($post->name_ban, 50, $end='...') }} @else
-                                                                {{ Str::limit($post->name_en, 50, $end='...') }}
-                                                                @endif
-                                                            </a></h5>
-
-                                                        <!-- Meta -->
-                                                        <div class="meta fix">
-                                                            <span class="meta-item date"><i
-                                                                    class="fa fa-clock-o"></i>{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</span>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div><!-- Small Post End -->
-                                            @endforeach
-                                        </div>
-
-                                        <div class="tab-pane fade" id="popular-news">
-                                            @foreach ($popularpost as $post)
-                                            <!-- Small Post Start -->
-                                            <div class="post post-small post-list education-post post-separator-border">
-                                                <div class="post-wrap">
-
-                                                    <!-- Image -->
-                                                    <a class="image" href="post-details.html"><img
-                                                            src="{{ asset($post->thambnail_image) }}"
-                                                            alt="post"></a>
-
-                                                    <!-- Content -->
-                                                    <div class="content">
-
-                                                        <!-- Title -->
-                                                        <h5 class="title"><a href="post-details.html">@if(session()->get('language') == 'bangla') {{ $post->name_ban }} @else {{ $post->name_en }} @endif</a></h5>
-
-                                                        <!-- Meta -->
-                                                        <div class="meta fix">
-                                                            <span class="meta-item date"><i class="fa fa-clock-o"></i> {{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</span>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div><!-- Small Post End -->
-                                            @endforeach
-
-                                        </div>
-                                    </div>
-
-                                </div><!-- Sidebar Block Body End -->
-
-                            </div>
-
-                        </div>
-
-                    </div>
+                    @include('frontend.size_widget.latest_and_popular_post')
                     <!-- Latest And Popular Post-->
 
                 </div>
@@ -311,14 +109,9 @@ Home - Tech Tutorial
         </div>
         <!-- Feature Post Row End -->
 
-        <!-- Banner Row Start -->
-        <div class="row mb-50">
-            <div class="col-12">
-                <a href="#" class="post-middle-banner"><img src="{{ asset('frontend') }}/img/banner/post-middle-1.jpg"
-                        alt="Banner"></a>
-            </div>
-        </div>
-        <!-- Banner Row End -->
+        <!--1173 * 282 Banner Ads Start -->
+        @include('frontend.size_widget.footer_big_ads')
+        <!-- 1173 * 282 Banner Ads Start -->
 
     </div>
 </div><!-- Post Section End -->

@@ -3,6 +3,7 @@
 @section('title')
 Home - Tech Tutorial
 @endsection
+
 @section('content')
     <!-- Page Banner Section Start -->
     <div class="page-banner-section section mt-30 mb-30">
@@ -17,15 +18,18 @@ Home - Tech Tutorial
                             <li><a href="{{ url('/') }}">@if(session()->get('language') == 'bangla') হোম @else Home @endif</a></li>
                             <li class="active">@if(session()->get('language') == 'bangla') {{ $category->name_ban }} @else {{ $category->name_en }} @endif</li>
                         </ol>
-                        <p >@if(session()->get('language') == 'bangla') {{ $category->description_ban }} @else {{ $category->description_en }}@endif</p>
+                        <p> @if(session()->get('language') == 'bangla') {{ $category->description_ban }} @else {{ $category->description_en }}@endif </p>
                     </div>
-                </div><!-- Page Banner End -->
+                </div>
+                <!-- Page Banner End -->
+                <!-- 399 * 294 Banner Ads Start -->
+                @include('frontend.size_widget.cat_ads')
 
-                <div class="page-banner-image col-lg-4 col-12 d-none d-lg-block"><img src="{{ asset('frontend') }}/img/banner/page-banner-sports.jpg" alt="Page Banner Image"></div>
-
+                <!-- 399 * 294 Banner Ads End -->
             </div>
         </div>
-    </div><!-- Page Banner Section End -->
+    </div>
+    <!-- Page Banner Section End -->
 
     <!-- Post Section Start -->
     <div class="post-section section mt-50">
@@ -41,7 +45,7 @@ Home - Tech Tutorial
 
                         <!-- Post Block Body Start -->
                         <div class="body">
-                            <div class="row">
+                            <div class="row mb-4">
                                 @foreach ($productByCategory as $post)
                                 <!-- Post Start -->
                                 <div class="post sports-post post-separator-border col-md-6 col-12">
@@ -58,37 +62,28 @@ Home - Tech Tutorial
 
                                             <!-- Meta -->
                                             <div class="meta fix">
-                                                <a href="#" class="meta-item author"><i class="fa fa-user"></i>Tech Tutorial</a>
+                                                <a href="#" class="meta-item author"><i class="fa fa-user"></i>@if(session()->get('language') == 'bangla') খায়রুল ইসলাম শান্ত @else Khayrul Islam Shanto @endif</a>
                                                 <span class="meta-item date"><i class="fa fa-clock-o"></i>{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</span>
                                             </div>
 
                                             <!-- Description -->
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing  Curabitur venenatis suscipit rhoncus. Phasellus fermentum a nec finibus lacus bibendum non. Duis pulvinar lacus.</p>
+                                            <p>@if(session()->get('language') == 'bangla') {{ $post->short_description_ban }} @else {{ $post->short_description_ban }} @endif</p>
 
                                             <!-- Read More -->
-                                            <a href="@if(session()->get('language') == 'bangla') {{ route('post.show',$post->slug_en) }} @else {{ route('post.show',$post->slug_en) }} @endif" class="read-more">continue reading</a>
+                                            <a href="@if(session()->get('language') == 'bangla') {{ route('post.show',$post->slug_en) }} @else {{ route('post.show',$post->slug_en) }} @endif" class="read-more">@if(session()->get('language') == 'bangla') পড়া চালিয়ে যান @else continue reading @endif</a>
 
                                         </div>
 
                                     </div>
-                                </div><!-- Post End -->
-                                @endforeach
-
-
-
-
-                                <div class="page-pagination text-center col-12">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                    </ul>
                                 </div>
-
+                                <!-- Post End -->
+                                @endforeach
                             </div>
-                        </div><!-- Post Block Body End -->
+                            <!-- Custrom Pagination Start -->
+                            {{ $productByCategory->links() }}
+                            <!-- Custrom Pagination End -->
+                        </div>
+                        <!-- Post Block Body End -->
 
                     </div><!-- Post Block Wrapper End -->
 
@@ -98,95 +93,21 @@ Home - Tech Tutorial
                 <div class="col-lg-4 col-12 mb-50">
                     <div class="row">
 
-                        <!-- Single Sidebar -->
-                        <div class="single-sidebar col-lg-12 col-md-6 col-12">
+                        <!-- Follow Us On Start -->
+                        @include('frontend.size_widget.social_join')
+                        <!-- Follow Us On End -->
 
-                            <!-- Sidebar Block Wrapper -->
-                            <div class="sidebar-block-wrapper">
+                        <!-- Single Sidebar 370 * 451 Ads Start -->
+                        @include('frontend.size_widget.mid_ads')
+                        <!-- Single Sidebar 370 * 451 Ads End -->
 
-                                <!-- Sidebar Block Head Start -->
-                                <div class="head feature-head">
+                        <!-- 370 * 272 Ads Start -->
+                        @include('frontend.size_widget.mini_ads')
+                        <!-- 370 * 272 Ads End -->
 
-                                    <!-- Title -->
-                                    <h4 class="title">Follow Us</h4>
-
-                                </div><!-- Sidebar Block Head End -->
-
-                                <!-- Sidebar Block Body Start -->
-                                <div class="body">
-
-                                    <div class="sidebar-social-follow">
-                                        <div>
-                                            <a href="#" class="facebook">
-                                                <i class="fa fa-facebook"></i>
-                                                <h3>40,583</h3>
-                                                <span>Fans</span>
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <a href="#" class="google-plus">
-                                                <i class="fa fa-google-plus"></i>
-                                                <h3>36,857</h3>
-                                                <span>Followers</span>
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <a href="#" class="twitter">
-                                                <i class="fa fa-twitter"></i>
-                                                <h3>50,883</h3>
-                                                <span>Followers</span>
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <a href="#" class="dribbble">
-                                                <i class="fa fa-dribbble"></i>
-                                                <h3>4,743</h3>
-                                                <span>Followers</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </div><!-- Sidebar Block Body End -->
-
-                            </div>
-
-                        </div>
-
-                        <!-- Single Sidebar -->
-                        <div class="single-sidebar col-lg-12 col-md-6 col-12">
-
-                            <!-- Sidebar Banner -->
-                            <a href="#" class="sidebar-banner"><img src="{{ asset('frontend') }}/img/banner/sidebar-banner-1.jpg" alt="Sidebar Banner"></a>
-
-                        </div>
-
-                        <!-- Single Sidebar -->
-                        <div class="single-sidebar col-lg-12 col-md-6 col-12">
-
-                            <!-- Sidebar Banner -->
-                            <a href="#" class="sidebar-banner"><img src="{{ asset('frontend') }}/img/banner/sidebar-banner-2.jpg" alt="Sidebar Banner"></a>
-
-                        </div>
-
-                        <!-- Single Sidebar -->
-                        <div class="single-sidebar col-lg-12 col-md-6 col-12">
-
-                            <div class="sidebar-subscribe">
-                                <h4>Subscribe To <br>Our <span>Update</span> News</h4>
-                                <p>Adipiscing elit. Fusce sed mauris arcu. Praesent ut augue imperdiet, semper lorem id.</p>
-                                <!-- Newsletter Form -->
-                                <form action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="subscribe-form validate" target="_blank" novalidate>
-                                    <div id="mc_embed_signup_scroll">
-                                        <label for="mce-EMAIL" class="d-none">Subscribe to our mailing list</label>
-                                        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Your email address" required>
-                                        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
-                                        <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="button">submit</button>
-                                    </div>
-                                </form>
-                            </div>
-
-                        </div>
+                        <!-- Single Sidebar Subscribe Newsletter Start -->
+                        @include('frontend.size_widget.newsletter')
+                        <!-- Single Sidebar Subscribe Newsletter Start -->
 
                     </div>
                 </div><!-- Sidebar End -->

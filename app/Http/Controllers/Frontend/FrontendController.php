@@ -66,7 +66,8 @@ class FrontendController extends Controller
     // CATEGORY WISE POST SHOW
     public function categoryPostAll($id, $slug)
     {
-        $productByCategory = Product::where('status', 1)->where('category_id', $id)->orderBy('id', 'DESC')->get();
+        $productByCategory = Product::where('status', '1')->where('category_id', $id)->paginate(2);
+
         $category = Category::where('status', 1)->where('id', $id)->orderBy('id', 'DESC')->first();
 
         return view('frontend.category_wise', compact('productByCategory', 'category'));

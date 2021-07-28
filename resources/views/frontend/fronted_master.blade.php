@@ -20,6 +20,8 @@
 
     <!-- CSS
 	============================================ -->
+
+    @yield('custrom_style')
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/bootstrap.min.css">
     <!-- Icon Font CSS -->
@@ -80,6 +82,7 @@
     <script src="{{ asset('frontend') }}/js/ajax-mail.js"></script>
     <!-- Main JS -->
     <script src="{{ asset('frontend') }}/js/main.js"></script>
+    @yield('custrom_script')
 
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60faff88f70dd811"></script>

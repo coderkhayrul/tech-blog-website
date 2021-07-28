@@ -70,10 +70,9 @@ $admin_settings = App\Models\Admin::find(1);
                 <a href="{{ url('/') }}" class="logo"><img src="{{ asset($admin_settings->title_image) }}" alt="Logo"></a>
             </div>
 
-            <!-- Header Banner -->
-            <div class="header-banner col-md-8 col-12">
-                <div class="banner"><a href="#"><img src="{{ asset('frontend') }}/img/banner/header-banner-1.png" alt="Header Banner"></a></div>
-            </div>
+            <!-- Header 734 * 90 Banner Ads Start -->
+            @include('frontend.size_widget.top_navbar_ads')
+            <!-- Header 734 * 90 Banner Ads End -->
 
         </div>
     </div>

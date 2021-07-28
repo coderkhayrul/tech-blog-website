@@ -11,44 +11,48 @@ use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
 {
-    public function dashboard(){
+    public function dashboard()
+    {
         return view('admin.dashboard');
     }
 
-    public function adminLogout(){
+    public function adminLogout()
+    {
         Auth::logout();
         return redirect()->route('login');
     }
 
-    public function setting(){
+    public function setting()
+    {
 
         $setting = Admin::find(1)->first();
 
         return view('admin.setting.index', compact('setting'));
     }
 
-    public function settingUpdate(Request $request, $id){
+    public function settingUpdate(Request $request, $id)
+    {
 
         $old_fav_icon = $request->old_fav_icon;
         $old_title_image = $request->old_title_image;
 
         // FAV ICON Image
         $fav_icon = $request->file('fav_icon');
-        $make_name = hexdec(uniqid()).'.'.$fav_icon->getClientOriginalExtension();
+        $make_name = hexdec(uniqid()) . '.' . $fav_icon->getClientOriginalExtension();
         if ($old_fav_icon) {
             unlink($old_fav_icon);
         }
-        Image::make($fav_icon)->resize(16, 16)->save('upload/setting/image/'.$make_name);
-        $upload_fav_icon = 'upload/setting/image/'.$make_name;
+        Image::make($fav_icon)->resize(32, 32)->save('upload/setting/image/' . $make_name);
+        $upload_fav_icon = 'upload/setting/image/' . $make_name;
 
         // TITLE Image
         $title_image = $request->file('title_image');
-        $make_name_title = hexdec(uniqid()).'.'.$title_image->getClientOriginalExtension();
+        $make_name_title = hexdec(uniqid()) . '.' . $title_image->getClientOriginalExtension();
         if ($old_title_image) {
             unlink($old_title_image);
         }
-        Image::make($title_image)->resize(193, 45)->save('upload/setting/image/'.$make_name_title);
-        $upload_title_image = 'upload/setting/image/'.$make_name_title;
+        Image::make($title_image)->resize(193, 45)->save('upload/setting/image/' . $make_name_title);
+        $upload_title_image = 'upload/setting/image/' . $make_name_title;
 
 
         $setting = Admin::findOrFail($id);
@@ -69,14 +73,16 @@ class AdminController extends Controller
         return redirect()->route('setting.index')->with($notification);
     }
 
-    public function settingSocial(){
+    public function settingSocial()
+    {
 
         $setting = Admin::find(1)->first();
 
         return view('admin.setting.social', compact('setting'));
     }
 
-    public function settingSocialUpdate(Request $request, $id){
+    public function settingSocialUpdate(Request $request, $id)
+    {
 
         $social = Admin::findOrFail($id);
         $social->facebook_url = $request->facebook_url;
@@ -94,14 +100,16 @@ class AdminController extends Controller
     }
 
 
-    public function settingContact(){
+    public function settingContact()
+    {
 
         $setting = Admin::find(1)->first();
 
         return view('admin.setting.contact', compact('setting'));
     }
 
-    public function settingContactUpdate(Request $request, $id){
+    public function settingContactUpdate(Request $request, $id)
+    {
 
         $contact = Admin::findOrFail($id);
         $contact->address_en = $request->address_en;
@@ -120,12 +128,14 @@ class AdminController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    public function settingSeo(){
+    public function settingSeo()
+    {
         $setting = Admin::find(1)->first();
         return view('admin.setting.seo', compact('setting'));
     }
 
-    public function settingSeoUpdate(Request $request, $id){
+    public function settingSeoUpdate(Request $request, $id)
+    {
 
         $seo = Admin::findOrFail($id);
         $seo->meta_title_en = $request->meta_title_en;
@@ -145,8 +155,5 @@ class AdminController extends Controller
         );
 
         return redirect()->back()->with($notification);
-
     }
-
-
 }

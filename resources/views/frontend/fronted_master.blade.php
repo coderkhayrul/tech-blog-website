@@ -4,16 +4,17 @@
 <head>
     @php
     $admin_settings = App\Models\Admin::find(1);
+    // dd($admin_settings);
     @endphp
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>@yield('title')</title>
-    <meta name="description" content="">
-    <meta name="title" content="">
-    <meta name="author" content="">
-    <meta name="domain" content="">
-    <meta name="keyword" content="">
-    <meta name="theme color" content="">
+    <meta name="description" content="@if(session()->get('language') == 'bangla'){{ $admin_settings->meta_description_ban }}@else{{ $admin_settings->meta_description_en }}@endif">
+    <meta name="title" content="@if(session()->get('language') == 'bangla'){{ $admin_settings->meta_title_ban }}@else{{ $admin_settings->meta_title_en }}@endif">
+    <meta name="author" content="@if(session()->get('language') == 'bangla'){{ $admin_settings->meta_author_ban }}@else{{ $admin_settings->meta_author_en }}@endif">
+    <meta name="domain" content="@if(session()->get('language') == 'bangla')'coderkhayrul.xyz'@else'coderkhayrul.xyz'@endif">
+    <meta name="keyword" content="@if(session()->get('language') == 'bangla'){{ $admin_settings->meta_keyword_ban }}@else{{ $admin_settings->meta_keyword_en }}@endif">
+    <meta name="theme color" content="{{ $admin_settings->theme_color }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset($admin_settings->fav_icon) }}">

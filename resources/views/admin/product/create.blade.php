@@ -21,7 +21,7 @@
             <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
                 <div class="row mb-4">
                     @csrf
-                    <div class="col-lg-6 col-sm-6">
+                    <div class="col-lg-12 col-sm-12">
                         <!-- Form -->
                         <div class="mb-4">
                             <label class="my-1 mr-2" for="country">Select Category</label>
@@ -33,23 +33,6 @@
                                 @endforeach
                             </select>
                             @error('category_id')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        <!-- End of Form -->
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                        <!-- Form -->
-                        <div class="mb-4">
-                            <label class="my-1 mr-2" for="country">Select SubCategory</label>
-                            <select class="form-select @error('subcategory_id') is-invalid @enderror"
-                                id="subcategory_id" name="subcategory_id">
-                                <option selected disabled>Select SubCategory</option>
-                                <option></option>
-                            </select>
-                            @error('subcategory_id')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -199,34 +182,6 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
-
-</script>
-
-<!-- DYNAMIC CATEGORY SHOW -->
-<script>
-    $(document).ready(function () {
-
-        $('select[name="category_id"]').on('change', function () {
-            var category_id = $(this).val();
-            if (category_id) {
-                $.ajax({
-                    url: "{{  url('/product/subcategory/ajax') }}/" + category_id,
-                    type: "GET",
-                    dataType: "json",
-                    success: function (data) {
-                        var d = $('select[name="subcategory_id"]').empty();
-                        $.each(data, function (key, value) {
-                            $('select[name="subcategory_id"]').append(
-                                '<option value="' + value.id + '">' + value
-                                .name_en + '</option>');
-                        });
-                    },
-                });
-            } else {
-                alert('danger');
-            }
-        });
-    });
 
 </script>
 

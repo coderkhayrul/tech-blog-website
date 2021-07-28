@@ -7,65 +7,103 @@
         <div class="card-header">
             <div class="row align-items-center">
                 <div class="col">
-                <h2 class="h5">Category Edit</h2>
+                    <h2 class="h5">Category Edit</h2>
                 </div>
                 <div class="col text-right">
-                    <a href="{{ route('category.index') }}" class="btn btn-sm btn-primary"><i class="fas fa-angle-double-left"></i> Back</a>
+                    <a href="{{ route('category.index') }}" class="btn btn-sm btn-primary">
+                        <i class="fas fa-angle-double-left"></i> Back</a>
                 </div>
             </div>
         </div>
         <div class="card-body">
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-6 col-sm-6">
-                    <form action="{{ route('category.update',$category->id) }}" method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="old_image" value="{{ $category->image }}">
-                        @csrf
+            <form action="{{ route('category.update',$category->id) }}" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <input type="hidden" name="old_image" value="{{ $category->image }}">
+                    @csrf
+                    <div class="col-lg-12 col-sm-12">
                         <!-- Form -->
                         <div class="mb-4">
                             <label for="formFile" class="form-label">Category Image</label>
                             <input name="image" onChange="mainThamUrl(this)"
-                                class="form-control @error('image') is-invalid @enderror" type="file"
-                                id="formFile">
-                                @error('image')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                        </div>
-                            <img width="150px" height="75px" src="{{ asset($category->image) }}" id="mainThmb" alt="">
-                        <!-- End of Form -->
-                        <!-- Form -->
-                        <div class="mb-4 mt-2">
-                            <label for="name">Name English</label>
-                            <input type="text" name="name_en" class="form-control  @error('name_en') is-invalid @enderror"
-                            value="{{ $category->name_en }}" id="name_en" aria-describedby="nameHelp" placeholder="Enter the category name">
-                            @error('name_en')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                class="form-control @error('image') is-invalid @enderror" type="file" id="formFile">
+                            @error('image')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
                             @enderror
                         </div>
+                        <img width="150px" height="75px" src="{{ asset($category->image) }}" id="mainThmb" alt="">
                         <!-- End of Form -->
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
                         <!-- Form -->
+                        <div class="mb-4">
+                            <label for="name">Name English</label>
+                            <input type="text" name="name_en"
+                                class="form-control  @error('name_en') is-invalid @enderror"
+                                value="{{ $category->name_en }}" id="name_en" aria-describedby="nameHelp"
+                                placeholder="Enter the category name">
+                            @error('name_en')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <!-- End of Form -->
+                    <!-- Form -->
+                    <div class="col-lg-6 col-sm-6">
                         <div class="mb-4">
                             <label for="name">Name Bangla</label>
-                            <input type="text" name="name_ban" class="form-control  @error('name_ban') is-invalid @enderror"
-                            value="{{ $category->name_ban }}" id="name_en" aria-describedby="nameHelp" placeholder="ক্যাটাগরি নাম লিখুন">
+                            <input type="text" name="name_ban"
+                                class="form-control  @error('name_ban') is-invalid @enderror"
+                                value="{{ $category->name_ban }}" id="name_en" aria-describedby="nameHelp"
+                                placeholder="ক্যাটাগরি নাম লিখুন">
                             @error('name_ban')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
                             @enderror
                         </div>
-                        <!-- End of Form -->
-                        <!-- Form -->
+                    </div>
+                    <!-- End of Form -->
+                    <div class="col-lg-6 col-sm-6">
                         <div class="mb-4">
-                            <button class="btn btn-success" type="submit"><i class="fas fa-sync-alt"></i> Update</button>
+                            <!-- Form -->
+                            <label for="textarea">Description English</label>
+                            <textarea name="description_en"
+                                class="form-control @error('description_en') is-invalid @enderror"
+                                placeholder="Enter your message..." id="textarea" rows="4">{{ $category->description_en }}</textarea>
+                            @error('description_en')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                            <!-- End of Form -->
                         </div>
-                        <!-- End of Form -->
-                    </form>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="mb-4">
+                            <!-- Form -->
+                            <label for="textarea">Description Bangla</label>
+                            <textarea name="description_ban"
+                                class="form-control @error('description_ban') is-invalid @enderror"
+                                placeholder="আপনার বার্তা লিখুন..." id="textarea" rows="4">{{ $category->description_ban }}</textarea>
+                            @error('description_ban')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                            <!-- End of Form -->
+                        </div>
+                    </div>
+                    <!-- Form -->
+                    <div class="mb-4">
+                        <button class="btn btn-success" type="submit"><i class="fas fa-sync-alt"></i> Update</button>
+                    </div>
+                    <!-- End of Form -->
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

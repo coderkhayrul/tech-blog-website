@@ -27,7 +27,7 @@ class CategoryController extends Controller
     {
 
         $this->validate($request, [
-            'image' => 'required|image|mimes:,jpg,png,jpeg|max:2048',
+            'image' => 'required|image|mimes:,jpg,png,jpeg',
             'name_en' => 'required|unique:categories',
             'name_ban' => 'required|unique:categories',
         ]);
@@ -40,6 +40,8 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name_en = Str::upper($request->name_en);
         $category->name_ban = $request->name_ban;
+        $category->description_en = $request->description_en;
+        $category->description_ban = $request->description_ban;
         $category->slug_en = Str::slug($request->name_en);
         $category->slug_ban = preg_replace('/\s+/', '-', $request->name_ban);
         $category->image = $save_url_image;
@@ -69,6 +71,8 @@ class CategoryController extends Controller
             $category = Category::findOrFail($category);
             $category->name_en = Str::upper($request->name_en);
             $category->name_ban = $request->name_ban;
+            $category->description_en = $request->description_en;
+            $category->description_ban = $request->description_ban;
             $category->slug_en = Str::slug($request->name_en);
             $category->slug_ban = preg_replace('/\s+/', '-', $request->name_ban);
             $category->update();
@@ -92,6 +96,8 @@ class CategoryController extends Controller
             $category = Category::findOrFail($category);
             $category->name_en = Str::upper($request->name_en);
             $category->name_ban = $request->name_ban;
+            $category->description_en = $request->description_en;
+            $category->description_ban = $request->description_ban;
             $category->slug_en = Str::slug($request->name_en);
             $category->slug_ban = preg_replace('/\s+/', '-', $request->name_ban);
             $category->image = $upload_image;
@@ -108,8 +114,6 @@ class CategoryController extends Controller
 
     public function Destroy(Category $category)
     {
-
-        $category->subcategory()->delete();
         $category->product()->delete();
         unlink($category->image);
         $category->delete();

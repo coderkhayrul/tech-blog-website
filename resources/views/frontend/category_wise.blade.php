@@ -17,7 +17,7 @@ Home - Tech Tutorial
                             <li><a href="{{ url('/') }}">@if(session()->get('language') == 'bangla') হোম @else Home @endif</a></li>
                             <li class="active">@if(session()->get('language') == 'bangla') {{ $category->name_ban }} @else {{ $category->name_en }} @endif</li>
                         </ol>
-                        <p>Vestibulum vulputate sit amet orci sed egestas. Integer lobortis metus in cursus moll condimentum arcu in diam pharetra, nec vehicula urna vehicula. Nullam iaculis odio orci, ut tristique nibh ultrices vitae. Praesent sit amet mauris iaculis, </p>
+                        <p >@if(session()->get('language') == 'bangla') {{ $category->description_ban }} @else {{ $category->description_en }}@endif</p>
                     </div>
                 </div><!-- Page Banner End -->
 
@@ -26,114 +26,6 @@ Home - Tech Tutorial
             </div>
         </div>
     </div><!-- Page Banner Section End -->
-
-    <!-- Popular Section Start -->
-    <div class="popular-section section bg-dark pt-50 pb-50">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-
-                    <!-- Popular Post Slider Start -->
-                    <div class="popular-post-slider">
-
-                        <!-- Overlay Post Start -->
-                        <div class="post post-overlay gradient-overlay-2">
-                            <div class="post-wrap">
-
-                                <!-- Image -->
-                                <div class="image"><img src="{{ asset('frontend') }}/img/post/post-121.jpg" alt="post"></div>
-
-                                <!-- Content -->
-                                <div class="content">
-
-                                    <!-- Title -->
-                                    <h4 class="title"><a href="post-details.html">Jets Name Alex Mccown starting quarter back.</a></h4>
-
-                                    <!-- Meta -->
-                                    <div class="meta fix">
-                                        <span class="meta-item date"><i class="fa fa-clock-o"></i>10 March 2017</span>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div><!-- Overlay Post End -->
-
-                        <!-- Overlay Post Start -->
-                        <div class="post post-overlay gradient-overlay-6">
-                            <div class="post-wrap">
-
-                                <!-- Image -->
-                                <div class="image"><img src="{{ asset('frontend') }}/img/post/post-122.jpg" alt="post"></div>
-
-                                <!-- Content -->
-                                <div class="content">
-
-                                    <!-- Title -->
-                                    <h4 class="title"><a href="post-details.html">Messi one of the greatest footballers off all time, If not the greatest.</a></h4>
-
-                                    <!-- Meta -->
-                                    <div class="meta fix">
-                                        <span class="meta-item date"><i class="fa fa-clock-o"></i>10 March 2017</span>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div><!-- Overlay Post End -->
-
-                        <!-- Overlay Post Start -->
-                        <div class="post post-overlay gradient-overlay-5">
-                            <div class="post-wrap">
-
-                                <!-- Image -->
-                                <div class="image"><img src="{{ asset('frontend') }}/img/post/post-123.jpg" alt="post"></div>
-
-                                <!-- Content -->
-                                <div class="content">
-
-                                    <!-- Title -->
-                                    <h4 class="title"><a href="post-details.html">Norkshire chosen as 2018 road word word champainship host.</a></h4>
-
-                                    <!-- Meta -->
-                                    <div class="meta fix">
-                                        <span class="meta-item date"><i class="fa fa-clock-o"></i>10 March 2017</span>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div><!-- Overlay Post End -->
-
-                        <!-- Overlay Post Start -->
-                        <div class="post post-overlay gradient-overlay-3">
-                            <div class="post-wrap">
-
-                                <!-- Image -->
-                                <div class="image"><img src="{{ asset('frontend') }}/img/post/post-122.jpg" alt="post"></div>
-
-                                <!-- Content -->
-                                <div class="content">
-
-                                    <!-- Title -->
-                                    <h4 class="title"><a href="post-details.html">Messi one of the greatest footballers off all time, If not the greatest.</a></h4>
-
-                                    <!-- Meta -->
-                                    <div class="meta fix">
-                                        <span class="meta-item date"><i class="fa fa-clock-o"></i>10 March 2017</span>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div><!-- Overlay Post End -->
-
-                    </div><!-- Popular Post Slider End -->
-
-                </div>
-            </div>
-        </div>
-    </div><!-- Popular Section End -->
 
     <!-- Post Section Start -->
     <div class="post-section section mt-50">

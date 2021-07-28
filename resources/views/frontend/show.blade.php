@@ -140,7 +140,7 @@ Home - Tech Tutorial
                                             <div class="image"><img src="{{ asset($post->thambnail_image) }}" alt="post"></div>
 
                                             <!-- Category -->
-                                            <a href="#" class="category politic">@if(session()->get('language') == 'bangla') {{$post->category->name_ban }} @else {{ $post->category->name_en }}Featured post @endif</a>
+                                            <a href="#" class="category politic">@if(session()->get('language') == 'bangla') {{$post->category->name_ban }} @else {{ $post->category->name_en }}@endif</a>
 
                                             <!-- Content -->
                                             <div class="content">
@@ -150,7 +150,7 @@ Home - Tech Tutorial
 
                                                 <!-- Meta -->
                                                 <div class="meta fix">
-                                                    <span class="meta-item date"><i class="fa fa-clock-o"></i>10 March 2017</span>
+                                                    <span class="meta-item date"><i class="fa fa-clock-o"></i>{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</span>
                                                 </div>
 
                                             </div>

@@ -4,7 +4,7 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SubCategoryController;
-use App\Http\Controllers\Fronted\LanguageController;
+use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Models\SubCategory;
 use Illuminate\Support\Facades\Auth;

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
@@ -32,8 +31,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::latest()->orderBy('id', 'DESC')->get();
-        $subcategories = SubCategory::latest()->orderBy('id', 'DESC')->get();
-        return view('admin.product.create', compact('categories', 'subcategories'));
+        return view('admin.product.create', compact('categories'));
     }
 
     /**
@@ -56,7 +54,6 @@ class ProductController extends Controller
 
         $product = new Product();
         $product->category_id = $request->category_id;
-        $product->subcategory_id = $request->subcategory_id;
         $product->name_en = $request->name_en;
         $product->name_ban = $request->name_ban;
         $product->slug_en = Str::slug($request->name_en);
@@ -101,9 +98,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $categories = Category::latest()->orderBy('id', 'DESC')->get();
-        $subcategories = SubCategory::latest()->orderBy('id', 'DESC')->get();
         $product = Product::findOrFail($id);
-        return view('admin.product.edit', compact('product', 'subcategories', 'categories'));
+        return view('admin.product.edit', compact('product', 'categories'));
     }
 
     /**
@@ -119,7 +115,6 @@ class ProductController extends Controller
         // Update Product
         $product = Product::findOrFail($id);
         $product->category_id = $request->category_id;
-        $product->subcategory_id = $request->subcategory_id;
         $product->name_en = $request->name_en;
         $product->name_ban = $request->name_ban;
         $product->slug_en = Str::slug($request->name_en);
@@ -159,12 +154,6 @@ class ProductController extends Controller
         return redirect()->back()->with($notification);
     }
 
-
-    public function GetSubCategory($category_id)
-    {
-        $subcategory = SubCategory::where('category_id', $category_id)->orderBy('name_en', 'ASC')->get();
-        return json_encode($subcategory);
-    }
 
 
 

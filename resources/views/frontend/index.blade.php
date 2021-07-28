@@ -53,7 +53,7 @@ Home - Tech Tutorial
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-md-12 col-12">
-                                                        <span class="cat-links"><a href="#" class="text-danger">@if(session()->get('language') == 'bangla') {{ $post->category->name_ban }} @else {{ $post->category->name_en }} @endif</a></span><br>
+                                                        <span class="cat-links"><a href="{{ url('category/post/'.$post->category->id.'/'.$post->category->slug_en) }}" class="text-danger">@if(session()->get('language') == 'bangla') {{ $post->category->name_ban }} @else {{ $post->category->name_en }} @endif</a></span><br>
                                                         <strong class="font-weight-bold"><a href="@if(session()->get('language') == 'bangla') {{ route('post.show',$post->slug_en) }} @else {{ route('post.show',$post->slug_en) }} @endif ">@if(session()->get('language') == 'bangla') {{ $post->name_ban }} @else {{ $post->name_en }} @endif</a></strong>
                                                         <div class="meta fix mt-2">
                                                             <p>

@@ -17,24 +17,13 @@
         </div>
         <div class="card-body">
             <div class="row mb-4">
-                <div class="col-lg-6 col-sm-6">
+                <div class="col-lg-12 col-sm-12">
                     <!-- Form -->
                     <div class="mb-4">
                         <label class="my-1 mr-2" for="country">Category Name</label>
                         <select disabled class="form-select" id="category_id" name="category_id"
                             aria-label="Default select example">
                             <option selected disabled>{{ $product->category->name_en }}</option>
-                        </select>
-
-                    </div>
-                    <!-- End of Form -->
-                </div>
-                <div class="col-lg-6 col-sm-6">
-                    <!-- Form -->
-                    <div class="mb-4">
-                        <label class="my-1 mr-2" for="country">SubCategory Name</label>
-                        <select disabled class="form-select" id="subcategory_id" name="subcategory_id">
-                            <option selected disabled>{{ $product->subcategory->name_en }}</option>
                         </select>
 
                     </div>
@@ -96,7 +85,7 @@
                 <div class="col-lg-12 col-sm-6 mt-2">
                     <!-- Form -->
                     <label for="textarea">Long Description English</label>
-                    <textarea disabled id="editor1" class="form-control" name="long_description_ban" rows="10" cols="80">{{ $product->long_description_en }}</textarea>
+                    <textarea disabled id="editor1" class="form-control" name="long_description_ban" rows="10" cols="80">{!! $product->long_description_en !!}</textarea>
 
                     <!-- End of Form -->
                 </div>
@@ -104,11 +93,18 @@
                 <div class="col-lg-12 col-sm-6 mt-2">
                     <!-- Form -->
                     <label for="textarea">Long Description Bangla</label>
-                    <textarea disabled id="editor2" class="form-control" name="long_description_ban" rows="10" cols="80">{{ $product->long_description_ban }}</textarea>
+                    <textarea disabled id="editor2" class="form-control" name="long_description_ban" rows="10" cols="80">{!! $product->long_description_ban !!}</textarea>
                     <!-- End of Form -->
                 </div>
             </div>
         </div>
     </div>
 </div>
+@section('custrom_script')
+<!-- CK EDITOR -->
+<script src="{{ asset('backend') }}/assets/custrom_editor/ckeditor/ckeditor.js"></script>
+<script src="{{ asset('backend') }}/assets/custrom_editor/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js"></script>
+<script src="{{ asset('backend') }}/assets/custrom_editor/editor.js"></script>
+@endsection
+
 @endsection

@@ -18,6 +18,8 @@ class CreateCategoriesTable extends Migration
             $table->string('image');
             $table->string('name_en')->unique();
             $table->string('name_ban')->unique();
+            $table->text('description_en');
+            $table->text('description_ban');
             $table->string('slug_en');
             $table->string('slug_ban');
             $table->integer('status');

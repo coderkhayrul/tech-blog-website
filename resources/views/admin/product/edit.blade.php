@@ -21,7 +21,7 @@
                 <div class="row mb-4">
                     @csrf
                     <input type="hidden" name="id" value="{{ $product->id }}">
-                    <div class="col-lg-6 col-sm-6">
+                    <div class="col-lg-12 col-sm-12">
                         <!-- Form -->
                         <div class="mb-4">
                             <label class="my-1 mr-2" for="country">Select Category</label>
@@ -35,27 +35,6 @@
                                 @endforeach
                             </select>
                             @error('category_id')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        <!-- End of Form -->
-                    </div>
-                    <div class="col-lg-6 col-sm-6">
-                        <!-- Form -->
-                        <div class="mb-4">
-                            <label class="my-1 mr-2" for="country">Select SubCategory</label>
-                            <select class="form-select @error('subcategory_id') is-invalid @enderror"
-                                id="subcategory_id" name="subcategory_id">
-                                <option selected disabled>Select SubCategory</option>
-                                @foreach ($subcategories as $subcategory)
-                                <option value="{{ $subcategory->id }}"
-                                    {{ $subcategory->id == $product->subcategory_id ? 'selected' : '' }}>
-                                    {{ $subcategory->name_en }}</option>
-                                @endforeach
-                            </select>
-                            @error('subcategory_id')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

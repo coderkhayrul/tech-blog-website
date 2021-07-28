@@ -54,14 +54,6 @@ $route = Route::current()->getName();
                 </a>
             </li>
             <!-- Category End -->
-            <!-- SubCategory Start -->
-            <li class="nav-item {{ ($prefix == '/subcategory')? 'active' : '' }}">
-                <a href="{{ route('subcategory.index') }}" class="nav-link">
-                    <span class="sidebar-icon"><span class="fas fa-list"></span></span>
-                    <span>Sub Category</span>
-                </a>
-            </li>
-            <!-- SubCategory End -->
             <!-- Product Start -->
             <li class="nav-item {{ ($prefix == '/product')? 'active' : '' }}">
                 <a href="{{ route('product.index') }}" class="nav-link">

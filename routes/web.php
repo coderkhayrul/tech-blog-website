@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\LanguageController;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -108,5 +109,14 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/contact', [AdminController::class, 'settingContact'])->name('admin.setting.contact');
         Route::post('/contact/update/{id}', [AdminController::class, 'settingContactUpdate'])->name('setting.contact.update');
+    });
+
+    // ADMIN SETTING ROUTES
+    Route::prefix('profile')->group(function () {
+
+        Route::get('/view', [ProfileController::class, 'profileView'])->name('admin.profile.view');
+        Route::get('/edit', [ProfileController::class, 'profileEdit'])->name('admin.profile.edit');
+        Route::post('/update', [ProfileController::class, 'profileUpdate'])->name('admin.profile.update');
+        Route::post('/image/update', [ProfileController::class, 'profileImageUpdate'])->name('admin.profile.image.update');
     });
 });

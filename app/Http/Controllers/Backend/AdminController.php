@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -13,7 +15,18 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        return view('admin.dashboard');
+        // Product
+        $posts = Product::all();
+        $activePosts = Product::where('status', 1)->get();
+        $inActivePosts = Product::where('status', 0)->get();
+
+        // Category
+        $categories = Category::all();
+        $activeCategory = Category::where('status', 1)->get();
+        $InActiveCategory = Category::where('status', 0)->get();
+
+
+        return view('admin.dashboard', compact('posts', 'activePosts', 'inActivePosts', 'categories', 'activeCategory', 'InActiveCategory'));
     }
 
     public function adminLogout()

@@ -51,14 +51,8 @@
 <body>
 
 
-
-
-
-
-
     {{-- NAVBAR --}}
     @include('admin.common.sidebar')
-
 
 
 

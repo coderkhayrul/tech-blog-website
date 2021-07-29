@@ -2,88 +2,77 @@
 
 @section('content')
 
-<div class="col-12 mb-4">
-    <div class="card bg-yellow-alt shadow-sm">
-        <div class="card-header d-flex flex-row align-items-center flex-0">
-            <div class="d-block">
-                <div class="h5 font-weight-normal mb-2">Sales Value</div>
-                <h2 class="h3">$10,567</h2>
-                <div class="small mt-2">
-                    <span class="font-weight-bold mr-2">Yesterday</span>
-                    <span class="fas fa-angle-up text-success"></span>
-                    <span class="text-success font-weight-bold">10.57%</span>
-                </div>
-            </div>
-            <div class="d-flex ml-auto">
-                <a href="#" class="btn btn-secondary text-dark btn-sm mr-2">Month</a>
-                <a href="#" class="btn btn-primary btn-sm mr-3">Week</a>
-            </div>
-        </div>
-        <div class="card-body p-2">
-            <div class="ct-chart-sales-value ct-double-octave ct-series-g"></div>
-        </div>
-    </div>
-</div>
-
+<!-- Total Post Start -->
 <div class="col-12 col-sm-6 col-xl-4 mb-4">
     <div class="card border-light shadow-sm">
         <div class="card-body">
             <div class="row d-block d-xl-flex align-items-center">
                 <div
                     class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
-                    <div class="icon icon-shape icon-md icon-shape-blue rounded mr-4 mr-sm-0"><span
-                            class="fas fa-chart-line"></span></div>
+                    <div class="icon icon-shape icon-md icon-shape-blue rounded mr-4 mr-sm-0">
+                        <span class="fas fa-dumpster-fire"></span></div>
                     <div class="d-sm-none">
-                        <h2 class="h5">Customers</h2>
-                        <h3 class="mb-1">345,678</h3>
+                        <h2 class="h5">Total Post</h2>
+                        <h3 class="mb-1">{{ count($posts) }}</h3>
                     </div>
                 </div>
                 <div class="col-12 col-xl-7 px-xl-0">
                     <div class="d-none d-sm-block">
-                        <h2 class="h5">Customers</h2>
-                        <h3 class="mb-1">345k</h3>
+                        <h2 class="h5">Total Post</h2>
+                        <h3 class="mb-1">{{ count($posts) }}</h3>
                     </div>
-                    <small>Feb 1 - Apr 1, <span class="icon icon-small"><span
-                                class="fas fa-globe-europe"></span></span> WorldWide</small>
-                    <div class="small mt-2">
-                        <span class="fas fa-angle-up text-success"></span>
-                        <span class="text-success font-weight-bold">18.2%</span> Since last month
-                    </div>
+                    <small>Active
+                        <span class="icon icon-small">
+                            <span class="fas fa-check text-success"></span>
+                        </span> {{ count($activePosts) }}</small>
+                    <br>
+                    <small>Inactive
+                        <span class="icon icon-small text-danger">
+                            <span class="fas fa-times"></span>
+                        </span> {{ count($inActivePosts) }}</small>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+<!-- Total Post End -->
+<!-- Total Category Start -->
 <div class="col-12 col-sm-6 col-xl-4 mb-4">
     <div class="card border-light shadow-sm">
         <div class="card-body">
             <div class="row d-block d-xl-flex align-items-center">
                 <div
                     class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
-                    <div class="icon icon-shape icon-md icon-shape-secondary rounded mr-4"><span
-                            class="fas fa-cash-register"></span></div>
+                    <div class="icon icon-shape icon-md icon-shape-secondary rounded mr-4 mr-sm-0">
+                        <span class="fas fa-clipboard-list"></span></div>
                     <div class="d-sm-none">
-                        <h2 class="h5">Revenue</h2>
-                        <h3 class="mb-1">$43,594</h3>
+                        <h2 class="h5">Total Category</h2>
+                        <h3 class="mb-1">{{ count($categories) }}</h3>
                     </div>
                 </div>
                 <div class="col-12 col-xl-7 px-xl-0">
                     <div class="d-none d-sm-block">
-                        <h2 class="h5">Revenue</h2>
-                        <h3 class="mb-1">$43,594</h3>
+                        <h2 class="h5">Total Category</h2>
+                        <h3 class="mb-1">{{ count($categories) }}</h3>
                     </div>
-                    <small>Feb 1 - Apr 1, <span class="icon icon-small"><span
-                                class="fas fa-globe-europe"></span></span> Worldwide</small>
-                    <div class="small mt-2">
-                        <span class="fas fa-angle-up text-success"></span>
-                        <span class="text-success font-weight-bold">28.2%</span> Since last month
-                    </div>
+                    <small>Active
+                        <span class="icon icon-small">
+                            <span class="fas fa-check text-success"></span>
+                        </span> {{ count($activeCategory) }}</small>
+                    <br>
+                    <small>Inactive
+                        <span class="icon icon-small text-danger">
+                            <span class="fas fa-times"></span>
+                        </span> {{ count($InActiveCategory) }}</small>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- Total Category End -->
+
 
 <div class="col-12 col-sm-6 col-xl-4 mb-4">
     <div class="card border-light shadow-sm">

@@ -21,10 +21,9 @@ class FrontendController extends Controller
 
         // Category Wise Product Show (PC & MOBILE)
         $skip_category = Category::skip(6)->first();
-        $skip_products = Product::where('status', 1)
-            ->where('category_id', $skip_category->id)
-            ->orderBy('id', 'DESC')->limit(4)->get();
 
+        $skip_products = Product::where('status', 1)->where('category_id', '==', $skip_category)
+            ->orderBy('id', 'DESC')->get();
 
         return view('frontend.index', compact('posts', 'skip_products', 'popularpost'));
     }

@@ -158,7 +158,7 @@
                         aria-haspopup="true" aria-expanded="false">
                         <div class="media d-flex align-items-center">
                             <img class="user-avatar md-avatar rounded-circle" alt="Image placeholder"
-                                src="{{asset($admin->profile_image) }}">
+                                src="{{ $admin->profile_image != NULL ? asset($admin->profile_image) : asset('backend').'/assets/img/team/profile-picture-3.jpg' }}">
                             <div class="media-body ml-2 text-dark align-items-center d-none d-lg-block">
                                 <span class="mb-0 font-small font-weight-bold">{{ Auth::user()->name }}</span>
                             </div>

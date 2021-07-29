@@ -17,8 +17,6 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->ondelete('cascade');
-            $table->unsignedBigInteger('subcategory_id');
-            $table->foreign('subcategory_id')->references('id')->on('sub_categories')->ondelete('cascade');
             $table->string('name_en');
             $table->string('name_ban');
             $table->string('slug_en');

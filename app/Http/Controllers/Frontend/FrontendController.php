@@ -72,4 +72,31 @@ class FrontendController extends Controller
 
         return view('frontend.category_wise', compact('productByCategory', 'category'));
     }
+
+    // WEBSITE INCLUDE VIEW PAGE
+
+    public function homeContact()
+    {
+        return view('frontend.include.contact');
+    }
+
+    public function homeAbout()
+    {
+        return view('frontend.include.about');
+    }
+
+    public function homeCopyright()
+    {
+        return view('frontend.include.copyright');
+    }
+
+    public function homePrivacy()
+    {
+        return view('frontend.include.privacy');
+    }
+
+    public function homeTerms()
+    {
+        return view('frontend.include.terms');
+    }
 }

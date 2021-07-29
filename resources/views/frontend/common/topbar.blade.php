@@ -18,16 +18,7 @@ $admin_settings = App\Models\Admin::find(1);
                         <a href="#"><i class="fa fa-clock-o"></i>@if (session()->get('language') == 'bangla') {{ bangla_date(time(),"en") }} @else {{ \Carbon\Carbon::parse($date)->format('d F Y')}} @endif</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-info-circle"></i> @if (session()->get('language') == 'bangla')আমাদের সম্পর্কে @else About Us @endif</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-comments"></i>@if (session()->get('language') == 'bangla')যোগাযোগ করুন @else Contact Us @endif</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-exclamation-triangle"></i>@if (session()->get('language') == 'bangla')ডিএমসিএ @else DMCA @endif</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-rss-square"></i>@if (session()->get('language') == 'bangla')ব্লগ @else Blog @endif</a>
+                        <a href="{{ route('home.contact') }}"><i class="fa fa-comments"></i>@if (session()->get('language') == 'bangla')যোগাযোগ করুন @else Contact Us @endif</a>
                     </li>
                     <!-- Language Changes Start -->
                     @if (session()->get('language') == 'bangla')

@@ -29,6 +29,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontendController::class, 'index'])->name('home.page');
 
+// Website Include Route List Start
+Route::get('/contact', [FrontendController::class, 'homeContact'])->name('home.contact');
+Route::get('/about', [FrontendController::class, 'homeAbout'])->name('home.about');
+Route::get('/copyright', [FrontendController::class, 'homeCopyright'])->name('home.copyright');
+Route::get('/privacy', [FrontendController::class, 'homePrivacy'])->name('home.privacy');
+Route::get('/terms', [FrontendController::class, 'homeTerms'])->name('home.terms');
+// Website Include Route List Start
+
 Route::get('post/{slug}', [FrontendController::class, 'postShow'])->name('post.show');
 
 Route::get('category/post/{id}/{slug}', [FrontendController::class, 'categoryPostAll']);

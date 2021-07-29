@@ -23,6 +23,18 @@
                                 </li>
 
                                 <li><a href="{{ url('category/post/'.$category->id.'/'.$category->slug_en) }}">@if (session()->get('language') == 'bangla')টেক নিউস @else Tech News @endif</a></li>
+
+                                <li class="has-dropdown"><a href="#">@if (session()->get('language') == 'bangla')সম্পর্কিত @else About @endif</a>
+                                    <!-- Submenu Start -->
+                                    <ul class="sub-menu">
+
+                                        <li><a href="{{ route('home.about') }}">@if (session()->get('language') == 'bangla')T.I.W সম্পর্কে @else About T.I.W @endif</a></li>
+                                        <li><a href="{{ route('home.copyright') }}">@if (session()->get('language') == 'bangla')কপিরাইট @else Copyright @endif</a></li>
+                                        <li><a href="{{ route('home.privacy') }}">@if (session()->get('language') == 'bangla')গোপনীয়তা @else Privacy @endif </a></li>
+                                        <li><a href="{{ route('home.terms') }}">@if (session()->get('language') == 'bangla')সেবা পাবার শর্ত @else Terms of Service @endif </a></li>
+
+                                    </ul><!-- Submenu End -->
+                                </li>
                             </ul>
                         </nav>
                     </div><!-- Main Menu Start -->

@@ -29,6 +29,7 @@ $admin_settings = App\Models\Admin::find(1);
                     <li>
                         <a href="#"><i class="fa fa-rss-square"></i>@if (session()->get('language') == 'bangla')ব্লগ @else Blog @endif</a>
                     </li>
+                    <!-- Language Changes Start -->
                     @if (session()->get('language') == 'bangla')
                     <li>
                         <a href="{{ route('english.language') }}"><i class="fa fa-language"></i></i>English</a>
@@ -38,6 +39,7 @@ $admin_settings = App\Models\Admin::find(1);
                         <a href="{{ route('bangla.language') }}"><i class="fa fa-language"></i>বাংলা</a>
                     </li>
                     @endif
+                    <!-- Language Changes End -->
 
                 </ul>
 
@@ -67,7 +69,7 @@ $admin_settings = App\Models\Admin::find(1);
 
             <!-- Header Logo -->
             <div class="header-logo col-md-4 d-none d-md-block">
-                <a href="{{ url('/') }}" class="logo"><img src="{{ asset($admin_settings->title_image) }}" alt="Logo"></a>
+                <a href="{{ url('/') }}" class="logo"><img src="{{ $admin_settings->title_image != NULL ? asset($admin_settings->title_image) : '/upload/default/logo.png' }}" alt="Logo"></a>
             </div>
 
             <!-- Header 734 * 90 Banner Ads Start -->

@@ -16,11 +16,10 @@
     <meta name="theme color" content="{{ $admin_settings->theme_color }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset($admin_settings->fav_icon) }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ $admin_settings->fav_icon != NULL ? asset($admin_settings->fav_icon) : 'upload/defualt/fav_icon.png' }}">
 
-    <!-- CSS
-	============================================ -->
-
+    <!-- =========== CSS =========== -->
+    <!-- Custrom Style -->
     @yield('custrom_style')
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/bootstrap.min.css">

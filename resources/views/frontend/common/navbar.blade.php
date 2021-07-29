@@ -8,7 +8,6 @@
                     <div class="main-menu float-left d-none d-md-block">
                         @php
                             $categories = App\Models\Category::OrderBy('id', 'ASC')->get();
-                            // dd($categories);
                         @endphp
                         <nav>
                             <ul>
@@ -50,9 +49,6 @@
                         </div>
 
                     </div>
-
-
-
 
 
                     <!-- Mobile Menu Wrap -->

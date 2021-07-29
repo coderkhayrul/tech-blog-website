@@ -22,7 +22,7 @@ Home - Tech Tutorial
                         <div class="meta fix">
                             <a href="{{ url('category/post/'.$post->category->id.'/'.$post->category->slug_en) }}" class="meta-item category education">@if(session()->get('language') == 'bangla') {{ $post->category->name_ban }} @else {{ $post->category->name_en }} @endif</a>
                             <a href="#" class="meta-item author">
-                                <img src="{{ asset('upload/author/author_main.png') }}" alt="post author">
+                                <img src="{{ asset('upload/default/author_main.png') }}" alt="post author">
                                 Khayrul Islam Shanto
                             </a>
                             <span class="meta-item date"><i class="fa fa-clock-o"></i>{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</span>

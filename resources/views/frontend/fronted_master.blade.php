@@ -11,7 +11,7 @@
     <meta name="description" content="@if(session()->get('language') == 'bangla'){{ $admin_settings->meta_description_ban }}@else{{ $admin_settings->meta_description_en }}@endif">
     <meta name="title" content="@if(session()->get('language') == 'bangla'){{ $admin_settings->meta_title_ban }}@else{{ $admin_settings->meta_title_en }}@endif">
     <meta name="author" content="@if(session()->get('language') == 'bangla'){{ $admin_settings->meta_author_ban }}@else{{ $admin_settings->meta_author_en }}@endif">
-    <meta name="domain" content="@if(session()->get('language') == 'bangla')'coderkhayrul.xyz'@else'coderkhayrul.xyz'@endif">
+    <meta name="domain" content="@if(session()->get('language') == 'bangla')'trickitworld.xyz'@else'trickitworld.xyz'@endif">
     <meta name="keyword" content="@if(session()->get('language') == 'bangla'){{ $admin_settings->meta_keyword_ban }}@else{{ $admin_settings->meta_keyword_en }}@endif">
     <meta name="theme color" content="{{ $admin_settings->theme_color }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">

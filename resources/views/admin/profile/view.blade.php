@@ -25,7 +25,7 @@ Admin Panel || My Profile
                     <div class="card border-light text-center p-0">
                         <div class="profile-cover rounded-top" data-background="{{ asset('backend') }}/assets/img/profile-cover.jpg" style="background: url(&quot;../assets/img/profile-cover.jpg&quot;);"></div>
                         <div class="card-body pb-5">
-                            <img src="{{ $profile->profile_image != NULL ? asset($profile->profile_image) : asset('upload/default/admin/apple_favicon_dark.png') }}" class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
+                            <img src="{{ $profile->profile_image != NULL ? asset($profile->profile_image) : asset('default/admin/admin_default_bg.png') }}" class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
                             <h4 class="h3">{{ $profile->name }}</h4>
                             <h5 class="font-weight-normal">{{ $profile->profession }}</h5>
                             <p class="text-gray mb-4">{{ $profile->address }}</p>

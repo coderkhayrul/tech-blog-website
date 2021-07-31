@@ -27,7 +27,7 @@ Admin Panel || Category Edit
                     <div class="col-lg-12 col-sm-12">
                         <!-- Form -->
                         <div class="mb-4">
-                            <label for="formFile" class="form-label">Category Image</label>
+                            <label for="formFile" class="form-label">Category Image <span class="text-danger">( 770 * 294)</span>px</label>
                             <input name="image" onChange="mainThamUrl(this)"
                                 class="form-control @error('image') is-invalid @enderror" type="file" id="formFile">
                             @error('image')

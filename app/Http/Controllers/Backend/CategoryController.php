@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
 {
@@ -114,8 +115,12 @@ class CategoryController extends Controller
 
     public function Destroy(Category $category)
     {
+        $image = $category->image;
+
+        if (File::exists($image)) {
+            unlink($image);
+        }
         $category->product()->delete();
-        unlink($category->image);
         $category->delete();
 
         $notification =  array(

@@ -5,9 +5,8 @@ $route = Route::current()->getName();
 
 
 <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-md-none">
-    <a class="navbar-brand mr-lg-5" href="../../index.html">
-        <img class="navbar-brand-dark" src="{{ asset('backend') }}/assets/img/brand/light.svg" alt="Volt logo" /> <img
-            class="navbar-brand-light" src="{{ asset('backend') }}/assets/img/brand/dark.svg" alt="Volt logo" />
+    <a class="navbar-brand mr-lg-5" href="{{ url('/admin') }}">
+        <img class="navbar-brand-dark" src="{{ asset('default/admin/apple_favicon_white.png') }}" alt="Website logo" />
     </a>
     <div class="d-flex align-items-center">
         <button class="navbar-toggler d-md-none collapsed" type="button" data-toggle="collapse"
@@ -16,14 +15,16 @@ $route = Route::current()->getName();
         </button>
     </div>
 </nav>
-
+@php
+    $admin = App\Models\User::where('id', Auth::id())->first();
+@endphp
 <nav id="sidebarMenu" class="sidebar d-md-block bg-primary text-white collapse" data-simplebar>
     <div class="sidebar-inner px-4 pt-3">
         <div
             class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
             <div class="d-flex align-items-center">
                 <div class="user-avatar lg-avatar mr-4">
-                    <img src="{{ asset('backend') }}/assets/img/team/profile-picture-3.jpg"
+                    <img src="{{ $admin->profile_image == NULL ? asset('default/admin/apple_favicon_dark.png') : asset($admin->profile_image) }}"
                         class="card-img-top rounded-circle border-white" alt="Bonnie Green">
                 </div>
                 <div class="d-block">
@@ -105,7 +106,7 @@ $route = Route::current()->getName();
             <li class="nav-item">
                 <a href="#" class="nav-link d-flex align-items-center">
                     <span class="sidebar-icon">
-                        <img src="{{ asset('backend') }}/assets/img/brand/light.svg" height="20" width="20"
+                        <img src="{{ asset('default/admin/apple_favicon_white.png') }}" height="20" width="20"
                             alt="Volt Logo">
                     </span>
                     <span class="mt-1">Support Team</span>

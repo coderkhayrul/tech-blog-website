@@ -14,8 +14,8 @@
                     <a class="nav-link pt-1 px-0" href="#" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <div class="media d-flex align-items-center">
-                            <img class="user-avatar md-avatar rounded-circle" alt="Image placeholder"
-                                src="{{ $admin->profile_image == NULL ? asset('upload/default/admin/apple_favicon_dark.png') : asset($admin->profile_image) }}">
+                            <img class="user-avatar md-avatar rounded-circle" alt="Admin Image"
+                                src="{{ $admin->profile_image == NULL ? asset('default/admin/favicon_dark.png') : asset($admin->profile_image) }}">
                             <div class="media-body ml-2 text-dark align-items-center d-none d-lg-block">
                                 <span class="mb-0 font-small font-weight-bold">{{ Auth::user()->name }}</span>
                             </div>

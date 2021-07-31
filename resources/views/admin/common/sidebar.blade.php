@@ -47,7 +47,7 @@ $route = Route::current()->getName();
             </li>
             <!-- Dashboard End -->
             <!-- Category Start -->
-            <li class="nav-item {{ ($prefix == '/category')? 'active' : '' }}">
+            <li class="nav-item {{ ($route == 'category.index')? 'active' : '' }}">
                 <a href="{{ route('category.index') }}" class="nav-link">
                     <span class="sidebar-icon"><span class="fas fa-th-list"></span></span>
                     <span>Categories</span>

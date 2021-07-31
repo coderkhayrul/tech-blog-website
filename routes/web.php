@@ -57,83 +57,85 @@ Route::get('/language/bangla/', [LanguageController::class, 'Bangla'])->name('ba
 
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Auth::routes([
-    'register' => false, // Registration Routes...
-    'reset' => false, // Password Reset Routes...
-    'verify' => false, // Email Verification Routes...
-    'forgot' => false, //Email Forgot Routes...
-]);
+Route::prefix('admin')->group(function () {
+    Auth::routes([
+        'register' => false, // Registration Routes...
+        'reset' => false, // Password Reset Routes...
+        'verify' => false, // Email Verification Routes...
+        'forgot' => false, //Email Forgot Routes...
+    ]);
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/admin/logout', [AdminController::class, 'adminLogout'])->name('admin.logout');
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/logout', [AdminController::class, 'adminLogout'])->name('admin.logout');
 
-    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    // ADMIN CATEGORY ROUTES
-    Route::prefix('category')->group(function () {
+        Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+        // ADMIN CATEGORY ROUTES
+        Route::prefix('category')->group(function () {
 
-        Route::get('/', [CategoryController::class, 'Index'])->name('category.index');
-        Route::get('/create', [CategoryController::class, 'Create'])->name('category.create');
-        Route::post('/store', [CategoryController::class, 'Store'])->name('category.store');
-        Route::get('/edit/{category}', [CategoryController::class, 'Edit'])->name('category.edit');
-        Route::post('/update/{category}', [CategoryController::class, 'Update'])->name('category.update');
-        Route::get('/destroy/{category}', [CategoryController::class, 'Destroy'])->name('category.destroy');
-    });
+            Route::get('/', [CategoryController::class, 'Index'])->name('category.index');
+            Route::get('/create', [CategoryController::class, 'Create'])->name('category.create');
+            Route::post('/store', [CategoryController::class, 'Store'])->name('category.store');
+            Route::get('/edit/{category}', [CategoryController::class, 'Edit'])->name('category.edit');
+            Route::post('/update/{category}', [CategoryController::class, 'Update'])->name('category.update');
+            Route::get('/destroy/{category}', [CategoryController::class, 'Destroy'])->name('category.destroy');
+        });
 
-    // ADMIN SUBCATEGORY ROUTES
-    Route::prefix('subcategory')->group(function () {
+        // ADMIN SUBCATEGORY ROUTES
+        Route::prefix('subcategory')->group(function () {
 
-        Route::get('/', [SubCategoryController::class, 'index'])->name('subcategory.index');
-        Route::get('/create', [SubCategoryController::class, 'create'])->name('subcategory.create');
-        Route::post('/store', [SubCategoryController::class, 'store'])->name('subcategory.store');
-        Route::get('/edit/{id}', [SubCategoryController::class, 'edit'])->name('subcategory.edit');
-        Route::post('/update/{id}', [SubCategoryController::class, 'update'])->name('subcategory.update');
-        Route::get('/destroy/{id}', [SubCategoryController::class, 'destroy'])->name('subcategory.destroy');
-    });
+            Route::get('/', [SubCategoryController::class, 'index'])->name('subcategory.index');
+            Route::get('/create', [SubCategoryController::class, 'create'])->name('subcategory.create');
+            Route::post('/store', [SubCategoryController::class, 'store'])->name('subcategory.store');
+            Route::get('/edit/{id}', [SubCategoryController::class, 'edit'])->name('subcategory.edit');
+            Route::post('/update/{id}', [SubCategoryController::class, 'update'])->name('subcategory.update');
+            Route::get('/destroy/{id}', [SubCategoryController::class, 'destroy'])->name('subcategory.destroy');
+        });
 
-    // ADMIN PRODUCT ROUTES
-    Route::prefix('product')->group(function () {
+        // ADMIN PRODUCT ROUTES
+        Route::prefix('product')->group(function () {
 
-        Route::get('/', [ProductController::class, 'index'])->name('product.index');
-        Route::get('/create', [ProductController::class, 'create'])->name('product.create');
-        Route::post('/store', [ProductController::class, 'store'])->name('product.store');
-        Route::get('/view/{id}', [ProductController::class, 'show'])->name('product.view');
-        Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
-        Route::post('/update/{id}', [ProductController::class, 'update'])->name('product.update');
-        Route::get('/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+            Route::get('/', [ProductController::class, 'index'])->name('product.index');
+            Route::get('/create', [ProductController::class, 'create'])->name('product.create');
+            Route::post('/store', [ProductController::class, 'store'])->name('product.store');
+            Route::get('/view/{id}', [ProductController::class, 'show'])->name('product.view');
+            Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+            Route::post('/update/{id}', [ProductController::class, 'update'])->name('product.update');
+            Route::get('/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
 
-        Route::post('/image/update/{id}', [ProductController::class, 'productImageUpdate'])->name('product.image.update');
+            Route::post('/image/update/{id}', [ProductController::class, 'productImageUpdate'])->name('product.image.update');
 
-        Route::get('/subcategory/ajax/{category_id}', [ProductController::class, 'GetSubCategory']);
+            Route::get('/subcategory/ajax/{category_id}', [ProductController::class, 'GetSubCategory']);
 
-        Route::get('/status/enable/{id}', [ProductController::class, 'productStatusEnable'])->name('product.status.enable');
-        Route::get('/status/disable/{id}', [ProductController::class, 'productStatusDisable'])->name('product.status.disable');
-    });
+            Route::get('/status/enable/{id}', [ProductController::class, 'productStatusEnable'])->name('product.status.enable');
+            Route::get('/status/disable/{id}', [ProductController::class, 'productStatusDisable'])->name('product.status.disable');
+        });
 
-    // ADMIN SETTING ROUTES
-    Route::prefix('setting')->group(function () {
+        // ADMIN SETTING ROUTES
+        Route::prefix('setting')->group(function () {
 
-        Route::get('/index', [AdminController::class, 'setting'])->name('setting.index');
-        Route::post('/update/{id}', [AdminController::class, 'settingUpdate'])->name('admin.setting.update');
+            Route::get('/index', [AdminController::class, 'setting'])->name('setting.index');
+            Route::post('/update/{id}', [AdminController::class, 'settingUpdate'])->name('admin.setting.update');
 
-        Route::get('/social', [AdminController::class, 'settingSocial'])->name('admin.setting.social');
-        Route::post('/social/update/{id}', [AdminController::class, 'settingSocialUpdate'])->name('setting.social.update');
+            Route::get('/social', [AdminController::class, 'settingSocial'])->name('admin.setting.social');
+            Route::post('/social/update/{id}', [AdminController::class, 'settingSocialUpdate'])->name('setting.social.update');
 
-        Route::get('/seo', [AdminController::class, 'settingSeo'])->name('admin.setting.seo');
-        Route::post('/seo/update/{id}', [AdminController::class, 'settingSeoUpdate'])->name('setting.seo.update');
+            Route::get('/seo', [AdminController::class, 'settingSeo'])->name('admin.setting.seo');
+            Route::post('/seo/update/{id}', [AdminController::class, 'settingSeoUpdate'])->name('setting.seo.update');
 
-        Route::get('/contact', [AdminController::class, 'settingContact'])->name('admin.setting.contact');
-        Route::post('/contact/update/{id}', [AdminController::class, 'settingContactUpdate'])->name('setting.contact.update');
-    });
+            Route::get('/contact', [AdminController::class, 'settingContact'])->name('admin.setting.contact');
+            Route::post('/contact/update/{id}', [AdminController::class, 'settingContactUpdate'])->name('setting.contact.update');
+        });
 
-    // ADMIN SETTING ROUTES
-    Route::prefix('profile')->group(function () {
+        // ADMIN SETTING ROUTES
+        Route::prefix('profile')->group(function () {
 
-        Route::get('/view', [ProfileController::class, 'profileView'])->name('admin.profile.view');
-        Route::get('/edit', [ProfileController::class, 'profileEdit'])->name('admin.profile.edit');
-        Route::post('/update', [ProfileController::class, 'profileUpdate'])->name('admin.profile.update');
-        Route::post('/image/update', [ProfileController::class, 'profileImageUpdate'])->name('admin.profile.image.update');
+            Route::get('/view', [ProfileController::class, 'profileView'])->name('admin.profile.view');
+            Route::get('/edit', [ProfileController::class, 'profileEdit'])->name('admin.profile.edit');
+            Route::post('/update', [ProfileController::class, 'profileUpdate'])->name('admin.profile.update');
+            Route::post('/image/update', [ProfileController::class, 'profileImageUpdate'])->name('admin.profile.image.update');
+        });
     });
 });

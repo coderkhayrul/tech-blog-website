@@ -47,7 +47,7 @@ $route = Route::current()->getName();
             </li>
             <!-- Dashboard End -->
             <!-- Category Start -->
-            <li class="nav-item {{ ($route == 'category.index')? 'active' : '' }}">
+            <li class="nav-item {{ request()->is('admin/category*') ? 'active' : '' }}">
                 <a href="{{ route('category.index') }}" class="nav-link">
                     <span class="sidebar-icon"><span class="fas fa-th-list"></span></span>
                     <span>Categories</span>
@@ -55,14 +55,14 @@ $route = Route::current()->getName();
             </li>
             <!-- Category End -->
             <!-- Product Start -->
-            <li class="nav-item {{ ($prefix == '/product')? 'active' : '' }}">
+            <li class="nav-item {{ request()->is('admin/product*') ? 'active' : '' }}">
                 <a href="{{ route('product.index') }}" class="nav-link">
                     <span class="sidebar-icon"><span class="fas fa-box"></span></span>
                     <span>Product</span>
                 </a>
             </li>
             <!-- Product End -->
-            <li class="nav-item {{ ($prefix == '/setting')? 'active' : '' }}">
+            <li class="nav-item {{ request()->is('admin/setting*') ? 'active' : '' }}">
                 <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
                     data-toggle="collapse" data-target="#submenu-app">
                     <span>
@@ -103,7 +103,7 @@ $route = Route::current()->getName();
 
             <li role="separator" class="dropdown-divider mt-4 mb-3 border-black"></li>
             <li class="nav-item">
-                <a href="../../index.html" class="nav-link d-flex align-items-center">
+                <a href="#" class="nav-link d-flex align-items-center">
                     <span class="sidebar-icon">
                         <img src="{{ asset('backend') }}/assets/img/brand/light.svg" height="20" width="20"
                             alt="Volt Logo">

@@ -41,7 +41,7 @@
                             <a href="{{ route('product.status.disable',$product->id) }}">
                                 <span class="badge bg-success">Active</span>
                             </a>
-                            @else
+                            @elseProduct Image Edit
                             <a href="{{ route('product.status.enable',$product->id) }}">
                                 <span class="badge bg-danger">InActive</span>
                             </a>

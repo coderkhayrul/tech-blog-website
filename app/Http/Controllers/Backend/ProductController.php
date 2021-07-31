@@ -164,22 +164,31 @@ class ProductController extends Controller
         $old_banner_image = $request->old_banner_image;
 
         // Thambnail Image
-        $thambnail_image = $request->file('thambnail_image');
-        $make_name = hexdec(uniqid()) . '.' . $thambnail_image->getClientOriginalExtension();
-        if ($old_thambnail_image) {
-            unlink($old_thambnail_image);
+        if ($request->has('thambnail_image')) {
+            $thambnail_image = $request->file('thambnail_image');
+            $make_name = hexdec(uniqid()) . '.' . $thambnail_image->getClientOriginalExtension();
+            if ($old_thambnail_image) {
+                unlink($old_thambnail_image);
+            }
+            Image::make($thambnail_image)->resize(371, 221)->save('upload/products/' . $make_name);
+            $upload_thambnail_image = 'upload/products/' . $make_name;
+        } else {
+            $upload_thambnail_image = $old_thambnail_image;
         }
-        Image::make($thambnail_image)->resize(371, 221)->save('upload/products/' . $make_name);
-        $upload_thambnail_image = 'upload/products/' . $make_name;
 
         // Banner Image
-        $banner_image = $request->file('banner_image');
-        $make_name_banner = hexdec(uniqid()) . '.' . $banner_image->getClientOriginalExtension();
-        if ($old_banner_image) {
-            unlink($old_banner_image);
+        if ($request->has('banner_image')) {
+
+            $banner_image = $request->file('banner_image');
+            $make_name_banner = hexdec(uniqid()) . '.' . $banner_image->getClientOriginalExtension();
+            if ($old_banner_image) {
+                unlink($old_banner_image);
+            }
+            Image::make($banner_image)->resize(770, 394)->save('upload/products/' . $make_name_banner);
+            $upload_banner_image = 'upload/products/' . $make_name_banner;
+        } else {
+            $upload_banner_image = $old_banner_image;
         }
-        Image::make($banner_image)->resize(770, 394)->save('upload/products/' . $make_name_banner);
-        $upload_banner_image = 'upload/products/' . $make_name_banner;
 
         Product::findOrFail($id)->update([
             'thambnail_image' => $upload_thambnail_image,

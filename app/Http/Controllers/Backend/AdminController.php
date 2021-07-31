@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
+use function PHPUnit\Framework\isEmpty;
+
 class AdminController extends Controller
 {
     public function dashboard()
@@ -50,23 +52,30 @@ class AdminController extends Controller
         $old_title_image = $request->old_title_image;
 
         // FAV ICON Image
-        $fav_icon = $request->file('fav_icon');
-        $make_name = hexdec(uniqid()) . '.' . $fav_icon->getClientOriginalExtension();
-        if ($old_fav_icon) {
-            unlink($old_fav_icon);
+        if (request()->has('fav_icon')) {
+            $fav_icon = $request->file('fav_icon');
+            $make_name = hexdec(uniqid()) . '.' . $fav_icon->getClientOriginalExtension();
+            if ($old_fav_icon) {
+                unlink($old_fav_icon);
+            }
+            Image::make($fav_icon)->resize(32, 32)->save('upload/setting/image/' . $make_name);
+            $upload_fav_icon = 'upload/setting/image/' . $make_name;
+        } else {
+            $upload_fav_icon = $old_fav_icon;
         }
-        Image::make($fav_icon)->resize(32, 32)->save('upload/setting/image/' . $make_name);
-        $upload_fav_icon = 'upload/setting/image/' . $make_name;
 
         // TITLE Image
-        $title_image = $request->file('title_image');
-        $make_name_title = hexdec(uniqid()) . '.' . $title_image->getClientOriginalExtension();
-        if ($old_title_image) {
-            unlink($old_title_image);
+        if (request()->has('title_image')) {
+            $title_image = $request->file('title_image');
+            $make_name_title = hexdec(uniqid()) . '.' . $title_image->getClientOriginalExtension();
+            if ($old_title_image) {
+                unlink($old_title_image);
+            }
+            Image::make($title_image)->resize(193, 45)->save('upload/setting/image/' . $make_name_title);
+            $upload_title_image = 'upload/setting/image/' . $make_name_title;
+        } else {
+            $upload_title_image = $old_title_image;
         }
-        Image::make($title_image)->resize(193, 45)->save('upload/setting/image/' . $make_name_title);
-        $upload_title_image = 'upload/setting/image/' . $make_name_title;
-
 
         $setting = Admin::findOrFail($id);
         $setting->website_title_en = $request->website_title_en;

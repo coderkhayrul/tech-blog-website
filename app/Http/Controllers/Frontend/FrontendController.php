@@ -73,6 +73,54 @@ class FrontendController extends Controller
         return view('frontend.category_wise', compact('productByCategory', 'category'));
     }
 
+    public function productSearch(Request $request)
+    {
+        $request->validate(['search' => 'required']);
+
+        $item = $request->search;
+        $popularpost = Product::where('status', 1)->OrderBy('view_count', 'DESC')->limit(5)->get();
+
+        // Category Wise Product Show (PC & MOBILE)
+        $skip_category = Category::skip(6)->first();
+
+        $skip_products = Product::where('status', 1)->where('category_id', '==', $skip_category)
+            ->orderBy('id', 'DESC')->get();
+        $posts = Product::where('status', 1)->where('name_en', 'LIKE', "%$item%")->paginate(10);
+
+        return view('frontend.search_post', compact('posts', 'skip_products', 'popularpost'));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // WEBSITE INCLUDE VIEW PAGE
 
     public function homeContact()

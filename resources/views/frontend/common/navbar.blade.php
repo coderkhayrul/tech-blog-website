@@ -55,8 +55,9 @@
 
                         <!-- Header Search Form -->
                         <div class="header-search-form">
-                            <form action="#">
-                                <input type="text" placeholder=" @if(session()->get('language') == 'bangla') এখানে অনুসন্ধান করুন @else Search Here @endif ">
+                            <form action="{{ route('product.search') }}" method="post">
+                                @csrf
+                                <input name="search" type="text" placeholder=" @if(session()->get('language') == 'bangla') এখানে অনুসন্ধান করুন @else Search Here @endif ">
                             </form>
                         </div>
 

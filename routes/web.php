@@ -50,6 +50,10 @@ Route::get('post/{id}/{slug}', [FrontendController::class, 'nextProduct']);
 Route::get('/language/english/', [LanguageController::class, 'English'])->name('english.language');
 Route::get('/language/bangla/', [LanguageController::class, 'Bangla'])->name('bangla.language');
 
+// Product Search Route
+Route::post('/search', [FrontendController::class, 'productSearch'])->name('product.search');
+
+
 
 // |========================================================================================|
 // *--------------------------------- BACKEND ROUTE LIST ----------------------------------*

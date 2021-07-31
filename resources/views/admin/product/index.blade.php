@@ -45,7 +45,7 @@ Admin Panel || Products
                             <a href="{{ route('product.status.disable',$product->id) }}">
                                 <span class="badge bg-success">Active</span>
                             </a>
-                            @elseProduct Image Edit
+                            @else
                             <a href="{{ route('product.status.enable',$product->id) }}">
                                 <span class="badge bg-danger">InActive</span>
                             </a>

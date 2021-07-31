@@ -108,7 +108,7 @@ $route = Route::current()->getName();
                         <img src="{{ asset('backend') }}/assets/img/brand/light.svg" height="20" width="20"
                             alt="Volt Logo">
                     </span>
-                    <span class="mt-1">Volt Overview</span>
+                    <span class="mt-1">Support Team</span>
                 </a>
             </li>
         </ul>

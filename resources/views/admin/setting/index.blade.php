@@ -39,7 +39,7 @@ Admin Panel || Setting
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <!-- Form -->
-                        <label for="name">Website Titel Bangle<i class="fas fa-signature"></i></label>
+                        <label for="name">Website Titel Bangle <i class="fas fa-signature"></i></label>
                         <input type="text" name="website_title_ban" class="form-control  @error('website_title_ban') is-invalid @enderror"
                             value="{{ $setting->website_title_ban }}" placeholder="আপনার ওয়েবসাইটের নাম লিখুন">
                         @error('website_title_ban')
@@ -51,7 +51,7 @@ Admin Panel || Setting
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <!-- Form -->
-                        <label for="name">Copyright English<i class="fas fa-copyright"></i> </label>
+                        <label for="name">Copyright English <i class="fas fa-copyright"></i> </label>
                         <input type="text" name="copyright_text_en" class="form-control  @error('copyright_text_en') is-invalid @enderror"
                             value="{{ $setting->copyright_text_en }}" placeholder="Enter Your Copyright Name">
                         @error('copyright_text_en')
@@ -63,7 +63,7 @@ Admin Panel || Setting
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <!-- Form -->
-                        <label for="name">Copyright Bangla<i class="fas fa-copyright"></i> </label>
+                        <label for="name">Copyright Bangla <i class="fas fa-copyright"></i> </label>
                         <input type="text" name="copyright_text_ban" class="form-control  @error('copyright_text_ban') is-invalid @enderror"
                             value="{{ $setting->copyright_text_ban }}" placeholder="আপনার কপিরাইট নাম লিখুন">
                         @error('copyright_text_ban')
@@ -76,7 +76,7 @@ Admin Panel || Setting
                     <div class="col-lg-6 col-sm-6 mt-2">
                         <!-- Form -->
                         <div class="mb-3">
-                            <label for="formFile" class="form-label">Website Favicon <i class="fas fa-image"></i></label>
+                            <label for="formFile" class="form-label">Website Favicon <span class="text-danger">(32 * 32)</span> px</label>
                             <input name="fav_icon" onChange="mainThamUrl(this)"
                                 class="form-control @error('fav_icon') is-invalid @enderror" type="file"
                                 id="formFile">
@@ -92,7 +92,7 @@ Admin Panel || Setting
                     <div class="col-lg-6 col-sm-6 mt-2">
                         <!-- Form -->
                         <div class="mb-3">
-                            <label for="formFile" class="form-label">Title Logo<i class="fas fa-image"></i></label>
+                            <label for="formFile" class="form-label">Website Logo <span class="text-danger">(192 * 45)</span> px</label>
                             <input name="title_image" onChange="mainBannerUrl(this)"
                                 class="form-control @error('title_image') is-invalid @enderror" type="file"
                                 id="formFile">

@@ -1,5 +1,9 @@
 @extends('admin.admin_master')
 
+@section('title')
+Admin Panel || Products
+@endsection
+
 @section('content')
 
 

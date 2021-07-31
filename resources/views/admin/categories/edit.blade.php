@@ -1,5 +1,9 @@
 @extends('admin.admin_master')
 
+@section('title')
+Admin Panel || Category Edit
+@endsection
+
 @section('content')
 
 <div class="col-12 mb-4">

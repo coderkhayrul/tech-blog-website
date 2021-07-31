@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Primary Meta Tags -->
-    <title>Volt - Free Bootstrap 5 Dashboard</title>
+    <title>Trick it World || Admin Panel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="title" content="Volt - Free Bootstrap 5 Dashboard">
     <meta name="author" content="Themesberg">
@@ -15,13 +15,11 @@
     <link rel="canonical" href="https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard">
 
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('backend') }}/assets/img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('backend') }}/assets/img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('backend') }}/assets/img/favicon/favicon-16x16.png">
-    <link rel="manifest" href="{{ asset('backend') }}/assets/img/favicon/site.webmanifest">
-    <link rel="mask-icon" href="{{ asset('backend') }}/assets/img/favicon/safari-pinned-tab.svg" color="#ffffff">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('upload/default/admin/apple_favicon_white.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('upload/default/admin/favicon_white.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('upload/default/admin/favicon_white.png') }}">
+    <link rel="mask-icon" href="{{ asset('upload/default/admin/favicon_white.png') }}" color="#ffffff">
+
 
     <!-- Fontawesome -->
     <link type="text/css" href="{{ asset('backend') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css"
@@ -42,20 +40,14 @@
     {{-- Toster Notification CDN --}}
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
 
-
-
     <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
 
 </head>
 
 <body>
 
-
     {{-- NAVBAR --}}
     @include('admin.common.sidebar')
-
-
-
 
     <main class="content">
 

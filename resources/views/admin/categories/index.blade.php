@@ -22,7 +22,6 @@
                         <th>Name English</th>
                         <th>Name Bangla</th>
                         <th>Image</th>
-                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -32,17 +31,6 @@
                         <td>{{ $category->name_en }}</td>
                         <td>{{ $category->name_ban }}</td>
                         <td><img width="150px" height="75px" src="{{ asset($category->image) }}" alt=""></td>
-                        <td>
-                            @if ($category->status == 1)
-                            <a href="">
-                                <span class="badge bg-success">Active</span>
-                            </a>
-                            @else
-                            <a href="">
-                                <span class="badge bg-danger">InActive</span>
-                            </a>
-                            @endif
-                        </td>
                         <td>
                             <a href="{{ route('category.edit',$category->id) }}" class="btn btn-info btn-sm">Edit</a>
                             <a id="delete" href="{{ route('category.destroy',$category->id) }}" class="btn btn-danger btn-sm">Delete</a>

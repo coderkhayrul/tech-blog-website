@@ -60,7 +60,13 @@ Route::get('/language/bangla/', [LanguageController::class, 'Bangla'])->name('ba
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Auth::routes();
+Auth::routes([
+    'register' => false, // Registration Routes...
+    'reset' => false, // Password Reset Routes...
+    'verify' => false, // Email Verification Routes...
+    'forgot' => false, //Email Forgot Routes...
+]);
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/logout', [AdminController::class, 'adminLogout'])->name('admin.logout');
 
@@ -101,6 +107,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/image/update/{id}', [ProductController::class, 'productImageUpdate'])->name('product.image.update');
 
         Route::get('/subcategory/ajax/{category_id}', [ProductController::class, 'GetSubCategory']);
+
+        Route::get('/status/enable/{id}', [ProductController::class, 'productStatusEnable'])->name('product.status.enable');
+        Route::get('/status/disable/{id}', [ProductController::class, 'productStatusDisable'])->name('product.status.disable');
     });
 
     // ADMIN SETTING ROUTES

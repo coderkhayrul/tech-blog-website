@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- Primary Meta Tags -->
-<title>Volt Premium Bootstrap Dashboard - Sign in page</title>
+<title>Trick it World || Admin Login</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="title" content="Volt Premium Bootstrap Dashboard - 404 Not Found Page">
 <meta name="author" content="Themesberg">
@@ -15,13 +15,12 @@
 
 
 <!-- Favicon -->
-<link rel="apple-touch-icon" sizes="120x120" href="{{ asset('backend') }}/assets/img/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('backend') }}/assets/img/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('backend') }}/assets/img/favicon/favicon-16x16.png">
-<link rel="manifest" href="{{ asset('backend') }}/assets/img/favicon/site.webmanifest">
-<link rel="mask-icon" href="{{ asset('backend') }}/assets/img/favicon/safari-pinned-tab.svg" color="#ffffff">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="theme-color" content="#ffffff">
+<link rel="apple-touch-icon" sizes="120x120" href="{{ asset('upload/default/admin/apple_favicon_white.png') }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('upload/default/admin/favicon_white.png') }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('upload/default/admin/favicon_white.png') }}">
+<link rel="mask-icon" href="{{ asset('upload/default/admin/favicon_white.png') }}" color="#ffffff">
+
+
 
 <!-- Fontawesome -->
 <link type="text/css" href="{{ asset('backend') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -89,31 +88,11 @@
                                               Remember me
                                             </label>
                                         </div>
-                                        <div><a href="{{ route('password.request') }}" class="small text-right">Lost password?</a></div>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-block btn-primary">Sign in</button>
                             </form>
-                            <div class="mt-3 mb-4 text-center">
-                                <span class="font-weight-normal">or login with</span>
-                            </div>
-                            <div class="d-flex justify-content-center my-4">
-                                <a href="#" class="btn btn-icon-only btn-pill btn-outline-light text-facebook mr-2" type="button" aria-label="facebook button" title="facebook button">
-                                    <span aria-hidden="true" class="fab fa-facebook-f"></span>
-                                </a>
-                                <a href="#" class="btn btn-icon-only btn-pill btn-outline-light text-twitter mr-2" type="button" aria-label="twitter button" title="twitter button">
-                                    <span aria-hidden="true" class="fab fa-twitter"></span>
-                                </a>
-                                <a href="#" class="btn btn-icon-only btn-pill btn-outline-light text-facebook" type="button" aria-label="github button" title="github button">
-                                    <span aria-hidden="true" class="fab fa-github"></span>
-                                </a>
-                            </div>
-                            <div class="d-flex justify-content-center align-items-center mt-4">
-                                <span class="font-weight-normal">
-                                    Not registered?
-                                    <a href="{{ route('register') }}" class="font-weight-bold">Create account</a>
-                                </span>
-                            </div>
+                            <br>
                         </div>
                     </div>
                 </div>

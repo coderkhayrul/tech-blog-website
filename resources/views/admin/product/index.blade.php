@@ -38,11 +38,11 @@
                         <td width="25%">{{ $product->name_ban }}</td>
                         <td width="5%">
                             @if ($product->status == 1)
-                            <a href="">
+                            <a href="{{ route('product.status.disable',$product->id) }}">
                                 <span class="badge bg-success">Active</span>
                             </a>
                             @else
-                            <a href="">
+                            <a href="{{ route('product.status.enable',$product->id) }}">
                                 <span class="badge bg-danger">InActive</span>
                             </a>
                             @endif

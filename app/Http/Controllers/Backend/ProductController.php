@@ -194,4 +194,32 @@ class ProductController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+    public function productStatusEnable($id)
+    {
+        $product = Product::findOrFail($id);
+        $product->status = 1;
+        $product->update();
+
+        $notification =  array(
+            'message' => 'Product Status Enable Successfully',
+            'alert-type' => 'info',
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function productStatusDisable($id)
+    {
+        $product = Product::findOrFail($id);
+        $product->status = 0;
+        $product->update();
+
+        $notification =  array(
+            'message' => 'Product Status Disable Successfully',
+            'alert-type' => 'info',
+        );
+
+        return redirect()->back()->with($notification);
+    }
 }

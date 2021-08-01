@@ -72,7 +72,7 @@ Admin Panel || Product Create
                     <div class="col-lg-6 col-sm-6 mt-2">
                         <!-- Form -->
                         <div class="mb-3">
-                            <label for="formFile" class="form-label">Thambnail Image</label>
+                            <label for="formFile" class="form-label">Thambnail Image <span class="text-danger">(371 * 221)</span>px</label>
                             <input name="thambnail_image" onChange="mainThamUrl(this)"
                                 class="form-control @error('thambnail_image') is-invalid @enderror" type="file"
                                 id="formFile">
@@ -88,7 +88,7 @@ Admin Panel || Product Create
                     <div class="col-lg-6 col-sm-6 mt-2">
                         <!-- Form -->
                         <div class="mb-3">
-                            <label for="formFile" class="form-label">Banner Image</label>
+                            <label for="formFile" class="form-label">Banner Image <span class="text-danger">(770 * 294)</span>px</label>
                             <input name="banner_image" onChange="mainBannerUrl(this)"
                                 class="form-control @error('banner_image') is-invalid @enderror" type="file"
                                 id="formFile">

@@ -7,7 +7,7 @@
                     <!-- Main Menu Start -->
                     <div class="main-menu float-left d-none d-md-block">
                         @php
-                            $categories = App\Models\Category::OrderBy('id', 'ASC')->get();
+                            $categories = App\Models\Category::where('status' , 1)->OrderBy('id', 'ASC')->get();
                         @endphp
                         <nav>
                             <ul>
@@ -15,14 +15,18 @@
                                 <li><a href="{{ url('/') }}">@if (session()->get('language') == 'bangla')হোম @else Home @endif</a></li>
                                 <li class="has-dropdown"><a href="#">@if (session()->get('language') == 'bangla')ক্যাটাগরি @else Category @endif</a>
                                     <!-- Submenu Start -->
+                                    @if($categories)
                                     <ul class="sub-menu">
                                         @foreach ($categories as $category)
                                         <li><a href="{{ url('category/post/'.$category->id.'/'.$category->slug_en) }}">@if (session()->get('language') == 'bangla'){{ $category->name_ban }} @else {{ $category->name_en }} @endif</a></li>
                                         @endforeach
                                     </ul><!-- Submenu End -->
+
+                                    @endif
+
                                 </li>
 
-                                <li><a href="{{ url('category/post/'.$category->id.'/'.$category->slug_en) }}">@if (session()->get('language') == 'bangla')টেক নিউস @else Tech News @endif</a></li>
+                                <li><a href="">@if (session()->get('language') == 'bangla')টেক নিউস @else Tech News @endif</a></li>
 
                                 <li class="has-dropdown"><a href="#">@if (session()->get('language') == 'bangla')সম্পর্কিত @else About @endif</a>
                                     <!-- Submenu Start -->
@@ -71,16 +75,17 @@
 
                                 <li><a href="{{ url('/') }}">@if (session()->get('language') == 'bangla')হোম @else Home @endif</a></li>
                                 <li><a href="#">@if (session()->get('language') == 'bangla')ক্যাটাগরি @else Category @endif</a>
-
+                                    @if($categories)
                                     <!-- Submenu Start -->
                                     <ul class="sub-menu">
                                         @foreach ($categories as $category)
                                         <li><a href="{{ url('category/post/'.$category->id.'/'.$category->slug_en) }}">@if (session()->get('language') == 'bangla'){{ $category->name_ban }} @else {{ $category->name_en }} @endif</a></li>
                                         @endforeach
                                     </ul><!-- Submenu End -->
+                                    @endif
 
                                 </li>
-                                <li><a href="{{ url('category/post/'.$category->id.'/'.$category->slug_en) }}">@if (session()->get('language') == 'bangla')টেক নিউস @else Tech News @endif</a></li>
+                                <li><a href="">@if (session()->get('language') == 'bangla')টেক নিউস @else Tech News @endif</a></li>
 
 
                             </ul>

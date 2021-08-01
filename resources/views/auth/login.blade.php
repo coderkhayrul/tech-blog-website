@@ -7,29 +7,30 @@
 <!-- Primary Meta Tags -->
 <title>Trick it World || Admin Login</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="title" content="Volt Premium Bootstrap Dashboard - 404 Not Found Page">
-<meta name="author" content="Themesberg">
-<meta name="description" content="Volt is a free and open source Bootstrap 5 Admin Dashboard featuring 11 example pages, 100 components and 3 plugins with Vanilla JS.">
-<meta name="keywords" content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, free bootstrap 5 dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, themesberg, themesberg dashboard, themesberg admin dashboard" />
-<link rel="canonical" href="https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard">
-
 
 <!-- Favicon -->
-<link rel="apple-touch-icon" sizes="120x120" href="{{ asset('upload/default/admin/apple_favicon_white.png') }}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('upload/default/admin/favicon_white.png') }}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('upload/default/admin/favicon_white.png') }}">
-<link rel="mask-icon" href="{{ asset('upload/default/admin/favicon_white.png') }}" color="#ffffff">
+<link rel="apple-touch-icon" sizes="120x120" href="{{ asset('default/admin/apple_favicon_white.png') }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('default/admin/favicon_white.png') }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('default/admin/favicon_white.png') }}">
+<link rel="mask-icon" href="{{ asset('default/admin/favicon_white.png') }}" color="#ffffff">
 
 
+{{-- ////////////////////////////////////////////////////////////////////////////////////////////////////// --}}
+{{-- --------------------------------------- LOCAL FILE START --------------------------------------------- --}}
+    <!-- Volt CSS -->
+    <link type="text/css" href="{{ asset('backend') }}/css/volt.css" rel="stylesheet">
+{{-- --------------------------------------- LOCAL FILE END ----------------------------------------------- --}}
+
+{{-- //////////////////////////////////////////////@@@@@@@@@@@@@@////////////////////////////////////////// --}}
+
+{{-- --------------------------------------- CDN START ------------------------------------------ --}}
 
 <!-- Fontawesome -->
-<link type="text/css" href="{{ asset('backend') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
-<!-- Notyf -->
-<link type="text/css" href="{{ asset('backend') }}/vendor/notyf/notyf.min.css" rel="stylesheet">
+{{-- ----------------------------------------- CDN END --------------------------------------------- --}}
+{{-- /////////////////////////////////////////////////////////////////////////////////////////////// --}}
 
-<!-- Volt CSS -->
-<link type="text/css" href="{{ asset('backend') }}/css/volt.css" rel="stylesheet">
 
 <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
 
@@ -100,43 +101,20 @@
         </section>
     </main>
 
-<!-- Core -->
-<script src="{{ asset('backend') }}/vendor/popper.js/dist/umd/popper.min.js"></script>
-<script src="{{ asset('backend') }}/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    {{-- --------------------------------------- CDN START -------------------------------- --}}
 
-<!-- Vendor JS -->
-<script src="{{ asset('backend') }}/vendor/onscreen/dist/on-screen.umd.min.js"></script>
+    <!-- Core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/16.1.3/smooth-scroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.js"></script>
 
-<!-- Slider -->
-<script src="{{ asset('backend') }}/vendor/nouislider/distribute/nouislider.min.js"></script>
+    {{-- --------------------------------------- CDN END -------------------------------- --}}
 
-<!-- Jarallax -->
-<script src="{{ asset('backend') }}/vendor/jarallax/dist/jarallax.min.js"></script>
-
-<!-- Smooth scroll -->
-<script src="{{ asset('backend') }}/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-
-<!-- Count up -->
-<script src="{{ asset('backend') }}/vendor/countup.js/dist/countUp.umd.js"></script>
-
-<!-- Notyf -->
-<script src="{{ asset('backend') }}/vendor/notyf/notyf.min.js"></script>
-
-<!-- Charts -->
-<script src="{{ asset('backend') }}/vendor/chartist/dist/chartist.min.js"></script>
-<script src="{{ asset('backend') }}/vendor/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-
-<!-- Datepicker -->
-<script src="{{ asset('backend') }}/vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
-
-<!-- Simplebar -->
-<script src="{{ asset('backend') }}/vendor/simplebar/dist/simplebar.min.js"></script>
-
-<!-- Github buttons -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-
+{{-- ---------------------------------------- LOCAL FILE START ---------------------------------- --}}
+<script src="{{ asset('backend') }}/assets/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js"></script>
 <!-- Volt JS -->
 <script src="{{ asset('backend') }}/assets/js/volt.js"></script>
+
+{{-- ---------------------------------------- LOCAL FILE END ---------------------------------- --}}
 
 
 </body>

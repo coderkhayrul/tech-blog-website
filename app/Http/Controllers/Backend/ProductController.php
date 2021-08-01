@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -143,8 +144,17 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
-        unlink($product->thambnail_image);
-        unlink($product->banner_image);
+
+        $thambnail_image = $product->thambnail_image;
+        $banner_image = $product->banner_image;
+
+        if (File::exists($thambnail_image)) {
+            unlink($thambnail_image);
+        }
+        if (File::exists($banner_image)) {
+            unlink($banner_image);
+        }
+
         $product->delete();
 
         $notification =  array(
